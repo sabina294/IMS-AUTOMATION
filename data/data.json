@@ -1,0 +1,13 @@
+[
+  {
+    "login": [
+      {
+        "TC_LOGIN_001": {
+          "_comment": "Verify login successfully with valid credentials.",
+          "username": "tem-mfi-admin-automation",
+          "password": "123456"
+        }
+      }
+    ]
+  }
+]
