@@ -134,8 +134,6 @@ class ZoneCreation {
       cy.formController("search_text").type(zoData.nameEn);
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      // cy.get("app-mfi-mis").contains(zoData.nameEn).and("be.visible");
       cy.log("Successfully viewed the zone list page");
     });
   }
@@ -267,6 +265,16 @@ class ZoneCreation {
     cy.imsId("btn-add-new").click();
     cy.imsId("btn-go-back").click();
     cy.log("Successful go back button check.");
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var zoData = data.mfiAdmin.createZoneFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(zoData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

@@ -1,3 +1,5 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class MemberSamityTransfer {
   test_data = Cypress.env("TEST_DATA");
 
@@ -7,15 +9,16 @@ class MemberSamityTransfer {
       cy.log("Successfully member samity transfer list page.");
     });
   }
-
-    gridDraftButton() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+  gridDraftButton() {
+    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+      .check({ force: true });
+    cy.log(messages.ui.draftOnMessage);
   }
 
   gridDraftButtonOff() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+      .uncheck({ force: true });
+    cy.log(messages.ui.draftOffMessage);
   }
 
   viewMemberSamityTransfer() {
@@ -89,6 +92,39 @@ class MemberSamityTransfer {
     });
   }
 
+  withoutNewSamity() {
+    cy.fixture(this.test_data).then((data) => {
+      cy.selectMenu("menu-member", "submenu-member-samity-transfer");
+      var mstData = data.branchManager.memberSamityTransferFrom;
+      cy.imsId("toggle-action").first().click();
+      cy.imsId("btn-mis-table-action-transfer").click();
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-go-back").click();
+
+      cy.log("Successfully member samity transfer without new samity field");
+    });
+  }
+
+  withoutRegisterBookSerialId() {
+    cy.fixture(this.test_data).then((data) => {
+      var mstData = data.branchManager.memberSamityTransferFrom;
+      cy.imsId("toggle-action").first().click();
+      cy.imsId("btn-mis-table-action-transfer").click();
+      cy.formController("new_samity_id")
+        .type(mstData.newSamityTransfer)
+        .type("{enter}");
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-yes").click();
+      cy.get("app-confirmation-modal")
+        .contains(mstData.messagesamityTransfer)
+        .and("be.visible");
+      cy.imsId("btn-ok").click();
+
+      cy.log("Successfully member samity transfer");
+    });
+  }
+
   statusInactiveDropdownCheck() {
     cy.fixture(this.test_data).then((data) => {
       var mstData = data.branchManager.memberSamityTransferFrom;
@@ -128,10 +164,20 @@ class MemberSamityTransfer {
     );
   }
 
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var mstData = data.branchManager.memberSamityTransferFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(mstData.memberNameEn);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
+  }
+
   gridLanguageSwitchCheck() {
     cy.imsId("profile-menu").click();
     cy.imsId("btn-lang-bangla").click();
-    cy.log("Unsccessful switch bangla language check.");
+    cy.log("Successful switch bangla language check.");
   }
 }
 

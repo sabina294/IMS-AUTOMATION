@@ -1,3 +1,7 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
+// import * as SELECTORS from "../../../../support/constants/selectors";
+
 class EmployeeManagementCreation {
   test_data = Cypress.env("TEST_DATA");
 
@@ -18,7 +22,7 @@ class EmployeeManagementCreation {
       cy.formController("emp_name_bn").type(emData.empNameBn);
       cy.formController("date_of_birth").click();
       cy.wait(2000);
-      cy.contains("22").click({ force: true });
+      cy.contains("15").click({ force: true });
       cy.formController("gender").click();
       cy.get(
         ".ant-form-item-control-input-content > .ant-radio-group > :nth-child(1) > .ant-radio > .ant-radio-input"
@@ -121,8 +125,8 @@ class EmployeeManagementCreation {
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-edit").click();
       cy.imsId("btn-reset").click();
+      cy.log(messages.ui.resetSuccess);
 
-      cy.log("Successful clean displaying");
     });
   }
 
@@ -145,18 +149,23 @@ class EmployeeManagementCreation {
   }
 
   editGoBackButton() {
-      cy.imsId("btn-go-back").click();
-      cy.log("Successful edit go back button check.");
+    cy.imsId("btn-go-back").click();
+    cy.log("Successful edit go back button check.");
   }
 
   editEmployeeManagement() {
-    cy.imsId("toggle-action").first().click();
-    cy.imsId("btn-table-action-edit").click();
-    cy.imsId("btn-submit").click();
-    cy.imsId("btn-yes").click();
-    cy.imsId("btn-ok").click();
-    cy.log("Employee Management updated successfully");
-   
+    cy.fixture(this.test_data).then((data) => {
+      var emData = data.mfiAdmin.createEmpMangFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(emData.search);
+      cy.imsId("btn-search").click();
+      cy.imsId("toggle-action").first().click();
+      cy.imsId("btn-table-action-edit").click();
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-yes").click();
+      cy.imsId("btn-ok").click();
+      cy.log("Employee Management updated successfully");
+    });
   }
 
   statusInactiveDropdownCheck() {
@@ -202,13 +211,15 @@ class EmployeeManagementCreation {
   }
 
   gridDraftButton() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
-  }
+    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+      .check({ force: true });
+      cy.log(messages.ui.draftOnMessage);
+    }
 
   gridDraftButtonOff() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+      .uncheck({ force: true });
+      cy.log(messages.ui.draftOffMessage);
   }
 
   gridCheckboxCheck() {
@@ -255,6 +266,13 @@ class EmployeeManagementCreation {
     cy.log("Successful Approve button check.");
   }
 
+  createDraftButtonCheck() {
+    cy.imsId("btn-add-new").click();
+    cy.imsId("btn-draft").click();
+    cy.imsId("btn-ok").click();
+    cy.imsId("btn-go-back").click();
+    cy.log("Successful draft button check.");
+  }
 
   createGoBackButtonCheck() {
     cy.imsId("btn-add-new").click();
@@ -262,12 +280,14 @@ class EmployeeManagementCreation {
     cy.log("Successful go back button check.");
   }
 
-  createDraftButtonCheck() {
-    cy.imsId("btn-add-new").click();
-    cy.imsId("btn-draft").click();
-    cy.imsId("btn-ok").click();
-    cy.imsId("btn-go-back").click();
-    cy.log("Successful draft button check.");
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var emData = data.mfiAdmin.createEmpMangFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(emData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

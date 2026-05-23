@@ -36,7 +36,7 @@ class AmountBasedLoanProposalApprovalCreation {
     });
   }
 
-  createWitoutOfficeTypeId() {
+  createWithoutOfficeTypeId() {
     cy.fixture(this.test_data).then((data) => {
       cy.imsId("btn-add-new").click();
       cy.imsId("btn-submit").and("be.visible");
@@ -122,7 +122,7 @@ class AmountBasedLoanProposalApprovalCreation {
     });
   }
 
-  createWithoutremarks() {
+  createWithoutRemarks() {
     cy.fixture(this.test_data).then((data) => {
       cy.imsId("btn-add-new").click();
       cy.imsId("btn-submit").and("be.visible");
@@ -182,8 +182,6 @@ class AmountBasedLoanProposalApprovalCreation {
       cy.formController("search_text").type(ablpaData.roleName);
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      // cy.get("app-mfi-mis").contains(ablpaData.maxLoanAmount).and("be.visible");
       cy.log("Successfully viewed the amount based loan list page");
     });
   }
@@ -323,6 +321,16 @@ class AmountBasedLoanProposalApprovalCreation {
     cy.imsId("btn-add-new").click();
     cy.imsId("btn-go-back").click();
     cy.log("Successful go back button check.");
+  }
+
+     gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var ablpaData = data.mfiAdmin.createAmountBasedLoanFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(ablpaData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

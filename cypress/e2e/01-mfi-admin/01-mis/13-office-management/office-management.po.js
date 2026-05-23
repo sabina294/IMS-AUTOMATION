@@ -1,3 +1,5 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class OfficeCreation {
   test_data = Cypress.env("TEST_DATA");
 
@@ -8,7 +10,7 @@ class OfficeCreation {
     });
   }
 
-  createOffice() {
+  createWithoutOfficeNameEn() {
     cy.fixture(this.test_data).then((data) => {
       cy.imsId("btn-add-new").click();
 
@@ -20,7 +22,6 @@ class OfficeCreation {
       const officeId = generate8DigitIdFrom();
       cy.log("Generated 8-digit ID:", officeId);
 
-      cy.formController("office_name_en").first().type(omData.officeNameEn);
       cy.formController("office_name_bn").type(omData.officeNameBn);
       cy.formController("office_type_id")
         .type(omData.officeType)
@@ -47,38 +48,618 @@ class OfficeCreation {
         .first()
         .type(omData.upazilaName)
         .type("{enter}");
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+
+      cy.log("Unsuccessfully created office management without office name en");
+    });
+  }
+
+  createWithoutOfficeNameBn() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      cy.formController("division_id")
+        .first()
+        .type(omData.division)
+        .type("{enter}");
+
+      cy.formController("district_id")
+        .first()
+        .type(omData.district)
+        .type("{enter}");
+
+      cy.formController("upazila_id")
+        .first()
+        .type(omData.upazila)
+        .type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
 
       cy.imsId("btn-submit").click();
-      cy.imsId("btn-yes").click();
-      cy.get("app-confirmation-modal")
-        .contains(omData.messageSaveOffice)
-        .and("be.visible");
-
       cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+      cy.log("Unsuccessfully created office management without office name bn");
+    });
+  }
+
+  createWithoutOfficeType() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      cy.formController("division_id")
+        .first()
+        .type(omData.division)
+        .type("{enter}");
+
+      cy.formController("district_id")
+        .first()
+        .type(omData.district)
+        .type("{enter}");
+
+      cy.formController("upazila_id")
+        .first()
+        .type(omData.upazila)
+        .type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
+
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+      cy.log("Unsuccessfully created office management without office type");
+    });
+  }
+
+  createWithoutCompanyOfficeId() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      cy.formController("division_id")
+        .first()
+        .type(omData.division)
+        .type("{enter}");
+
+      cy.formController("district_id")
+        .first()
+        .type(omData.district)
+        .type("{enter}");
+
+      cy.formController("upazila_id")
+        .first()
+        .type(omData.upazila)
+        .type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
+
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+      cy.log("Unsuccessfully created office management without company office id");
+    });
+  }
+
+  createWithoutMobileNumber() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("division_id")
+        .first()
+        .type(omData.division)
+        .type("{enter}");
+      cy.formController("district_id")
+        .first()
+        .type(omData.district)
+        .type("{enter}");
+      cy.formController("upazila_id")
+        .first()
+        .type(omData.upazila)
+        .type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
+
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+      cy.log("Unsuccessfully created office management without mobile number");
+    });
+  }
+
+  createWithoutDivision() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      // cy.formController("district_id").type(omData.district).type("{enter}");
+      // cy.formController("upazila_id").type(omData.upazila).type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+      cy.log("Unsuccessfully created office management without division");
+    });
+  }
+
+  createWithoutDistrict() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      cy.formController("division_id")
+        .first()
+        .type(omData.division)
+        .type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
+
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+      cy.log("Unsuccessfully created office management without district");
+    });
+  }
+
+  createWithoutUpazila() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      cy.formController("division_id")
+        .first()
+        .type(omData.division)
+        .type("{enter}");
+      cy.formController("district_id")
+        .first()
+        .type(omData.district)
+        .type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+      cy.log("Unsuccessfully created office management without upazila");
+    });
+  }
+
+
+  createWithoutAddress() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      cy.formController("division_id")
+        .first()
+        .type(omData.division)
+        .type("{enter}");
+      cy.formController("district_id")
+        .first()
+        .type(omData.district)
+        .type("{enter}");
+      cy.formController("upazila_id")
+        .first()
+        .type(omData.upazila)
+        .type("{enter}");
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
+
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+      cy.log("Unsuccessfully created office management without address");
+    });
+  }
+
+   createWithoutAreaName() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      cy.formController("division_id")
+        .first()
+        .type(omData.division)
+        .type("{enter}");
+      cy.formController("district_id")
+        .first()
+        .type(omData.district)
+        .type("{enter}");
+      cy.formController("upazila_id")
+        .first()
+        .type(omData.upazila)
+        .type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+       cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
+
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+
       cy.log("Successfully created office management");
     });
   }
 
-  approveOffice() {
+   createWithoutWorkingAreaDivision() {
     cy.fixture(this.test_data).then((data) => {
-      var omData = data.mfiAdmin.approveOfficeFrom;
-      cy.switchModule("MFI");
-      cy.imsId("menu-my-task").click();
-      cy.imsId("submenu-pending-office-approval").click();
-      cy.imsId("toggle-action").first().click();
-      cy.imsId("btn-table-action-view").click();
-      cy.imsId("btn-lock").click();
-      cy.imsId("btn-approve").click();
-      cy.imsId("btn-Approve").click();
-      cy.imsId("btn-yes").click();
-      cy.imsId("btn-ok").click();
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
 
-      cy.log("Successfully approve office management");
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      cy.formController("division_id")
+        .first()
+        .type(omData.division)
+        .type("{enter}");
+      cy.formController("district_id")
+        .first()
+        .type(omData.district)
+        .type("{enter}");
+      cy.formController("upazila_id")
+        .first()
+        .type(omData.upazila)
+        .type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
+
+
+     cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+      cy.log("Successfully created office management");
+    });
+  }
+
+   createWithoutWorkingAreaDistrict() {
+    cy.fixture(this.test_data).then((data) => {
+
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      cy.formController("division_id")
+        .first()
+        .type(omData.division)
+        .type("{enter}");
+      cy.formController("district_id")
+        .first()
+        .type(omData.district)
+        .type("{enter}");
+      cy.formController("upazila_id")
+        .first()
+        .type(omData.upazila)
+        .type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-reset").click();
+      cy.log("Successfully created office management");
+    });
+  }
+
+   createWithoutWorkingAreaUpazila() {
+    cy.fixture(this.test_data).then((data) => {
+
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      cy.formController("division_id")
+        .first()
+        .type(omData.division)
+        .type("{enter}");
+      cy.formController("district_id")
+        .first()
+        .type(omData.district)
+        .type("{enter}");
+      cy.formController("upazila_id")
+        .first()
+        .type(omData.upazila)
+        .type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-ok").click();
+      cy.imsId("btn-back").click();
+      cy.log("Successfully created office management");
     });
   }
 
   actionButtonCheck() {
-    cy.selectMenu("menu-office", "submenu-office-management");
+    // cy.selectMenu("menu-office", "submenu-office-management");
     cy.imsId("toggle-action").first().click();
     cy.log(
       "Action button clicked successfully on the office management list page."
@@ -91,7 +672,6 @@ class OfficeCreation {
       cy.formController("search_text").type(omData.officeNameEn);
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-      // cy.get("app-mfi-mis").contains(omData.officeNameEn).and("be.visible");
       cy.log("Successfully viewed the office management list page");
     });
   }
@@ -188,14 +768,16 @@ class OfficeCreation {
     );
   }
 
-  gridDraftButton() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
-  }
+   gridDraftButton() {
+    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+      .check({ force: true });
+      cy.log(messages.ui.draftOnMessage);
+    }
 
   gridDraftButtonOff() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+      .uncheck({ force: true });
+      cy.log(messages.ui.draftOffMessage);
   }
 
   gridCheckboxCheck() {
@@ -238,6 +820,85 @@ class OfficeCreation {
     cy.imsId("btn-add-new").click();
     cy.imsId("btn-back").click();
     cy.log("Successful go back button check.");
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.mfiAdmin.createOfficeFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(omData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
+  }
+
+  createOffice() {
+    cy.fixture(this.test_data).then((data) => {
+      cy.imsId("btn-add-new").click();
+
+      var omData = data.mfiAdmin.createOfficeFrom;
+      const generate8DigitIdFrom = () => {
+        const rand = Math.floor(10000000 + Math.random() * 90000000); // 8 digits
+        return `${rand}`; // Total 8 digits
+      };
+      const officeId = generate8DigitIdFrom();
+      cy.log("Generated 8-digit ID:", officeId);
+
+      cy.formController("office_name_en").first().type(omData.officeNameEn);
+      cy.formController("office_name_bn").type(omData.officeNameBn);
+      cy.formController("office_type_id")
+        .type(omData.officeType)
+        .type("{enter}");
+      cy.formController("com_office_id").type(officeId);
+      cy.formController("mobile_number_1").type(omData.mobileNo);
+      cy.formController("division_id").type(omData.division).type("{enter}");
+      cy.formController("district_id").type(omData.district).type("{enter}");
+      cy.formController("upazila_id").type(omData.upazila).type("{enter}");
+      cy.formController("address_line_1").type(omData.adressEn);
+      cy.formController("latitude").type(omData.latitude);
+      cy.formController("longitude").type(omData.longitude);
+      cy.imsId("btn-add").click();
+      cy.formController("working_area_name_en").first().type(omData.areaNameEn);
+      cy.formArrayController("working_area", 0, "division_id")
+        .first()
+        .type(omData.divisionName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "district_id")
+        .first()
+        .type(omData.districtName)
+        .type("{enter}");
+      cy.formArrayController("working_area", 0, "thana_id")
+        .first()
+        .type(omData.upazilaName)
+        .type("{enter}");
+
+      cy.imsId("btn-submit").click();
+      cy.imsId("btn-yes").click();
+      cy.get("app-confirmation-modal")
+        .contains(omData.messageSaveOffice)
+        .and("be.visible");
+
+      cy.imsId("btn-ok").click();
+      cy.log("Successfully created office management");
+    });
+  }
+
+  approveOffice() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.mfiAdmin.approveOfficeFrom;
+      cy.switchModule("MFI");
+      cy.imsId("menu-my-task").click();
+      cy.imsId("submenu-pending-office-approval").click();
+      cy.imsId("toggle-action").first().click();
+      cy.imsId("btn-table-action-view").click();
+      cy.imsId("btn-lock").click();
+      cy.imsId("btn-approve").click();
+      cy.imsId("btn-Approve").click();
+      cy.imsId("btn-yes").click();
+      cy.imsId("btn-ok").click();
+
+      cy.log("Successfully approve office management");
+    });
   }
 
   gridLanguageSwitchCheck() {

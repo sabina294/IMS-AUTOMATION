@@ -122,6 +122,7 @@ class RrejectedMember {
   }
 
   editResetButton() {
+    cy.imsId("btn-reset").click();
     cy.imsId("toggle-action").first().click();
     cy.imsId("btn-mis-table-action-edit").click();
     cy.imsId("btn-reset").click();
@@ -167,10 +168,20 @@ class RrejectedMember {
     );
   }
 
+    gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var rejmData = data.branchManager.createRejectedMemberFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(rejmData.memberNameEn);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
+  }
+
   gridLanguageSwitchCheck() {
     cy.imsId("profile-menu").click();
     cy.imsId("btn-lang-bangla").click();
-    cy.log("Unsccessful switch bangla language check.");
+    cy.log("Successful switch bangla language check.");
   }
 }
 

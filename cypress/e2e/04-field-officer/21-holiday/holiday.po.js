@@ -1,3 +1,5 @@
+import messages from "../../../support/constants/messages";
+import { GRID } from "../../../support/constants/selectors";
 class HolidayCreation {
   test_data = Cypress.env("TEST_DATA");
 
@@ -11,14 +13,15 @@ class HolidayCreation {
   createHoliday() {
     cy.fixture(this.test_data).then((data) => {
       cy.imsId("btn-add-new").click();
-      // cy.imsId("btn-submit").and("be.visible");
-
       var hData = data.fieldOfficer.createHoliday;
       cy.imsId("btn-add-new").click();
-      cy.formController("type").type(hData.holidayType).type("{enter}");
       cy.formController("end_date").click();
-      cy.contains("30").click({ force: true });
-      cy.wait(3000);
+      cy.get('.ant-picker-dropdown')
+        .should('be.visible');
+      cy.get('.ant-picker-cell-in-view')
+        .not('.ant-picker-cell-disabled')
+        .first()
+        .click({ force: true });
       cy.formController("holiday_title_bn").type(hData.holidayTitleBn);
       cy.formController("holiday_title_en").type(hData.holidayTitleEn);
       cy.imsId("btn-submit").click();
@@ -77,17 +80,30 @@ class HolidayCreation {
     );
   }
 
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var hData = data.fieldOfficer.createHoliday;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(hData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
+  }
+
   gridDraftButton() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+      .check({ force: true });
+    cy.log(messages.ui.draftOnMessage);
   }
 
   gridDraftButtonOff() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+      .uncheck({ force: true });
+    cy.log(messages.ui.draftOffMessage);
   }
 
-   createSubmitButtonCheck() {
+  createSubmitButtonCheck() {
     cy.fixture(this.test_data).then((data) => {
       cy.imsId("btn-add-new").click();
       var hData = data.fieldOfficer.createHoliday;
@@ -111,7 +127,6 @@ class HolidayCreation {
 
   }
 
-  
   gridLanguageSwitchCheck() {
     cy.imsId("profile-menu").click();
     cy.imsId("btn-lang-bangla").click();

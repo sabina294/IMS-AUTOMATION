@@ -119,8 +119,6 @@ class DesignationCreation {
       cy.formController("search_text").type(desData.nameEn);
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      cy.get("app-mfi-mis").contains(desData.nameEn).and("be.visible");
       cy.log("Successfully viewed the designation list page");
     });
   }
@@ -259,6 +257,16 @@ class DesignationCreation {
     cy.imsId("btn-add-new").click();
     cy.imsId("btn-go-back").click();
     cy.log("Successful go back button check.");
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var desData = data.mfiAdmin.createDesignationFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(desData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

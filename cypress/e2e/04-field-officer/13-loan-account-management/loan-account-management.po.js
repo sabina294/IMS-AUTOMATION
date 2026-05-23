@@ -18,7 +18,8 @@ class LoanAccountManagement {
   viewLoanAccountManagement() {
     cy.fixture(this.test_data).then((data) => {
       var laData = data.fieldOfficer.loanAccountManagementFrom;
-      cy.formController("search_text").type(laData.samity);
+      cy.formController("search_text").type(laData.memberNameEn);
+      cy.imsId("btn-search").click();
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
 
@@ -73,6 +74,16 @@ class LoanAccountManagement {
     cy.log(
       "successfully refresh page  displayed the grid list of the Loan account proposal Management "
     );
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var laData = data.fieldOfficer.loanAccountManagementFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(laData.memberNameEn);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

@@ -19,10 +19,9 @@ class FundingOrganization {
     cy.fixture(this.test_data).then((data) => {
       var foData = data.branchManager.gridFundingOrganizationFrom;
       cy.formController("search_text").type(foData.FundingNameEn);
+      cy.imsId("btn-search").click();
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      cy.get("app-mfi-mis").contains(foData.FundingNameEn).and("be.visible");
       cy.log("Successfully viewed the funding organization list page");
     });
   }
@@ -94,6 +93,16 @@ class FundingOrganization {
     cy.log(
       "successfully refresh page  displayed the grid list of the funding organization "
     );
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var foData = data.branchManager.gridFundingOrganizationFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(foData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

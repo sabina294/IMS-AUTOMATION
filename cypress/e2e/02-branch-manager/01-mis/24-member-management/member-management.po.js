@@ -1,3 +1,5 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class MemberManagementCreation {
   test_data = Cypress.env("TEST_DATA");
 
@@ -24,7 +26,7 @@ class MemberManagementCreation {
       cy.get(".ant-picker-header-super-prev-btn").click();
       cy.contains("2005").click();
       cy.wait(3000);
-      cy.contains("13").click({ force: true });
+      cy.contains("11").click({ force: true });
       cy.wait(2000);
       cy.formController("mfi_program_id")
         .type(memData.mfiProgram)
@@ -111,11 +113,28 @@ class MemberManagementCreation {
     cy.log("Successfully view go back the Member management list page");
   }
 
+  profileViewMemberManagement() {
+    cy.fixture(this.test_data).then((data) => {
+      var memData = data.branchManager.createMemberFrom;
+      // cy.formController("search_text").type(memData.memberNameEn);
+      cy.imsId("toggle-action").first().click();
+      cy.imsId("btn-mis-table-action-profile").click();
+      cy.log("Successfully profile viewed the member management list page");
+    });
+  }
+
+  profileViewGoBackButton() {
+    cy.imsId("btn-go-back").click();
+
+    cy.log("Successfully profile view go back the  member management list page");
+  }
+
   editMemberManagement() {
     cy.fixture(this.test_data).then((data) => {
       var memData = data.branchManager.createMemberFrom;
       cy.imsId("btn-reset").click();
       cy.formController("search_text").type(memData.memberNameEn);
+      cy.imsId("btn-search").click();
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-mis-table-action-edit").click();
       cy.imsId("btn-go-back").click();
@@ -216,8 +235,18 @@ class MemberManagementCreation {
     );
   }
 
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var memData = data.branchManager.createMemberFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(memData.memberNameEn);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
+  }
+
   gridCheckboxCheck() {
-    cy.imsId("row-checkbox-4").click();
+    cy.imsId("row-checkbox-2").click();
     // cy.imsId("btn-reset").click();
     cy.log("Checkbox should be clickable and functional.");
   }
@@ -228,25 +257,27 @@ class MemberManagementCreation {
   }
 
   gridCheckboxUnlockButtonCheck() {
-    // cy.imsId("row-checkbox-4").click();
+    // cy.imsId("row-checkbox-2").click();
     // cy.imsId("btn-unlock").click();
     // cy.log("Checkbox unlock button should be clickable and functional.");
   }
 
   gridDraftButton() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+      .check({ force: true });
+    cy.log(messages.ui.draftOnMessage);
   }
 
   gridDraftButtonOff() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+      .uncheck({ force: true });
+    cy.log(messages.ui.draftOffMessage);
   }
 
   gridLanguageSwitchCheck() {
     cy.imsId("profile-menu").click();
     cy.imsId("btn-lang-bangla").click();
-    cy.log("Unsccessful switch bangla language check.");
+    cy.log("Successful switch bangla language check.");
   }
 }
 

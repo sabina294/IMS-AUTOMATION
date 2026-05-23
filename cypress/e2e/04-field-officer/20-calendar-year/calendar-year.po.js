@@ -1,3 +1,5 @@
+import messages from "../../../support/constants/messages";
+import { GRID } from "../../../support/constants/selectors";
 class CalendarYear {
   test_data = Cypress.env("TEST_DATA");
 
@@ -18,9 +20,6 @@ class CalendarYear {
   viewCalendar() {
     cy.fixture(this.test_data).then((data) => {
       var cyData = data.fieldOfficer.gridCalendarYear;
-
-      cy.formController("search_text").type(cyData.search);
-      cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
 
       cy.log("Successfully viewed the Calendar Year list page");
@@ -55,13 +54,25 @@ class CalendarYear {
   }
 
   gridDraftButton() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+      .check({ force: true });
+    cy.log(messages.ui.draftOnMessage);
   }
 
   gridDraftButtonOff() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+      .uncheck({ force: true });
+    cy.log(messages.ui.draftOffMessage);
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var cyData = data.fieldOfficer.gridCalendarYear;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(cyData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

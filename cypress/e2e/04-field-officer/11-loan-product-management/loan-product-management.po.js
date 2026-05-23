@@ -19,6 +19,7 @@ class LoanProductManagement {
     cy.fixture(this.test_data).then((data) => {
       var lpData = data.fieldOfficer.loanProductFrom;
       cy.formController("search_text").type(lpData.loanProductNameEn);
+      cy.imsId("btn-search").click();
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
 
@@ -33,9 +34,10 @@ class LoanProductManagement {
   }
 
   turnOnEditMode() {
+    cy.imsId("btn-reset").click();
     cy.imsId("toggle-action").first().click();
     cy.imsId("btn-table-action-view").click();
-    cy.get('.ant-switch-inner > .hidden').click();
+    cy.imsId("switch-button").click();
 
     cy.log("loan product Management form Edit Mode toggled successfully");
   }
@@ -96,6 +98,16 @@ class LoanProductManagement {
     cy.log(
       "successfully refresh page  displayed the grid list of the Loan Product Management "
     );
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var lpData = data.fieldOfficer.loanProductFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(lpData.loanProductNameEn);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

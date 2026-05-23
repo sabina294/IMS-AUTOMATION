@@ -1,3 +1,5 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class EmployeePromotion {
     test_data = Cypress.env("TEST_DATA");
 
@@ -42,8 +44,12 @@ class EmployeePromotion {
         cy.fixture(this.test_data).then((data) => {
             var empata = data.branchManager.gridEmpPromotionFrom;
             cy.formController("effective_date").click();
-            cy.wait(2000);
-            cy.contains(15).click({ force: true });
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
             cy.formController("new_designation_id").type(empata.newDesignation).type("{enter}");
             cy.imsId("btn-submit").click();
             cy.imsId("btn-ok").click();
@@ -56,8 +62,12 @@ class EmployeePromotion {
         cy.fixture(this.test_data).then((data) => {
             var empata = data.branchManager.gridEmpPromotionFrom;
             cy.formController("effective_date").click();
-            cy.wait(2000);
-            cy.contains(15).click({ force: true });
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
             cy.formController("new_department_id").type(empata.newDepartment).type("{enter}");
             cy.imsId("btn-submit").click();
             cy.imsId("btn-ok").click();
@@ -78,8 +88,12 @@ class EmployeePromotion {
                 .first()
                 .click();
             cy.formController("effective_date").click();
-            cy.wait(2000);
-            cy.contains(15).click({ force: true });
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
             cy.formController("new_department_id").type(empata.newDepartment).type("{enter}");
             cy.formController("new_designation_id").type(empata.newDesignation).type("{enter}");
             cy.imsId("btn-submit").click();
@@ -143,14 +157,26 @@ class EmployeePromotion {
         );
     }
 
+    gridSearchButtonCheck() {
+        cy.fixture(this.test_data).then((data) => {
+            var emData = data.branchManager.gridEmpPromotionFrom;
+            cy.imsId("btn-reset").click();
+            cy.formController("search_text").type(emData.search);
+            cy.imsId("btn-search").click();
+            cy.log("Successful search button click.");
+        });
+    }
+
     gridDraftButton() {
-        cy.imsId("btn-draft-on").click();
-        cy.log("Draft button should be clickable and functional.");
+        cy.imsId(GRID.BUTTONS.DRAFT_ON)
+            .check({ force: true });
+        cy.log(messages.ui.draftOnMessage);
     }
 
     gridDraftButtonOff() {
-        cy.imsId("btn-draft-on").click();
-        cy.log("Draft button should be clickable and functional.");
+        cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+            .uncheck({ force: true });
+        cy.log(messages.ui.draftOffMessage);
     }
 
     gridLanguageSwitchCheck() {

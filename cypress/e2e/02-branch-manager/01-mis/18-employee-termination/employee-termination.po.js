@@ -1,3 +1,5 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class EmployeeTermination {
     test_data = Cypress.env("TEST_DATA");
 
@@ -47,7 +49,7 @@ class EmployeeTermination {
         cy.imsId("btn-approve").click();
         cy.imsId("btn-submit").click();
         cy.imsId("btn-ok").click();
-        cy.log("Successfully approved employee promotion");
+        cy.log("Successfully approved employee termination");
     }
 
 
@@ -94,14 +96,26 @@ class EmployeeTermination {
         );
     }
 
+    gridSearchButtonCheck() {
+        cy.fixture(this.test_data).then((data) => {
+            var etData = data.branchManager.gridEmpTerminationFrom;
+            cy.imsId("btn-reset").click();
+            cy.formController("search_text").type(etData.search);
+            cy.imsId("btn-search").click();
+            cy.log("Successful search button click.");
+        });
+    }
+
     gridDraftButton() {
-        cy.imsId("btn-draft-on").click();
-        cy.log("Draft button should be clickable and functional.");
+        cy.imsId(GRID.BUTTONS.DRAFT_ON)
+            .check({ force: true });
+        cy.log(messages.ui.draftOnMessage);
     }
 
     gridDraftButtonOff() {
-        cy.imsId("btn-draft-on").click();
-        cy.log("Draft button should be clickable and functional.");
+        cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+            .uncheck({ force: true });
+        cy.log(messages.ui.draftOffMessage);
     }
 
     gridLanguageSwitchCheck() {

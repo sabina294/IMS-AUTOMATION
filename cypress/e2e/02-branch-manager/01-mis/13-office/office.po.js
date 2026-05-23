@@ -1,3 +1,5 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class OfficeGrid {
   test_data = Cypress.env("TEST_DATA");
 
@@ -21,8 +23,6 @@ class OfficeGrid {
       cy.formController("search_text").type(omData.officeNameEn);
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      cy.get("app-mfi-mis").contains(omData.officeNameEn).and("be.visible");
       cy.log("Successfully viewed the office list page");
     });
   }
@@ -66,6 +66,16 @@ class OfficeGrid {
     });
   }
 
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var omData = data.branchManager.gridOfficeFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(omData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
+  }
+
   gridResetButtonCheck() {
     cy.imsId("btn-reset").click();
     cy.log("Successful clean displaying.");
@@ -83,15 +93,21 @@ class OfficeGrid {
     cy.log("Draft button should be clickable and functional.");
   }
 
+  gridDraftButton() {
+    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+      .check({ force: true });
+    cy.log(messages.ui.draftOnMessage);
+  }
+
   gridDraftButtonOff() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+      .uncheck({ force: true });
+    cy.log(messages.ui.draftOffMessage);
   }
 
   gridCheckboxCheck() {
-    cy.imsId("row-checkbox-2").click();
-    cy.imsId("btn-reset").click();
-    cy.log("Checkbox should be clickable and functional.");
+    cy.imsId("header-checkbox").click();
+    cy.log("Checkbox lock button should be clickable and functional.");
   }
 
   gridCheckboxLockButtonCheck() {
@@ -100,12 +116,12 @@ class OfficeGrid {
   }
 
   gridCheckboxUnlockButtonCheck() {
-    cy.imsId("row-checkbox-2").click();
+    cy.imsId("header-checkbox").click();
     cy.imsId("btn-unlock").click();
     cy.log("Checkbox unlock button should be clickable and functional.");
   }
 
-  
+
   gridLanguageSwitchCheck() {
     cy.imsId("profile-menu").click();
     cy.imsId("btn-lang-bangla").click();

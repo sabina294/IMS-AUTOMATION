@@ -23,6 +23,7 @@ class SavingsAccountManagementCreation {
       var samData = data.fieldOfficer.createSavingsAccountManagement;
 
       cy.formController("search_text").type(samData.search);
+      cy.imsId("btn-search").click();
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
 
@@ -76,6 +77,16 @@ class SavingsAccountManagementCreation {
     cy.log(
       "successfully refresh page  displayed the grid list of the Savings account  management form "
     );
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var samData = data.fieldOfficer.createSavingsAccountManagement;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(samData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

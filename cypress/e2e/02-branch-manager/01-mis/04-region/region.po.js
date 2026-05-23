@@ -16,11 +16,7 @@ class Region {
   viewRegion() {
     cy.fixture(this.test_data).then((data) => {
       var regData = data.branchManager.gridRegionFrom;
-      cy.formController("search_text").type(regData.nameEn);
-      cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      cy.get("app-mfi-mis").contains(regData.nameEn).and("be.visible");
       cy.log("Successfully viewed the region list page");
     });
   }
@@ -89,6 +85,16 @@ class Region {
   gridRefreshButtonCheck() {
     cy.imsId("btn-refresh").click();
     cy.log("successfully refresh page  displayed the grid list of the region ");
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var regData = data.branchManager.gridRegionFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(regData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

@@ -1,3 +1,5 @@
+import messages from "../../../support/constants/messages";
+import { GRID } from "../../../support/constants/selectors";
 class EmployeeManagement {
   test_data = Cypress.env("TEST_DATA");
 
@@ -19,7 +21,8 @@ class EmployeeManagement {
     cy.fixture(this.test_data).then((data) => {
       var emData = data.fieldOfficer.gridEmpMangFrom;
 
-      cy.formController("search_text").type(emData.search);
+      cy.formController("search_text").type(emData.empNameEn);
+      cy.imsId("btn-search").click();
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
 
@@ -35,11 +38,17 @@ class EmployeeManagement {
   }
 
   turnOnEditMode() {
-    cy.imsId("toggle-action").first().click();
-    cy.imsId("btn-table-action-view").click();
-    cy.get('.ant-switch-inner > .hidden').click();
+    cy.fixture(this.test_data).then((data) => {
+      var emData = data.fieldOfficer.gridEmpMangFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(emData.search);
+      cy.imsId("btn-search").click();
+      cy.imsId("toggle-action").first().click();
+      cy.imsId("btn-table-action-view").click();
+      cy.imsId("switch-button").click();
 
-    cy.log("Employee Management form Edit Mode toggled successfully");
+      cy.log("Employee Management form Edit Mode toggled successfully");
+    });
   }
 
   editResetButton() {
@@ -53,6 +62,13 @@ class EmployeeManagement {
     cy.imsId("btn-ok").click();
 
     cy.log("Successful submit validation check.");
+  }
+
+  editApproveButton() {
+    cy.imsId("btn-approve").click();
+    cy.imsId("btn-ok").click();
+
+    cy.log("Successful approve validation check.");
   }
 
   editDraftButton() {
@@ -128,14 +144,17 @@ class EmployeeManagement {
   }
 
   gridDraftButton() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+      .check({ force: true });
+    cy.log(messages.ui.draftOnMessage);
   }
 
   gridDraftButtonOff() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+      .uncheck({ force: true });
+    cy.log(messages.ui.draftOffMessage);
   }
+
 
   createDraftButtonCheck() {
     cy.imsId("toggle-action").first().click();
@@ -143,6 +162,16 @@ class EmployeeManagement {
     cy.imsId("btn-draft").click();
     cy.imsId("btn-ok").click();
     cy.log("Successful draft button check.");
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var emData = data.fieldOfficer.gridEmpMangFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(emData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

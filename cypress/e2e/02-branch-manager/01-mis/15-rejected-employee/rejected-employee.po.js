@@ -14,8 +14,12 @@ class RejectedEmployee {
       cy.formController("emp_name_en").type(emData.empNameEn);
       cy.formController("emp_name_bn").type(emData.empNameBn);
       cy.formController("date_of_birth").click();
-      cy.wait(2000);
-      cy.contains("28").click({ force: true });
+      cy.get('.ant-picker-dropdown')
+        .should('be.visible');
+      cy.get('.ant-picker-cell-in-view')
+        .not('.ant-picker-cell-disabled')
+        .first()
+        .click({ force: true });
       cy.formController("gender").click();
       cy.get(
         ".ant-form-item-control-input-content > .ant-radio-group > :nth-child(1) > .ant-radio > .ant-radio-input"
@@ -131,22 +135,32 @@ class RejectedEmployee {
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-edit").click();
       cy.imsId("btn-reset").click();
-      cy.imsId("btn-go-back").click();
-
       cy.log("Successful clean displaying");
     });
   }
 
+  editValidationMessageCheck() {
+    cy.imsId("btn-submit").click();
+    cy.imsId("btn-ok").click();
+    cy.log("Successful submit button check displaying");
+  }
+
+  editDraftButtonCheck() {
+    cy.imsId("btn-draft").click();
+    cy.imsId("btn-ok").click();
+    cy.log("Successful draft button check displaying");
+  }
+
+  editApproveButtonCheck() {
+    cy.imsId("btn-approve").click();
+    cy.imsId("btn-ok").click();
+    cy.log("Successful approve button check displaying");
+  }
+
   editGoBackButton() {
-    cy.fixture(this.test_data).then((data) => {
-      var emData = data.branchManager.rejectedEmployeeFrom;
-      cy.imsId("btn-reset").click();
-      cy.formController("search_text").type(emData.search);
-      cy.imsId("toggle-action").first().click();
-      cy.imsId("btn-table-action-edit").click();
       cy.imsId("btn-go-back").click();
       cy.log("Successful edit go back button check.");
-    });
+
   }
 
   editEmployeeManagement() {
@@ -201,10 +215,20 @@ class RejectedEmployee {
     );
   }
 
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var emData = data.branchManager.rejectedEmployeeFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(emData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
+  }
+
   gridLanguageSwitchCheck() {
     cy.imsId("profile-menu").click();
     cy.imsId("btn-lang-bangla").click();
-    cy.log("Unsccessful switch bangla language check.");
+    cy.log("Successful switch bangla language check.");
   }
 }
 

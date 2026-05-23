@@ -1,3 +1,5 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class ReceivedVoucherCreation {
     test_data = Cypress.env("TEST_DATA");
 
@@ -16,8 +18,12 @@ class ReceivedVoucherCreation {
             cy.formController("voucher_name_en").type(rvData.voucherNameEn);
             cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
             cy.formController("received_date").click();
-            cy.wait(1000);
-            cy.contains(15).click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
             cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
             cy.wait(1000);
             cy.formController("remarks").eq(0).type(rvData.remarks);
@@ -25,9 +31,12 @@ class ReceivedVoucherCreation {
             cy.formController("amount").type(rvData.amount);
             cy.formController("remarks").eq(1).type(rvData.remarks);
             cy.formController("transaction_date").click();
-            cy.wait(1000);
-            cy.contains(14).click();
-            cy.wait(1000);
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
             cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
             cy.wait(1000);
             cy.formController("remarks").eq(2).type(rvData.remarks1);
@@ -36,6 +45,418 @@ class ReceivedVoucherCreation {
             cy.imsId("btn-yes").click();
             cy.imsId("btn-ok").click();
             cy.log("Successfully created received voucher");
+        });
+    }
+
+    createWithoutVoucherNameEn() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.imsId("btn-add-new").click();
+            cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
+            cy.formController("received_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(0).type(rvData.remarks);
+            cy.formController("received_mode").type(rvData.paymentMode).type("{enter}");
+            cy.formController("amount").type(rvData.amount);
+            cy.formController("remarks").eq(1).type(rvData.remarks);
+            cy.formController("transaction_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(2).type(rvData.remarks1);
+            cy.formController("transaction_amount").clear().type(rvData.amount);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.log("Validation check without Voucher Name English.");
+
+        });
+    }
+
+    createWithoutVoucherNameBn() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.formController("voucher_name_en").type(rvData.voucherNameEn);
+            cy.formController("received_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(0).type(rvData.remarks);
+            cy.formController("received_mode").type(rvData.paymentMode).type("{enter}");
+            cy.formController("amount").type(rvData.amount);
+            cy.formController("remarks").eq(1).type(rvData.remarks);
+            cy.formController("transaction_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(2).type(rvData.remarks1);
+            cy.formController("transaction_amount").clear().type(rvData.amount);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.log("Validation check without Voucher Name Bangla.");
+        });
+    }
+
+    createWithoutVoucherDate() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.formController("voucher_name_en").type(rvData.voucherNameEn);
+            cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
+            cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(0).type(rvData.remarks);
+            cy.formController("received_mode").type(rvData.paymentMode).type("{enter}");
+            cy.formController("amount").type(rvData.amount);
+            cy.formController("remarks").eq(1).type(rvData.remarks);
+            cy.formController("transaction_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(2).type(rvData.remarks1);
+            cy.formController("transaction_amount").clear().type(rvData.amount);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.log("Validation check without Voucher Date.");
+
+        });
+    }
+
+    createWithoutVoucherPreparedBy() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.formController("voucher_name_en").type(rvData.voucherNameEn);
+            cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
+            cy.formController("received_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("remarks").eq(0).type(rvData.remarks);
+            cy.formController("received_mode").type(rvData.paymentMode).type("{enter}");
+            cy.formController("amount").type(rvData.amount);
+            cy.formController("remarks").eq(1).type(rvData.remarks);
+            cy.formController("transaction_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(2).type(rvData.remarks1);
+            cy.formController("transaction_amount").clear().type(rvData.amount);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.log("Validation check without Voucher Prepared By.");
+
+        });
+    }
+
+    createWithoutVoucherRemarks() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.formController("voucher_name_en").type(rvData.voucherNameEn);
+            cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
+            cy.formController("received_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
+            cy.wait(1000);
+            cy.formController("received_mode").type(rvData.paymentMode).type("{enter}");
+            cy.formController("amount").type(rvData.amount);
+            cy.formController("remarks").eq(1).type(rvData.remarks);
+            cy.formController("transaction_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(2).type(rvData.remarks1);
+            cy.formController("transaction_amount").clear().type(rvData.amount);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.log("Validation check without Voucher Remarks.");
+
+        });
+    }
+
+    createWithoutVoucherReceiveMode() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.formController("voucher_name_en").type(rvData.voucherNameEn);
+            cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
+            cy.formController("received_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
+            cy.wait(1000);
+            cy.formController("amount").type(rvData.amount);
+            cy.formController("remarks").eq(1).type(rvData.remarks);
+            cy.formController("transaction_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(2).type(rvData.remarks1);
+            cy.formController("transaction_amount").clear().type(rvData.amount);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.log("Validation check without Receive Mode.");
+        });
+    }
+
+    createWithoutVoucherAmount() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.formController("voucher_name_en").type(rvData.voucherNameEn);
+            cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
+            cy.formController("received_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
+            cy.wait(1000);
+            cy.formController("received_mode").type(rvData.paymentMode).type("{enter}");
+            cy.formController("remarks").eq(1).type(rvData.remarks);
+            cy.formController("transaction_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(2).type(rvData.remarks1);
+            cy.formController("transaction_amount").clear().type(rvData.amount);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.log("Validation check without Amount.");
+
+        });
+    }
+
+    createWithoutVoucherReceiveMethodRemarks() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.formController("voucher_name_en").type(rvData.voucherNameEn);
+            cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
+            cy.formController("received_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
+            cy.wait(1000);
+            cy.formController("received_mode").type(rvData.paymentMode).type("{enter}");
+            cy.formController("amount").type(rvData.amount);
+            cy.formController("transaction_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(2).type(rvData.remarks1);
+            cy.formController("transaction_amount").clear().type(rvData.amount);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.log("Validation check without Receive Method Remarks.");
+
+        });
+    }
+
+    createWithoutVoucherDetailDate() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.formController("voucher_name_en").type(rvData.voucherNameEn);
+            cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
+            cy.formController("received_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
+            cy.wait(1000);
+            cy.formController("received_mode").type(rvData.paymentMode).type("{enter}");
+            cy.formController("amount").type(rvData.amount);
+            cy.formController("remarks").eq(1).type(rvData.remarks);
+            cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(2).type(rvData.remarks1);
+            cy.formController("transaction_amount").clear().type(rvData.amount);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.log("Validation check without Detail Date.");
+        });
+    }
+
+    createWithoutVoucherLedger() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.formController("voucher_name_en").type(rvData.voucherNameEn);
+            cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
+            cy.formController("received_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
+            cy.wait(1000);
+            cy.formController("received_mode").type(rvData.paymentMode).type("{enter}");
+            cy.formController("amount").type(rvData.amount);
+            cy.formController("remarks").eq(1).type(rvData.remarks);
+            cy.formController("transaction_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("remarks").eq(2).type(rvData.remarks1);
+            cy.formController("transaction_amount").clear().type(rvData.amount);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.log("Validation check without Ledger.");
+
+        });
+    }
+
+    createWithoutVoucherDetailsRemarks() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.formController("voucher_name_en").type(rvData.voucherNameEn);
+            cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
+            cy.formController("received_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(0).type(rvData.remarks);
+            cy.formController("received_mode").type(rvData.paymentMode).type("{enter}");
+            cy.formController("amount").type(rvData.amount);
+            cy.formController("remarks").eq(1).type(rvData.remarks);
+            cy.formController("transaction_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
+            cy.wait(1000);
+            cy.formController("transaction_amount").clear().type(rvData.amount);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.log("Validation check without Details Remarks.");
+
+        });
+    }
+
+    createWithoutVoucherDetailsAmount() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.formController("voucher_name_en").type(rvData.voucherNameEn);
+            cy.formController("voucher_name_bn").type(rvData.voucherNameBn);
+            cy.formController("received_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("voucher_prepared_by").type(rvData.preparedBy).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(0).type(rvData.remarks);
+            cy.formController("received_mode").type(rvData.paymentMode).type("{enter}");
+            cy.formController("amount").type(rvData.amount);
+            cy.formController("remarks").eq(1).type(rvData.remarks);
+            cy.formController("transaction_date").click();
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
+            cy.formController("ledger_id").type(rvData.ledger).type("{enter}");
+            cy.wait(1000);
+            cy.formController("remarks").eq(2).type(rvData.remarks1);
+            cy.imsId("btn-submit").click();
+            cy.imsId("btn-ok").click();
+            cy.imsId("btn-reset").click();
+            cy.imsId("btn-go-back").click();
+            cy.log("Validation check without Details Amount.");
+
         });
     }
 
@@ -107,16 +528,28 @@ class ReceivedVoucherCreation {
         cy.log("Grid refreshed successfully on received voucher list page");
     }
 
+    gridSearchButtonCheck() {
+        cy.fixture(this.test_data).then((data) => {
+            var rvData = data.branchManager.receivedVoucher;
+            cy.imsId("btn-reset").click();
+            cy.formController("search_text").type(rvData.voucherNameBn);
+            cy.imsId("btn-search").click();
+
+            cy.log("Successfully search button click.");
+        });
+    }
+
     gridDraftButton() {
-        cy.imsId("btn-draft-on").click();
-        cy.log("Draft button should be clickable and functional.");
+        cy.imsId(GRID.BUTTONS.DRAFT_ON)
+            .check({ force: true });
+        cy.log(messages.ui.draftOnMessage);
     }
 
     gridDraftButtonOff() {
-        cy.imsId("btn-draft-on").click();
-        cy.log("Draft button should be clickable and functional.");
+        cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+            .uncheck({ force: true });
+        cy.log(messages.ui.draftOffMessage);
     }
-
     createResetButtonCheck() {
         cy.imsId("btn-add-new").click();
         cy.imsId("btn-reset").click();

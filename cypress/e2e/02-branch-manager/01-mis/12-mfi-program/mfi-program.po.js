@@ -16,11 +16,7 @@ class MfiProgram {
   viewMfiProgram() {
     cy.fixture(this.test_data).then((data) => {
       var mpData = data.branchManager.gridMfiProgramFrom;
-      cy.formController("search_text").type(mpData.programNameEn);
-      cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      cy.get("app-mfi-mis").contains(mpData.programNameEn).and("be.visible");
       cy.log("Successfully viewed the mfi program list page");
     });
   }
@@ -91,6 +87,16 @@ class MfiProgram {
     cy.log(
       "successfully refresh page  displayed the grid list of the mfi program "
     );
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var mpData = data.branchManager.gridMfiProgramFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(mpData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

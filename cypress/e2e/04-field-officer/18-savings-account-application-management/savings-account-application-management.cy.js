@@ -27,13 +27,13 @@ describe("18. Savings Account Application Management Module Test Cases", functio
     create_savings_account_application_management.gridSavingsAccApplicationListPage();
   });
 
-  // it("18.02. Verify a new savings account application management record is created successfully when all required fields are filled with valid data.", function () {
-  //   create_savings_account_application_management.createSavingsAccApplicationManagement();
-  // });
+  it("18.02. Verify a new savings account application management record is created successfully when all required fields are filled with valid data.", function () {
+    create_savings_account_application_management.createSavingsAccApplicationManagement();
+  });
 
-  //   it("18.03. Verify mfi-admin to successfully approve an savings account application management record after creation.", function () {
-  //     create_savings_account_application_management.approveEmployee();
-  //   });
+  // it("18.03. Verify mfi-admin to successfully approve an savings account application management record after creation.", function () {
+  //   create_savings_account_application_management.approveEmployee();
+  // });
 
   it("18.04. Verify successfully performs the action when the action button is clicked.", function () {
     create_savings_account_application_management.actionButtonCheck();
@@ -91,7 +91,11 @@ describe("18. Savings Account Application Management Module Test Cases", functio
     create_savings_account_application_management.createGoBackButtonCheck();
   });
 
-  it("18.17. Verify check that the grid list content changes correctly from english to bangla.", function () {
+  it("18.17. Verify that when the user clicks the Search button on the savings account application management grid page, the system redirects to the savings account application management List page..", function () {
+    create_savings_account_application_management.gridSearchButtonCheck();
+  });
+
+  it("18.18. Verify check that the grid list content changes correctly from english to bangla.", function () {
     create_savings_account_application_management.gridLanguageSwitchCheck();
   });
 });

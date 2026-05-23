@@ -1,3 +1,5 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class PaymentVoucherCreation {
     test_data = Cypress.env("TEST_DATA");
 
@@ -16,9 +18,12 @@ class PaymentVoucherCreation {
             cy.formController("voucher_name_en").type(pvData.voucherNameEn);
             cy.formController("voucher_name_bn").type(pvData.voucherNameBn);
             cy.formController("payment_date").click();
-            cy.wait(2000);
-            cy.contains(12).click();
-            cy.wait(1000);
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
             cy.formController("voucher_prepared_by").type(pvData.preparedBy).type("{enter}");
             cy.formController("remarks").eq(0).type(pvData.remarks);
             cy.formController("payment_mode").type(pvData.paymentMode).type("{enter}");
@@ -26,9 +31,12 @@ class PaymentVoucherCreation {
             cy.formController("amount").type(pvData.amount);
             cy.formController("remarks").eq(1).type(pvData.remarks);
             cy.formController("transaction_date").click();
-            cy.wait(1000);
-            cy.contains(13).click();
-            cy.wait(1000);
+            cy.get('.ant-picker-dropdown')
+                .should('be.visible');
+            cy.get('.ant-picker-cell-in-view')
+                .not('.ant-picker-cell-disabled')
+                .first()
+                .click({ force: true });
             cy.formController("ledger_id").type(pvData.ledger).type("{enter}");
             cy.wait(1000);
             cy.formController("remarks").eq(2).type(pvData.remarks1);
@@ -112,14 +120,26 @@ class PaymentVoucherCreation {
         );
     }
 
+    gridSearchButtonCheck() {
+        cy.fixture(this.test_data).then((data) => {
+            var pvData = data.mfiAdmin.paymentVoucher;
+            cy.imsId("btn-reset").click();
+            cy.formController("search_text").type(pvData.voucherNameEn);
+            cy.imsId("btn-search").click();
+            cy.log("Successful search button click.");
+        });
+    }
+
     gridDraftButton() {
-        cy.imsId("btn-draft-on").click();
-        cy.log("Draft button should be clickable and functional.");
+        cy.imsId(GRID.BUTTONS.DRAFT_ON)
+            .check({ force: true });
+        cy.log(messages.ui.draftOnMessage);
     }
 
     gridDraftButtonOff() {
-        cy.imsId("btn-draft-on").click();
-        cy.log("Draft button should be clickable and functional.");
+        cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+            .uncheck({ force: true });
+        cy.log(messages.ui.draftOffMessage);
     }
 
     createResetButtonCheck() {

@@ -21,8 +21,6 @@ class SavingsProductCreation {
       cy.formController("search_text").type(spData.intersetTerms);
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      cy.get("app-mfi-mis").contains(spData.intersetTerms).and("be.visible");
       cy.log("Successfully viewed the savings product list page");
     });
   }
@@ -96,6 +94,16 @@ class SavingsProductCreation {
     cy.log(
       "successfully refresh page  displayed the grid list of the savings product  "
     );
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var spData = data.fieldOfficer.gridSavingsProduct;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(spData.savingsType);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

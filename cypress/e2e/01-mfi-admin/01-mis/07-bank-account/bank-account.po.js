@@ -263,7 +263,7 @@ class BankAccountCreation {
     cy.log("Successfully view go back the bank account list page");
 
   }
-  
+
   turnOffEditMode() {
     cy.imsId("toggle-action").first().click();
     cy.imsId("btn-table-action-edit").click();
@@ -278,6 +278,7 @@ class BankAccountCreation {
       var baData = data.mfiAdmin.createBankAccountFrom;
       cy.imsId("btn-reset").click();
       cy.formController("search_text").type(baData.accNameEn);
+      cy.imsId("btn-search").click();
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-edit").click();
       cy.imsId("btn-submit").click();
@@ -346,6 +347,11 @@ class BankAccountCreation {
     );
   }
 
+  paginationCheck() {
+    cy.get('[title="2"] > .ng-star-inserted').click();
+    cy.log("Bank account pagination check successfully");
+  }
+
   createResetButtonCheck() {
     cy.fixture(this.test_data).then((data) => {
       var baData = data.mfiAdmin.createBankAccountFrom;
@@ -367,9 +373,14 @@ class BankAccountCreation {
     cy.log("Successful go back button check.");
   }
 
-  paginationCheck() {
-    cy.get('[title="2"] > .ng-star-inserted').click();
-    cy.log("Bank account pagination check successfully");
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var baData = data.mfiAdmin.createBankAccountFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(baData.accNameEn);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

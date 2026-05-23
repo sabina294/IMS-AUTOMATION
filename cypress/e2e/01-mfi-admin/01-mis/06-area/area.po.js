@@ -135,8 +135,6 @@ class AreaCreation {
       cy.formController("search_text").type(arData.nameEn);
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      // cy.get("app-mfi-mis").contains(arData.nameEn).and("be.visible");
       cy.log("Successfully viewed the area list page");
     });
   }
@@ -267,6 +265,16 @@ class AreaCreation {
     cy.imsId("btn-add-new").click();
     cy.imsId("btn-go-back").click();
     cy.log("Successful go back button check.");
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var arData = data.mfiAdmin.createAreaFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(arData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

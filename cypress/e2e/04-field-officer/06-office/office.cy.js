@@ -83,7 +83,11 @@ describe("06. Office Module Test Cases", function () {
     grid_office.gridCheckboxCheck();
   });
 
-  it("06.16. Verify check that the grid list content changes correctly from english to bangla.", function () {
+  it("06.16. Verify that when the user clicks the Search button on the office grid page, the system redirects to the office List page..", function () {
+    grid_office.gridSearchButtonCheck();
+  });
+
+  it("06.17. Verify check that the grid list content changes correctly from english to bangla.", function () {
     grid_office.gridLanguageSwitchCheck();
   });
 });

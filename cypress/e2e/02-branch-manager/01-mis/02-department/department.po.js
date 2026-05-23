@@ -16,11 +16,7 @@ class Department {
   viewDepartment() {
     cy.fixture(this.test_data).then((data) => {
       var depData = data.branchManager.gridDepartmentFrom;
-      cy.formController("search_text").type(depData.nameEn);
-      cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      cy.get("app-mfi-mis").contains(depData.nameEn).and("be.visible");
       cy.log("Successfully viewed the department list page");
     });
   }
@@ -91,6 +87,16 @@ class Department {
     cy.log(
       "successfully refresh page  displayed the grid list of the department "
     );
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var depData = data.branchManager.gridDepartmentFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(depData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

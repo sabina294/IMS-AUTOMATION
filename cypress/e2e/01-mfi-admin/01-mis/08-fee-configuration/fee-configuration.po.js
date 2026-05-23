@@ -207,8 +207,6 @@ class FeeConfigurationCreation {
       cy.formController("search_text").type(fcData.feeTypeNameEn);
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      // cy.get("app-mfi-mis").contains(fcData.feeTypeNameEn).and("be.visible");
       cy.log("Successfully viewed the fee configuration list page");
     });
   }
@@ -335,6 +333,16 @@ class FeeConfigurationCreation {
     cy.imsId("btn-add-new").click();
     cy.imsId("btn-go-back").click();
     cy.log("Successful go back button check.");
+  }
+
+    gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var fcData = data.mfiAdmin.createFeeConfigurationFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(fcData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

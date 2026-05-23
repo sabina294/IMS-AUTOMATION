@@ -22,32 +22,45 @@ describe("32. Loan Disbursement Module Test Cases", function () {
     after(() => {
         cy.logout();
     });
-
-    it("32.01. Verify Loan Disbursement Grid List Page loads successfully", function () {
+    it("32.01. Verify that the Loan Disbursement grid list page loads successfully", function () {
         create_loan_disbursement.gridLoanDisbursementListPage();
     });
 
-    // it("32.02. Verify successfully performs the action when the action button is clicked.", function () {
-    //     create_loan_disbursement.actionButtonCheck();
-    // });
-
-    // it('32.03. Verify successful Loan Disbursement information View.', function () {
-    //     create_loan_disbursement.viewLoanDisbursement();
-    // });
-
-    it("32.04. Verify Successful Search Result by Loan Disbursement Name", function () {
-        create_loan_disbursement.searchInLoanDisbursementName();
+    it("32.02. Verify that the Action button performs the expected operation when clicked", function () {
+        create_loan_disbursement.actionButtonCheck();
     });
 
-    it("32.05. Verify Successful Reset of Grid List Using the Reset Button on Loan Disbursement  Page.", function () {
+    it("32.03. Verify that Loan Disbursement details are displayed correctly in the View page", function () {
+        create_loan_disbursement.viewLoanDisbursement();
+    });
+
+    it("32.04. Verify that clicking the 'Go Back' button from the View page redirects to the grid list page", function () {
+        create_loan_disbursement.viewGoBackButton();
+    });
+
+    it("32.05. Verify that search functionality works correctly using Loan Disbursement name", function () {
+        create_loan_disbursement.gridSearchButtonCheck();
+    });
+
+    it("32.06. Verify that the Reset button clears filters and reloads the grid list", function () {
         create_loan_disbursement.gridResetButtonCheck();
     });
 
-    it("32.06. Verify Successful Refresh of Grid List Using the Refresh Button on Loan Disbursement  Page.", function () {
+    it("32.07. Verify that the Refresh button reloads the Loan Disbursement grid list successfully", function () {
         create_loan_disbursement.gridRefreshButtonCheck();
     });
 
-    it("32.07. Verify check that the grid list content changes correctly from english to bangla.", function () {
+    it("32.08. Verify successful loan disbursement from the grid list using the Disburse button", function () {
+        create_loan_disbursement.loanDisburseButtonCheck();
+    });
+
+    it("32.09. Verify successful loan disbursement from the grid list using the Disburse submit button", function () {
+        create_loan_disbursement.loanDisburseSubmitButtonCheck();
+    });
+
+    it("32.10. Verify that the grid list content updates correctly when switching language from English to Bangla", function () {
         create_loan_disbursement.gridLanguageSwitchCheck();
     });
+
+
 });

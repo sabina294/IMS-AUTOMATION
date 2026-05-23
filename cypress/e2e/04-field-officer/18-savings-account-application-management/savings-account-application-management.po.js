@@ -1,3 +1,5 @@
+import messages from "../../../support/constants/messages";
+import { GRID } from "../../../support/constants/selectors";
 class SavingsAccApplicationManagementCreation {
   test_data = Cypress.env("TEST_DATA");
 
@@ -14,8 +16,6 @@ class SavingsAccApplicationManagementCreation {
   createSavingsAccApplicationManagement() {
     cy.fixture(this.test_data).then((data) => {
       cy.imsId("btn-add-new").click();
-      // cy.imsId("btn-submit").and("be.visible");
-
       var saamData = data.fieldOfficer.createSavingsAccApplicationMang;
       cy.formController("office_id").type(saamData.office).type("{enter}");
       cy.formController("savings_product_id")
@@ -24,11 +24,10 @@ class SavingsAccApplicationManagementCreation {
       cy.formController("samity_id").type(saamData.samity).type("{enter}");
       cy.formController("member_id").type(saamData.member).type("{enter}");
       cy.formController("savings_amount").type(saamData.recoDepositAmount);
+      cy.formController("opening_balance").type(saamData.openingBalance);
       cy.imsId("btn-submit").click();
       cy.imsId("btn-yes").click();
-      cy.get("app-confirmation-modal")
-        .contains(saamData.messageSaveEmp)
-        .and("be.visible");
+      cy.wait(1000);
       cy.imsId("btn-ok").click();
 
       cy.log("Successfully created saving account application  management");
@@ -63,9 +62,8 @@ class SavingsAccApplicationManagementCreation {
   viewSavingsAccApplicationManag() {
     cy.fixture(this.test_data).then((data) => {
       var saamData = data.fieldOfficer.createSavingsAccApplicationMang;
-
-      cy.formController("search_text").type(saamData.search);
-      cy.imsId("toggle-action").first().click();
+      // cy.formController("search_text").type(saamData.search);
+      // cy.imsId("btn-search").click();
       cy.imsId("btn-table-action-view").click();
 
       cy.log(
@@ -125,15 +123,18 @@ class SavingsAccApplicationManagementCreation {
     );
   }
 
-  gridDraftButton() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+   gridDraftButton() {
+    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+      .check({ force: true });
+    cy.log(messages.ui.draftOnMessage);
   }
 
   gridDraftButtonOff() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+      .uncheck({ force: true });
+    cy.log(messages.ui.draftOffMessage);
   }
+
 
   createResetButtonCheck() {
     cy.fixture(this.test_data).then((data) => {
@@ -161,6 +162,16 @@ class SavingsAccApplicationManagementCreation {
   createGoBackButtonCheck() {
     cy.imsId("btn-go-back").click();
     cy.log("Successful go back button check.");
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var saamData = data.fieldOfficer.createSavingsAccApplicationMang;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(saamData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

@@ -1,3 +1,5 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class SamityCreation {
   test_data = Cypress.env("TEST_DATA");
 
@@ -52,7 +54,7 @@ class SamityCreation {
       var smData = data.branchManager.createSamityFrom;
       cy.imsId("menu-my-task").click();
       cy.imsId("submenu-awaiting-samity-management").click();
-      // cy.formController("search_text").type(smData.samityNameEn);
+      cy.formController("search_text").type(smData.samityNameEn);
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
       cy.imsId("btn-lock").click();
@@ -463,19 +465,14 @@ class SamityCreation {
     cy.log("Successfully view go back the samity list page");
   }
 
-
   editResetButton() {
     cy.imsId("toggle-action").first().click();
     cy.imsId("btn-table-action-edit").click();
     cy.imsId("btn-reset").click();
-    cy.imsId("btn-go-back").click();
-
     cy.log("Successful clean displaying");
   }
 
   editGoBackButton() {
-    cy.imsId("toggle-action").first().click();
-    cy.imsId("btn-table-action-edit").click();
     cy.imsId("btn-go-back").click();
     cy.log("Successful edit go back button check.");
   }
@@ -557,13 +554,15 @@ class SamityCreation {
   }
 
   gridDraftButton() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+      .check({ force: true });
+    cy.log(messages.ui.draftOnMessage);
   }
 
   gridDraftButtonOff() {
-    cy.imsId("btn-draft-on").click();
-    cy.log("Draft button should be clickable and functional.");
+    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+      .uncheck({ force: true });
+    cy.log(messages.ui.draftOffMessage);
   }
 
   gridCheckboxCheck() {
@@ -616,10 +615,20 @@ class SamityCreation {
     cy.log("Successful go back button check.");
   }
 
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var smData = data.branchManager.createSamityFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(smData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
+  }
+
   gridLanguageSwitchCheck() {
     cy.imsId("profile-menu").click();
     cy.imsId("btn-lang-bangla").click();
-    cy.log("Unsccessful switch bangla language check.");
+    cy.log("Successful switch bangla language check.");
   }
 }
 

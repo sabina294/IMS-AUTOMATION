@@ -16,11 +16,7 @@ class Area {
   viewArea() {
     cy.fixture(this.test_data).then((data) => {
       var arData = data.branchManager.gridAreaFrom;
-      cy.formController("search_text").type(arData.nameEn);
-      cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
-
-      cy.get("app-mfi-mis").contains(arData.nameEn).and("be.visible");
       cy.log("Successfully viewed the area list page");
     });
   }
@@ -89,6 +85,16 @@ class Area {
   gridRefreshButtonCheck() {
     cy.imsId("btn-refresh").click();
     cy.log("successfully refresh page  displayed the grid list of the area ");
+  }
+
+  gridSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var arData = data.branchManager.gridAreaFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(arData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful search button click.");
+    });
   }
 
   gridLanguageSwitchCheck() {

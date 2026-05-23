@@ -1,3 +1,5 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class FinancialPeriodManagementCreation {
     test_data = Cypress.env("TEST_DATA");
 
@@ -76,15 +78,28 @@ class FinancialPeriodManagementCreation {
         );
     }
 
-    gridDraftButton() {
-        cy.imsId("btn-draft-on").click();
-        cy.log("Draft button should be clickable and functional.");
+    gridSearchButtonCheck() {
+        cy.fixture(this.test_data).then((data) => {
+            var fpmData = data.branchManager.financialPeriodManagement;
+            cy.imsId("btn-reset").click();
+            cy.formController("search_text").type(fpmData.nameEn);
+            cy.imsId("btn-search").click();
+
+            cy.log("Successfully search button click.");
+        });
     }
 
-    gridDraftButtonOff() {
-        cy.imsId("btn-draft-on").click();
-        cy.log("Draft button should be clickable and functional.");
-    }
+    gridDraftButton() {
+    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+      .check({ force: true });
+    cy.log(messages.ui.draftOnMessage);
+  }
+
+  gridDraftButtonOff() {
+    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+      .uncheck({ force: true });
+    cy.log(messages.ui.draftOffMessage);
+  }
 
 
     gridLanguageSwitchCheck() {
