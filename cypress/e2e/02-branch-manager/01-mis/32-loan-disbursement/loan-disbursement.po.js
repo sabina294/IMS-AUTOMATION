@@ -1,3 +1,6 @@
+
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class LoanDisbursement {
     test_data = Cypress.env("TEST_DATA");
 
@@ -51,32 +54,30 @@ class LoanDisbursement {
         );
     }
 
+     gridDisbursedButton() {
+        cy.imsId(GRID.BUTTONS.DRAFT_ON)
+            .check({ force: true });
+        cy.log(messages.ui.draftOnMessage);
+    }
+
+    gridDisbursedButtonOff() {
+        cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+            .uncheck({ force: true });
+        cy.log(messages.ui.draftOffMessage);
+    }
+
     loanDisburseButtonCheck() {
         cy.fixture(this.test_data).then(() => {
 
             cy.imsId("toggle-action").first().click();
             cy.imsId("btn-table-action-disburse").click();
-            cy.imsId("btn-loan-disburse")
-                .scrollIntoView()
-                .should("exist")
-                .click({ force: true });
+            cy.imsId("btn-loan-disburse").click({ force: true });
             cy.log("Loan Disburse button clicked successfully");
         });
     }
-
     loanDisburseSubmitButtonCheck() {
-
-        cy.get('.primary-button')
-            .first()
-            .should("be.visible")
-            .click({ force: true });
-
-        cy.wait(3000);
-
-        cy.get('[data-ims-id="btn-ok"]', { timeout: 10000 })
-            .should('be.visible')
-            .click({ force: true });
-
+        cy.imsId("btn-submit").click();
+        cy.imsId("btn-ok").click();
         cy.log("Loan Disburse submit button checked");
     }
 

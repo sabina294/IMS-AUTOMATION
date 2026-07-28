@@ -28,8 +28,12 @@ class MemberManagementCreation {
       cy.get(".ant-picker-header-super-prev-btn").click();
       cy.contains("2005").click();
       cy.wait(3000);
-      cy.contains("11").click({ force: true });
-      cy.wait(2000);
+      cy.get('.ant-picker-dropdown')
+        .should('be.visible');
+      cy.get('.ant-picker-cell-in-view')
+        .not('.ant-picker-cell-disabled')
+        .first()
+        .click({ force: true });
       cy.formController("mfi_program_id")
         .type(memData.mfiProgram)
         .type("{enter}");
@@ -49,10 +53,13 @@ class MemberManagementCreation {
       cy.formController("res_division_id")
         .type(memData.division)
         .type("{enter}");
+        cy.wait(2000);
       cy.formController("res_district_id")
         .type(memData.district)
         .type("{enter}");
+        cy.wait(2000);
       cy.formController("res_upazila_id").type(memData.thana).type("{enter}");
+      cy.wait(2000);
       cy.formController("res_address_line_1").type(memData.adressEn);
       cy.imsId("ck-box").click();
       cy.get("#nz-tabs-1-tab-4").click();
@@ -72,12 +79,48 @@ class MemberManagementCreation {
     });
   }
 
+  myTaskMenuMember() {
+    cy.fixture(this.test_data).then((data) => {
+      var memData = data.mfiAdmin.createMemberFrom;
+         cy.imsId("menu-my-task").click();
+      cy.imsId("submenu-awaiting-member-management").click();
+      cy.log("Successfully navigate to my task menu member management");
+    });
+  }
+
+  myTaskMemberOfficeDropdownCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var memData = data.mfiAdmin.createMemberFrom;
+      cy.formController("office_id").type(memData.office).type("{enter}");
+      cy.log("Successfully navigate to my task menu member management office dropdown");
+    });
+  }
+
+  myTaskResetButtonCheck() {
+    cy.imsId("btn-reset").click();
+    cy.log("Successful clean my task displaying.");
+  }
+
+  myTaskRefreshButtonCheck() {
+    cy.imsId("btn-refresh").click();
+    cy.log(
+      "successfully refresh page  displayed the my task list of the Member Management form "
+    );
+  }
+
+  myTaskSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var memData = data.mfiAdmin.createMemberFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(memData.memberNameEn);
+      cy.imsId("btn-search").click();
+      cy.log("Successful my task search button click.");
+    });
+  }
+
   approveMemberManagement() {
     cy.fixture(this.test_data).then((data) => {
       var memData = data.mfiAdmin.createMemberFrom;
-      cy.imsId("menu-my-task").click();
-      cy.imsId("submenu-awaiting-member-management").click();
-      cy.formController("search_text").type(memData.memberNameEn);
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
       cy.imsId("btn-lock").click();
@@ -211,7 +254,7 @@ class MemberManagementCreation {
     cy.log("Checkbox unlock button should be clickable and functional.");
   }
 
-  
+
   gridDraftButton() {
     cy.imsId(GRID.BUTTONS.DRAFT_ON)
       .check({ force: true });

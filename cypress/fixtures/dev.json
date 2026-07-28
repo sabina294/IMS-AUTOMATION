@@ -18,7 +18,7 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test Departments"
+      "search": "Test Department"
     },
     "createDesignationFrom": {
       "nameEn": "Test Designation",
@@ -27,9 +27,7 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test Designations",
-      "messageSaveDesignation": "Mfi employee designation has been saved",
-      "messageUpdateDesignation": "Mfi employee designation has been updated"
+      "search": "Test Designation"
     },
     "createRegionFrom": {
       "nameEn": "Test Region",
@@ -38,9 +36,7 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test Region",
-      "messageSaveRegion": "Region has been saved",
-      "messageUpdateRegion": "Region has been updated"
+      "search": "Test Region"
     },
     "createZoneFrom": {
       "nameEn": "Test Zone ",
@@ -50,9 +46,7 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test Zone",
-      "messageSaveZone": "Zone has been saved",
-      "messageUpdateZone": "Zone has been updated"
+      "search": "Test Zone"
     },
     "createAreaFrom": {
       "nameEn": "Test Area ",
@@ -62,9 +56,7 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test Area",
-      "messageSaveArea": "Area has been saved",
-      "messageUpdateArea": "Area has been updated"
+      "search": "Test Area"
     },
     "createBankAccountFrom": {
       "bankName": "AGRANI BANK LTD.",
@@ -76,9 +68,7 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Arpara Office",
-      "messageSaveBankAccount": "Mfi bank account has been saved",
-      "messageUpdateBankAccount": "Mfi bank account has been updated"
+      "search": "Sabina Yeasmin"
     },
     "createFeeConfigurationFrom": {
       "FeeCollCode": "87",
@@ -88,9 +78,7 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test Fee",
-      "messageSaveFeeConfig": "Mfi fee configuration has been saved",
-      "messageUpdateFeeConfig": "Mfi fee configuration has been updated"
+      "search": "Test Fee"
     },
     "createAmountBasedLoanFrom": {
       "officeTypeId": "Branch Office",
@@ -100,9 +88,7 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Branch Manager",
-      "messageSaveAmountBasedLoan": "MFI role wise loan amount approval has been saved",
-      "messageUpdateAmountBasedLoan": "MFI role wise loan amount approval has been saved"
+      "search": "Branch Manager"
     },
     "createFundingOrganizationFrom": {
       "FundingNameEn": "Test",
@@ -111,9 +97,7 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test",
-      "messageSaveFundingOrganization": "Mfi funding organization has been saved",
-      "messageUpdateFundingOrganization": "Mfi funding organization has been updated"
+      "search": "Test"
     },
     "createLoanFundFrom": {
       "bankAccount": "Dhaka Zonal Office",
@@ -171,6 +155,7 @@
       "empNameEn": "Sabina Yeasmin",
       "empNameBn": "সাবিনা ইয়াসমিন",
       "empMobileNo": "01887949170",
+      "email": "sabina.yeasmin.9701@gmail.com",
       "nidNumber": "0003463473656",
       "office": "1002 (Dhaka Regional Office)",
       "department": "Board of Directors",
@@ -188,11 +173,15 @@
       "messageSaveEmp": "Mfi employee has been saved",
       "messageUpdateEmp": "Mfi employee has been updated"
     },
-    "approveEmployeeFrom": {},
+    "approveEmployeeFrom": {
+      "OfficeDropdown": "1020 (Ashulia)",
+      "search": "Sabina Yeasmin"
+    },
     "rejectedEmployeeFrom": {
       "empNameEn": "Sabina Yeasmin",
       "empNameBn": "সাবিনা ইয়াসমিন",
       "empMobileNo": "01887949170",
+      "email": "sabina.yeasmin.9701@gmail.com",
       "nidNumber": "0003463473656",
       "office": "1020 (Ashulia)",
       "department": "Board of Directors",
@@ -218,16 +207,25 @@
       "selectStatus": "Inactive",
       "statusSelect": "Active"
     },
+    "approveEmployeePromotionFrom": {
+      "OfficeDropdown": "1020 (Ashulia)"
+    },
     "gridEmpTransferFrom": {
       "search": "ABDUL RASHID",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "newOffice": "1004 (Dhaka Zonal Office)"
+      "newOffice": "1002 (Dhaka Regional Office)"
+    },
+    "approveEmployeeTransferFrom": {
+      "OfficeDropdown": "1020 (Ashulia)"
     },
     "gridEmpTerminationFrom": {
       "search": "AMER ALI",
       "selectStatus": "Inactive",
       "statusSelect": "Active"
+    },
+    "approveEmployeeTerminationFrom": {
+      "OfficeDropdown": "1020 (Ashulia)"
     },
     "createSamityFrom": {
       "samityNameEn": "Test Samity",
@@ -236,7 +234,7 @@
       "draftNameBn": "পরীক্ষা",
       "samityType": "Female",
       "office": "1020 (Ashulia)",
-      "fieldOfficer": "JOYMOT ALI",
+      "fieldOfficer": "EMP-0120 - ROSTOM ALI",
       "mfiProgram": "Jagoron",
       "samityDay": "Sunday",
       "samityFrequency": "Monthly",
@@ -251,19 +249,24 @@
       "messageSaveSamity": "Unauth samity has been saved",
       "messageUpdateSamity": "Samity has been updated"
     },
-    "approveSamityFrom": {},
+    "approveSamityFrom": {
+      "myTaskStatus": "Pending-Approval",
+      "taskStatus": "Draft",
+      "office": "1020 (Ashulia)",
+      "search": "Test Samity"
+    },
     "rejectedSamityFrom": {
       "samityNameEn": "Feni Samity",
       "samityNameBn": "ফেনী সমিতি",
       "draftName": "Test",
       "draftNameBn": "পরীক্ষা",
       "samityType": "Female",
-      "office": "1019 (Amin Bazar)",
-      "fieldOfficer": "MD EBRAHIM",
+      "office": "1020 (Ashulia)",
+      "fieldOfficer": "EMP-0121 - MD.ABDUR RAHAMAN",
       "mfiProgram": "Jagoron",
       "samityDay": "Sunday",
       "samityFrequency": "Monthly",
-      "workingArea": "Amin Bazar",
+      "workingArea": "Ashulia",
       "samityCode": "123456",
       "maxMember": "30",
       "adressEn": "Dhaka",
@@ -284,6 +287,9 @@
       "search": "Bamonkhali Mohila Samity",
       "messageSamityChange": "Samity has been updated"
     },
+    "approveSamityChangeFrom": {
+      "OfficeDropdown": "1020 (Ashulia)"
+    },
     "samityDayChangeFrom": {
       "samityNameEn": "Katigram Mohila Samity",
       "selectStatus": "Inactive",
@@ -293,6 +299,9 @@
       "search": "Majhail Mohila Samity",
       "messageSamityDayChange": "Samity day has been updated"
     },
+    "approveSamityDayChangeFrom": {
+      "OfficeDropdown": "1020 (Ashulia)"
+    },
     "samityCloseFrom": {
       "samityNameEn": "Rustampur Mohila Samity",
       "selectStatus": "Inactive",
@@ -300,6 +309,9 @@
       "SelectOffice": "1019 (Amin Bazar)",
       "search": "Rustampur Mohila Samity",
       "messageSamityClose": "Samity has been closed successfully."
+    },
+    "approveSamityCloseFrom": {
+      "OfficeDropdown": "1020 (Ashulia)"
     },
     "createMemberFrom": {
       "office": "1020 (Ashulia)",
@@ -323,7 +335,12 @@
       "messageApproveMember": "Member has been approved successfully",
       "messageUpdateMember": "Member has been updated"
     },
-    "approveMemberFrom": {},
+    "approveMemberFrom": {
+      "myTaskStatus": "Pending-Approval",
+      "taskStatus": "Draft",
+      "office": "1020 (Ashulia)",
+      "search": "Sabina Yeasmin"
+    },
     "createRejectedMemberFrom": {
       "office": "1020 (Ashulia)",
       "smity": "1020-101 (Ashulia Mohila Samity)",
@@ -350,19 +367,22 @@
     },
     "memberSamityTransferFrom": {
       "memberNameEn": "Fariya",
-      "newSamityTransfer": "1028-102 (Dalinagar Mohila Samity)",
+      "newSamityTransfer": "1028-101 (Barachala Mohila Samity)",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "SelectOffice": "1019 (Amin Bazar)",
+      "SelectOffice": "1020 (Ashulia)",
       "search": "Fariya",
       "messagesamityTransfer": "Member samity transfer has been updated"
+    },
+    "approveMemberSamityTransferFrom": {
+      "OfficeDropdown": "1020 (Ashulia)"
     },
     "memberAttendanceFrom": {
       "SelectOffice": "1002 (Dhaka Regional Office)",
       "search": "Abdullapur Mohila Samity",
-      "office": "1019 (Amin Bazar)",
-      "samity": "1019-101 (Salepur Mohila Samity)",
-      "member": "2-1002 (Samia)"
+      "office": "1020 (Ashulia)",
+      "samity": "1020-111 (Rustampur Mohila Samity)",
+      "member": "1-1001 (Surovi Akter)"
     },
     "memberPassbookFrom": {
       "office": "1019 (Amin Bazar)",
@@ -394,23 +414,29 @@
     },
     "createLoanAccountFrom": {
       "office": "1020 (Ashulia)",
-      "samity": "1020-101 (Ashulia Mohila Samity)",
-      "member": "1-1001 (Fariya)",
-      "lendingCategory": "Industry",
-      "economicSector": "Industry",
-      "economicActivity": "Term Loan ( Other than Working Capital Financing)",
-      "economicPurpose": "Service Industries",
+      "samity": "1020-111 (Rustampur Mohila Samity)",
+      "samity1": "1020-108 (Changao Mohila Samity)",
+      "member": "1-1001 (Surovi Akter)",
+      "member1": "1-1001 (Mariyom)",
+      "lendingCategory": "Agriculture, Fisheries, Livestock and Forestry",
+      "economicSector": "Agriculture",
+      "economicActivity": "Cultivation",
+      "economicPurpose": "Major Crops",
       "loanProduct": "Micro Enterprise",
+      "loanProduct1": "Micro Credit",
       "appliedLoanAmount": "50000",
+      "Amount": "30000",
       "selectStatus": "Approve",
       "statusSelect": "Rejected",
       "SelectOffice": "1020 (Ashulia)",
       "memberNameEn": "Zahra Ahmed",
-      "search": "Fariya",
+      "search": "Surovi Akter",
       "messageSaveLoanAccount": "Loan account proposal has been saved",
       "messageUpdateLoanAccount": "Do you want to update this loan account?"
     },
-    "approveLLoanAccountFrom": {},
+    "approveLoanAccountFrom": {
+      "OfficeDropdown": "1020 (Ashulia)"
+    },
     "loanAccountManagementFrom": {
       "samity": "Chhaya Mohila Samity",
       "SelectOffice": "1020 (Ashulia)",
@@ -445,15 +471,20 @@
       "messageSaveLoanWelfareFund": "Welfare Fund Collection for this Loan Account is successful",
       "messageUpdateLoanWelfareFund": "Do you want to update this loan welfare fund?"
     },
+    "approveClientWelfareFundFrom": {
+      "OfficeDropdown": "1020 (Ashulia)"
+    },
     "createLoanPenaltyFrom": {
       "selectOffice": "1020 (Ashulia)",
-      "selectSamity": "1020-101 (Ashulia Mohila Samity)",
-      "selectMember": "1-1001 (Fariya)",
-      "selectLoanAccount": "AGRO-1020-101-1001-1",
-      "inputAmount": "5000",
-      "search": "Fariya",
-      "selectStatus": "Submitted",
-      "statusSelect": "Approved",
+      "selectSamity": "1020-106 (Belma Mohila Samity)",
+      "selectMember": "1-1001 (Sima akter)",
+      "selectLoanAccount": "AGRO-1020-106-1001-1 (Loan Account)",
+      "inputLoanAccount": "40",
+      "inputAmount": "40",
+      "search": "Srabonti",
+      "samity": "Sadarpur Mohila Samity",
+      "selectStatus": "Inactive",
+      "statusSelect": "Active",
       "approveMessage": "Loan Penalty Authorization for Loan Account Is Successful",
       "messageSaveLoanPenalty": "Loan Penalty Collection for this Loan Account is successful",
       "messageUpdateLoanPenalty": "Do you want to update this loan penalty?"
@@ -510,6 +541,9 @@
       "selectStatus": "Approved",
       "statusSelect": "Rejected"
     },
+    "approveSavingsAccountFrom": {
+      "office": "1020 (Ashulia)"
+    },
     "createSavingsAccountManagement": {
       "search": "Samia",
       "selectStatus": "Approved",
@@ -527,7 +561,7 @@
     },
     "gridCalendarManagement": {
       "office": "1020 (Ashulia)",
-      "year": "2025"
+      "year": "2026"
     },
     "createHoliday": {
       "holidayType": "All",
@@ -535,8 +569,13 @@
       "holidayTitleEn": "Test Holiday",
       "search": "Weekly Holiday",
       "office": "1002 (Dhaka Regional Office)",
-      "calendarYear": "2025",
+      "calendarYear": "2026",
       "messageSaveHoliday": "Mfi holiday has been saved"
+    },
+    "cancelHoliday": {
+      "holidayTitleBn": "পরীক্ষার ছুটি",
+      "holidayTitleEn": "Test Holiday",
+      "search": "Weekly Holiday"
     },
     "gridProcessDashboard": {},
     "gridStagingData": {
@@ -561,6 +600,11 @@
       "Status": "Draft",
       "statusSelect": "Submitted"
     },
+    "authorizationFrom": {
+      "office": "1020 (Ashulia)",
+      "samity": "1020-101 (Ashulia Mohila Samity)",
+      "search": "Chadnee"
+    },
     "loanAdjustmentFrom": {
       "office": "1020 (Ashulia)",
       "samity": "1020-101 (Ashulia Mohila Samity)",
@@ -571,7 +615,8 @@
       "ledgerSubGroup": "Liquid Assets",
       "nameEn": "Furniture",
       "nameBn": "আসবাবপত্র",
-      "mnemonicEn": "5"
+      "mnemonicEn": "5",
+      "status": "Active"
     },
     "ledgerSubGroup": {
       "groupId": "Asset",
@@ -581,7 +626,8 @@
       "nameEn": "Current Assets",
       "ledgerGroupId": "Asset",
       "selectStatus": "Inactive",
-      "statusSelect": "Active"
+      "statusSelect": "Active",
+      "status": "Active"
     },
     "ledgerSetting": {
       "nameEn": "CashAtBank",
@@ -604,6 +650,11 @@
       "selectStatus": "Approve",
       "statusSelect": "Rejected",
       "search": "Initial Balance"
+    },
+    "approveManualJournal": {
+      "myTaskStatus": "Pending-Approval",
+      "taskStatus": "Draft",
+      "office": "1020 (Ashulia)"
     },
     "financialPeriodManagement": {
       "nameEn": "Test period",
@@ -636,6 +687,11 @@
       "statusSelect": "Active",
       "search": "Test Payment Voucher"
     },
+    "approvePaymentVoucher": {
+      "myTaskStatus": "Pending-Approval",
+      "taskStatus": "Draft",
+      "office": "1020 (Ashulia)"
+    },
     "receivedVoucher": {
       "voucherNameEn": "Test received Voucher",
       "voucherNameBn": "পরীক্ষার প্রাপ্তির ভাউচার",
@@ -648,6 +704,11 @@
       "selectStatus": "Inactive",
       "statusSelect": "Active",
       "search": "Test received Voucher"
+    },
+    "approveReceivedVoucher": {
+      "myTaskStatus": "Pending-Approval",
+      "taskStatus": "Draft",
+      "office": "1020 (Ashulia)"
     },
     "autoVoucherFrom": {
       "preparedBy": "tem-1020-bm",
@@ -764,6 +825,7 @@
       "empNameEn": "Sabina Yeasmin",
       "empNameBn": "সাবিনা ইয়াসমিন",
       "empMobileNo": "01887949170",
+      "email": "sabina.yeasmin.9701@gmail.com",
       "nidNumber": "0003463473656",
       "office": "1020 (Ashulia)",
       "department": "Board of Directors",
@@ -781,10 +843,15 @@
       "messageSaveEmp": "Mfi employee has been saved",
       "messageUpdateEmp": "Mfi employee has been updated"
     },
+    "approveEmployeeFrom": {
+      "OfficeDropdown": "1020 (Ashulia)",
+      "search": "Sabina Yeasmin"
+    },
     "rejectedEmployeeFrom": {
       "empNameEn": "Sabina Yeasmin",
       "empNameBn": "সাবিনা ইয়াসমিন",
       "empMobileNo": "01887949170",
+      "email": "sabina.yeasmin.9701@gmail.com",
       "nidNumber": "0003463473656",
       "office": "1020 (Ashulia)",
       "department": "Board of Directors",
@@ -804,7 +871,7 @@
       "messageUpdateEmp": "Mfi employee has been updated"
     },
     "gridEmpPromotionFrom": {
-      "newDepartment": "Board of Directors",
+      "newDepartment": "Department of Administration and Human Resources",
       "newDesignation": "Branch Manager",
       "search": "SHUMSHDDIN",
       "selectStatus": "Inactive",
@@ -960,11 +1027,11 @@
       "office": "1020 (Ashulia)",
       "samity": "1020-104 (Kandail Mohila Samity)",
       "member": "1-1001 (Israt Jahan)",
-      "lendingCategory": "Industry",
-      "economicSector": "Industry",
-      "economicActivity": "Term Loan ( Other than Working Capital Financing)",
-      "economicPurpose": "Service Industries",
-      "loanProduct": "Rural Micro Credit Monthly",
+      "lendingCategory": "Housing",
+      "economicSector": "Housing",
+      "economicActivity": "Housing",
+      "economicPurpose": "Housing (Residential) in urban area for individual person",
+      "loanProduct": "Micro Enterprise",
       "appliedLoanAmount": "50000",
       "openingBalance": "50000",
       "selectStatus": "Approve",
@@ -975,6 +1042,9 @@
       "approvedLoanAmount": "50000",
       "messageSaveLoanAccount": "Loan account proposal has been saved",
       "messageUpdateLoanAccount": "Do you want to update this loan account?"
+    },
+    "approveLoanAccountFrom": {
+      "office": "1020 (Ashulia)"
     },
     "loanAccountManagementFrom": {
       "samity": "Chhaya Mohila Samity",
@@ -1007,9 +1077,10 @@
       "selectSamity": "Sadarpur Mohila Samity",
       "selectMember": "Srabonti",
       "selectLoanAccount": "AGRO-1020-105-1001-1 (Loan Account)",
-      "penaltyAmount": "50",
-      "amount": "500",
+      "inputLoanAccount": "40",
+      "inputAmount": "40",
       "search": "Srabonti",
+      "samity": "Sadarpur Mohila Samity",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
       "approveMessage": "Loan Penalty Authorization for Loan Account Is Successful",
@@ -1022,7 +1093,8 @@
       "selectMember": "2-1002 (Marjana Akter)",
       "selectLoanAccount": "AGRO-1020-106-1002-1",
       "selectRebate": "Full",
-      "Amount": "58,839",
+      "rebateType": "Partial",
+      "Amount": "1000",
       "search": "Marjana Akter",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
@@ -1094,20 +1166,30 @@
       "office": "1002 (Dhaka Regional Office)",
       "messageSaveHoliday": "Mfi holiday has been saved"
     },
+    "cancelHoliday": {
+      "holidayTitleBn": "পরীক্ষার ছুটি",
+      "holidayTitleEn": "Test Holiday",
+      "search": "Weekly Holiday"
+    },
     "createStagingDataFrom": {
       "fieldOfficer": "EMP-0122 - GAIS UDDIN KHAN",
-      "samity": "1020-101 (Ashulia Mohila Samity)"
-    },
+      "samity": "1020-101 (Ashulia Mohila Samity)",
+      "status": "Finished",
+      "search": "GAIS UDDIN KHAN"
+     },
     "regularCollection": {
       "loanAmount": "500",
-      "loanAmount2": "500"
+      "loanAmount2": "500",
+      "fieldOfficer": "EMP-0122 - GAIS UDDIN KHAN",
+      "Samity": "1020-106 (Belma Mohila Samity)"
     },
     "specialCollection": {
-      "selectSamity": "1020-103 (Kuturia Mohila Samity)",
-      "selectMember": "1-1001 (Jule Akter )",
-      "selectAccount": "AGRO-1020-103-1001-1 (Loan Account)",
-      "inputAmount": "1000",
-      "fieldOfficer": "EMP-0122 - GAIS UDDIN KHAN"
+      "selectSamity": "1020-106 (Belma Mohila Samity)",
+      "selectMember": "1-1001 (Sima akter)",
+      "selectAccount": "AGRO-1020-106-1001-1 (Loan Account) ",
+      "inputAmount": "10",
+      "fieldOfficer": "EMP-0122 - GAIS UDDIN KHAN",
+      "Samity": "1020-106 (Belma Mohila Samity)"
     },
     "savingsWithdraw": {
       "selectSamity": "1020-101 (Ashulia Mohila Samity)",
@@ -1118,11 +1200,11 @@
       "samityDropdown": "1020-101 (Ashulia Mohila Samity)"
     },
     "loanAdjustment": {
-      "selectSamity": "1020-101 (Ashulia Mohila Samity)",
-      "selectMember": "4-1004 (Chadnee)",
-      "selectAccount": "AGRO-1020-101-1004-1 (Loan Account) ",
+      "selectSamity": "1020-103 (Kuturia Mohila Samity)",
+      "selectMember": "3-1003 (Sinthiya)",
+      "selectAccount": "AGRO-1020-103-1003-1 (Loan Account)",
       "inputAmount": "10",
-      "search": "Chadnee"
+      "search": "Sinthiya"
     },
     "cancelSamity": {
       "remarksCancel": "No needed"
@@ -1130,6 +1212,12 @@
     "authorization": {
       "fieldOfficer": "EMP-0122 - GAIS UDDIN KHAN",
       "samity": "1020-101 (Ashulia Mohila Samity)"
+    },
+    "feeCollection": {
+      "selectSamity": "1020-101 (Ashulia Mohila Samity)",
+      "selectMember": "4-1004 (Chadnee)",
+      "feeType": "Member Admission Fee",
+      "search": "Chadnee"
     },
     "chartOfAccounts": {
       "ledgergroup": "Asset",
@@ -1474,6 +1562,7 @@
       "employeeNameEn": "Test Employee",
       "employeeNameBn": "পরীক্ষা কর্মচারী",
       "employeeMobileNo": "01887949170",
+      "email": "sabina.yeasmin.9701@gmail.com",
       "tinNo": "3456",
       "nidNumber": "0003463473656",
       "department": "Board of Directors",
@@ -1494,6 +1583,7 @@
       "employeeNameEn": "Test Employee",
       "employeeNameBn": "পরীক্ষা কর্মচারী",
       "employeeMobileNo": "01887949170",
+      "email": "sabina.yeasmin.9701@gmail.com",
       "tinNo": "3456",
       "nidNumber": "0003463473656",
       "department": "Board of Directors",
@@ -1514,18 +1604,18 @@
   },
   "fieldOfficer": {
     "gridDepartmentFrom": {
-      "nameEn": "Board of Directors",
-      "nameBn": "পরিচালনা বোর্ড",
+      "nameEn": "Test Department",
+      "nameBn": "পরীক্ষা বিভাগ",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Board of Directors"
+      "search": "Test Department"
     },
     "gridDesignationFrom": {
-      "nameEn": "Assistant Director",
-      "nameBn": "সহকারী পরিচালক",
+      "nameEn": "Test Designation",
+      "nameBn": "পরীক্ষার পদবী",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Assistant Director"
+      "search": "Test Designation"
     },
     "gridFeeConfigurationFrom": {
       "feeTypeNameEn": "Member Admission Fee",
@@ -1582,6 +1672,9 @@
       "messageApproveMember": "Member has been approved successfully",
       "messageUpdateMember": "Member has been updated"
     },
+    "memberAttendanceFrom": {
+      "samity": "Binodpur Mohila Samity"
+    },
     "memberPassbookFrom": {
       "samity": "1020-102 (Dholpur Mohila Samity)",
       "member": "1-1001 (Jannat Islam)",
@@ -1596,13 +1689,13 @@
     "createLoanAccountFrom": {
       "memberNameEn": "Fariya",
       "office": "1020 (Ashulia)",
-      "samity": "1020-101 (Ashulia Mohila Samity)",
-      "member": "1-1001 (Fariya)",
-      "lendingCategory": "Industry",
-      "economicSector": "Industry",
-      "economicActivity": "Term Loan ( Other than Working Capital Financing)",
-      "economicPurpose": "Service Industries",
-      "loanProduct": "Micro Credit",
+      "samity": "1020-106 (Belma Mohila Samity)",
+      "member": "2-1002 (Marjana Akter)",
+      "lendingCategory": "Transport",
+      "economicSector": "Transport",
+      "economicActivity": "Transport",
+      "economicPurpose": "Road Transport (excluding Lease finance)",
+      "loanProduct": "Poultry Farm Loan",
       "appliedLoanAmount": "50000",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
@@ -1622,21 +1715,22 @@
       "selectSamity": "1020-101 (Ashulia Mohila Samity)",
       "selectMember": "1-1001 (Fariya)",
       "selectLoanAccount": "AGRO-1020-101-1001-1 (Loan Account) ",
-      "selectRebate": "Full",
-      "inputAmount": "5000",
+      "inputLoanAccount": "20",
+      "inputAmount": "50",
       "search": "Amira Rahman",
       "selectStatus": "Submitted",
       "statusSelect": "Approved",
       "samityNameEn": "Salepur Mohila Samity",
-      "messageSaveLoanRebate": "Loan rebate has been saved"
+      "messageSaveLoanRebate": "Loan penalty has been saved"
     },
     "createLoanRebateFrom": {
-      "selectOffice": "1019 (Amin Bazar)",
-      "selectSamity": "1019-101 (Salepur Mohila Samity)",
-      "selectMember": "1-1001 (Farhani Akter Rume)",
-      "selectLoanAccount": "AGRO-1019-101-1001-1",
+      "selectOffice": "1020 (Ashulia)",
+      "selectSamity": "1020-102 (Dholpur Mohila Samity)",
+      "selectMember": "1-1001 (Jannat Islam)",
+      "selectLoanAccount": "AGRO-1020-102-1001-1",
+      "rebateType": "Partial",
       "selectRebate": "Full",
-      "inputAmount": "5000",
+      "Amount": "1000",
       "search": "Amira Rahman",
       "selectStatus": "Submitted",
       "statusSelect": "Approved",
@@ -1644,16 +1738,17 @@
       "messageSaveLoanRebate": "Loan rebate has been saved"
     },
     "createLoanWaiverFrom": {
-      "selectSamity": "1019-101 (Salepur Mohila Samity)",
-      "selectMember": "1-1001 (Farhani Akter Rume)",
-      "selectLoanAccount": "AGRO-1019-101-1001-1",
+      "selectOffice": "1020 (Ashulia)",
+      "selectSamity": "1020-103 (Kuturia Mohila Samity)",
+      "selectMember": "1-1001 (Jule Akter )",
+      "selectLoanAccount": "AGRO-1020-103-1001-1",
       "selectRebate": "Full",
-      "inputAmount": "5000",
+      "inputAmount": "60",
       "search": "Sohana Aktar Hashmi",
       "selectStatus": "Submitted",
       "statusSelect": "Approved",
       "samityNameEn": "Belma Mohila Samity",
-      "messageSaveLoanRebate": "Loan rebate has been saved"
+      "messageSaveLoanRebate": "Loan waiver has been saved"
     },
     "gridSavingsProduct": {
       "office": "1025 (Madhukhali)",
@@ -1676,8 +1771,8 @@
       "savingsProduct": "General Savings",
       "samity": "1020-102 (Dholpur Mohila Samity)",
       "member": "1-1001 (Jannat Islam)",
-      "recoDepositAmount": "2000",
-      "openingBalance": "2000",
+      "recoDepositAmount": "100",
+      "openingBalance": "100",
       "search": "Samia",
       "selectStatus": "Inactive",
       "statusSelect": "Active"
@@ -1704,9 +1799,73 @@
       "calendarYear": "2025",
       "messageSaveHoliday": "Mfi holiday has been saved"
     },
+    "cancelHoliday": {
+      "holidayTitleBn": "পরীক্ষার ছুটি",
+      "holidayTitleEn": "Test Holiday",
+      "search": "Weekly Holiday"
+    },
     "gridStagingData": {
       "selectSamity": "1020-101 (Ashulia Mohila Samity)",
       "selectFieldOfficer": "GAIS UDDIN KHAN"
+    },
+    "regularCollection": {
+      "loanAmount": "500",
+      "loanAmount2": "500",
+      "fieldOfficer": "EMP-0122 - GAIS UDDIN KHAN",
+      "Samity": "1020-106 (Belma Mohila Samity)"
+    },
+    "specialCollection": {
+      "selectSamity": "1020-105 (Sadarpur Mohila Samity)",
+      "selectMember": "1-1001 (Srabonti)",
+      "selectAccount": "AGRO-1020-105-1001-1 (Loan Account)",
+      "inputAmount": "100",
+      "fieldOfficer": "EMP-0122 - GAIS UDDIN KHAN",
+      "Samity": "1020-106 (Belma Mohila Samity)"
+    },
+    "savingsWithdraw": {
+      "selectSamity": "1020-101 (Ashulia Mohila Samity)",
+      "selectMember": "1-1001 (Fariya)",
+      "selectAccount": "GS-1020-101-1001-1",
+      "inputAmount": "10",
+      "samity": "1020-101 (Ashulia Mohila Samity)",
+      "samityDropdown": "1020-101 (Ashulia Mohila Samity)"
+    },
+    "loanAdjustment": {
+      "selectSamity": "1020-105 (Sadarpur Mohila Samity)",
+      "selectMember": "1-1001 (Srabonti)",
+      "selectAccount": "AGRO-1020-105-1001-1 (Loan Account) ",
+      "inputAmount": "10",
+      "search": "Srabonti"
+    },
+    "feeCollection": {
+      "selectSamity": "1020-101 (Ashulia Mohila Samity)",
+      "selectMember": "4-1004 (Chadnee)",
+      "feeType": "Member Admission Fee",
+      "search": "Chadnee"
+    },
+    "paymentVoucher": {
+      "voucherNameEn": "Test Voucher",
+      "voucherNameBn": "টেস্ট ভাউচার",
+      "paymentMode": "Cash",
+      "preparedBy": "EMP-0119 - JOYMOT ALI",
+      "remarks": "Done",
+      "ledger": "501018-1020 (Office Rent)",
+      "remarks1": "Done",
+      "amount": "5000",
+      "selectStatus": "Inactive",
+      "statusSelect": "Active"
+    },
+    "receivedVoucher": {
+      "voucherNameEn": "Test Voucher",
+      "voucherNameBn": "টেস্ট ভাউচার",
+      "paymentMode": "Cash",
+      "preparedBy": "EMP-0122 - GAIS UDDIN KHAN",
+      "remarks": "Done",
+      "ledger": "401004-1020 (Service Fee)",
+      "remarks1": "Done",
+      "amount": "5000",
+      "selectStatus": "Inactive",
+      "statusSelect": "Active"
     }
   }
 }

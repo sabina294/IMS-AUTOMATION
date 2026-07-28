@@ -33,11 +33,38 @@ class MemberSamityTransfer {
     });
   }
 
-  transferApprove() {
+  myTaskMenuMemberSamityTransfer() {
     cy.fixture(this.test_data).then((data) => {
       var mstData = data.mfiAdmin.memberSamityTransferFrom;
       cy.imsId("menu-my-task").click();
       cy.imsId("submenu-awaiting-member-samity-transfer").click();
+      cy.log("Successfully navigate to my task menu member samity transfer");
+    });
+  }
+
+  myTaskMemberOfficeDropdownCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var mstData = data.mfiAdmin.approveMemberSamityTransferFrom;
+      cy.formController("office_id").type(mstData.OfficeDropdown).type("{enter}");
+      cy.log("Successfully navigate to my task menu member samity transfer office dropdown");
+    });
+  }
+
+  myTaskResetButtonCheck() {
+    cy.imsId("btn-reset").click();
+    cy.log("Successful clean my task displaying.");
+  }
+
+  myTaskRefreshButtonCheck() {
+    cy.imsId("btn-refresh").click();
+    cy.log(
+      "successfully refresh page  displayed the my task list of the member samity transfer form "
+    );
+  }
+
+  transferApprove() {
+    cy.fixture(this.test_data).then((data) => {
+      var mstData = data.mfiAdmin.memberSamityTransferFrom;
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
       cy.imsId("btn-lock").click();

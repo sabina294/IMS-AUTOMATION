@@ -18,9 +18,11 @@ class SamityCreation {
       cy.formController("samity_name_bn").type(smData.samityNameBn);
       cy.formController("samity_type").type(smData.samityType).type("{enter}");
       cy.formController("office_id").type(smData.office).type("{enter}");
+      cy.wait(2000);
       cy.formController("field_officer_id")
         .type(smData.fieldOfficer)
         .type("{enter}");
+      cy.wait(2000);
       cy.formController("mfi_program_id")
         .type(smData.mfiProgram)
         .type("{enter}");
@@ -49,19 +51,55 @@ class SamityCreation {
     });
   }
 
-  approveSamity() {
+   myTaskMenuSamity() {
     cy.fixture(this.test_data).then((data) => {
       var smData = data.mfiAdmin.createSamityFrom;
       cy.imsId("menu-my-task").click();
       cy.imsId("submenu-awaiting-samity-management").click();
-      // cy.formController("search_text").type(smData.samityNameEn);
+      cy.log("Successfully navigate to my task menu samity management");
+    });
+  }
+
+  myTaskSamityOfficeDropdownCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var smData = data.mfiAdmin.approveSamityFrom;
+      cy.formController("office_id").type(smData.office).type("{enter}");
+      cy.log("Successfully navigate to my task menu samity management office dropdown");
+    });
+  }
+
+  myTaskResetButtonCheck() {
+    cy.imsId("btn-reset").click();
+    cy.log("Successful clean my task displaying.");
+  }
+
+  myTaskRefreshButtonCheck() {
+    cy.imsId("btn-refresh").click();
+    cy.log(
+      "successfully refresh page  displayed the my task list of the Samity Management form "
+    );
+  }
+
+  myTaskSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var smData = data.mfiAdmin.approveSamityFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(smData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful my task search button click.");
+    });
+  }
+
+
+  approveSamity() {
+    cy.fixture(this.test_data).then((data) => {
+      var smData = data.mfiAdmin.createSamityFrom;
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
       cy.imsId("btn-lock").click();
       cy.imsId("btn-approve").click();
       cy.imsId("btn-submit").click();
       cy.imsId("btn-ok").click();
-
       cy.log("Successfully approve samity management");
     });
   }
@@ -565,9 +603,11 @@ class SamityCreation {
       cy.formController("samity_name_bn").type(smData.draftNameBn);
       cy.formController("samity_type").type(smData.samityType).type("{enter}");
       cy.formController("office_id").type(smData.office).type("{enter}");
+      cy.wait(2000);
       cy.formController("field_officer_id")
         .type(smData.fieldOfficer)
         .type("{enter}");
+      cy.wait(2000);
       cy.formController("mfi_program_id")
         .type(smData.mfiProgram)
         .type("{enter}");

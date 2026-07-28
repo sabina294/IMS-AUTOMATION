@@ -32,11 +32,39 @@ class SamityDayChange {
       cy.log("Successfully samity day changed (MFI Admin)");
     });
   }
-  approveSamityDayChange() {
+
+  myTaskMenuSamityDayChange() {
     cy.fixture(this.test_data).then((data) => {
       var sdData = data.mfiAdmin.samityDayChangeFrom;
       cy.imsId("menu-my-task").click();
       cy.imsId("submenu-awaiting-samity-day-change").click();
+      cy.log("Successfully navigate to my task menu samity day change");
+    });
+  }
+
+  myTaskSamityOfficeDropdownCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var sdData = data.mfiAdmin.approveSamityDayChangeFrom;
+      cy.formController("office_id").type(sdData.OfficeDropdown).type("{enter}");
+      cy.log("Successfully navigate to my task menu samity day change office dropdown");
+    });
+  }
+
+  myTaskResetButtonCheck() {
+    cy.imsId("btn-reset").click();
+    cy.log("Successful clean my task displaying.");
+  }
+
+  myTaskRefreshButtonCheck() {
+    cy.imsId("btn-refresh").click();
+    cy.log(
+      "successfully refresh page  displayed the my task list of the Samity day change form "
+    );
+  }
+
+  approveSamityDayChange() {
+    cy.fixture(this.test_data).then((data) => {
+      var sdData = data.mfiAdmin.samityDayChangeFrom;
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
       cy.imsId("btn-lock").click();

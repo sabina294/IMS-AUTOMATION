@@ -1,6 +1,5 @@
 import messages from "../../../../support/constants/messages";
 import { GRID } from "../../../../support/constants/selectors";
-// import * as SELECTORS from "../../../../support/constants/selectors";
 
 class EmployeeManagementCreation {
   test_data = Cypress.env("TEST_DATA");
@@ -21,13 +20,18 @@ class EmployeeManagementCreation {
       cy.formController("emp_name_en").type(emData.empNameEn);
       cy.formController("emp_name_bn").type(emData.empNameBn);
       cy.formController("date_of_birth").click();
-      cy.wait(2000);
-      cy.contains("15").click({ force: true });
+      cy.get('.ant-picker-dropdown')
+        .should('be.visible');
+      cy.get('.ant-picker-cell-in-view')
+        .not('.ant-picker-cell-disabled')
+        .first()
+        .click({ force: true });
       cy.formController("gender").click();
       cy.get(
         ".ant-form-item-control-input-content > .ant-radio-group > :nth-child(1) > .ant-radio > .ant-radio-input"
       ).click();
       cy.formController("contactNo").type(emData.empMobileNo);
+      cy.formController("emailAddress").first().clear().type(emData.email);
       cy.get('#nz-tabs-1-tab-1').click();
       cy.formController("nid_number").type(emData.nidNumber);
       cy.get('#nz-tabs-1-tab-2').click();
@@ -74,12 +78,51 @@ class EmployeeManagementCreation {
     });
   }
 
+  myTaskMenuEmployee() {
+    cy.fixture(this.test_data).then((data) => {
+      var emData = data.mfiAdmin.createEmpMangFrom;
+      cy.imsId("menu-my-task").click();
+      cy.imsId("submenu-awaiting-employee-management").click();
+      cy.log("Successfully navigate to my task menu employee management");
+    });
+  }
+
+  myTaskResetButtonCheck() {
+    cy.imsId("btn-reset").click();
+    cy.log("Successful clean my task displaying.");
+  }
+
+  myTaskRefreshButtonCheck() {
+    cy.imsId("btn-refresh").click();
+    cy.log(
+      "successfully refresh page  displayed the my task list of the Employee Management form "
+    );
+  }
+
+  myTaskOfficeDropdownCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var emData = data.mfiAdmin.approveEmployeeFrom;
+      cy.formController("office_id").type(emData.OfficeDropdown).type("{enter}");
+      cy.imsId("btn-reset").click();
+      cy.log(
+        "Employee Management form office dropdown check successfully"
+      );
+    });
+  }
+
+  myTaskSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var emData = data.mfiAdmin.approveEmployeeFrom;
+      cy.imsId("btn-reset").click();
+      cy.formController("search_text").type(emData.search);
+      cy.imsId("btn-search").click();
+      cy.log("Successful my task search button click.");
+    });
+  }
+
   approveEmployee() {
     cy.fixture(this.test_data).then((data) => {
       var emData = data.mfiAdmin.createEmpMangFrom;
-      cy.formController("search_text").type(emData.empNameEn);
-      cy.imsId("menu-my-task").click();
-      cy.imsId("submenu-awaiting-employee-management").click();
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
       cy.imsId("btn-lock").click();
@@ -115,6 +158,22 @@ class EmployeeManagementCreation {
     cy.imsId("btn-go-back").click();
     cy.log("Successfully view go back the employee management list page");
 
+  }
+
+  profileViewEmployeeManagement() {
+    cy.fixture(this.test_data).then((data) => {
+      var emData = data.mfiAdmin.createEmpMangFrom;
+      // cy.formController("search_text").type(emData.empNameEn);
+      cy.imsId("toggle-action").first().click();
+      cy.imsId("btn-table-action-profile").click();
+      cy.log("Successfully profile viewed the employee management list page");
+    });
+  }
+
+  profileViewGoBackButton() {
+    cy.imsId("btn-go-back").click();
+
+    cy.log("Successfully profile view go back the  employee management list page");
   }
 
   editResetButton() {
@@ -213,13 +272,13 @@ class EmployeeManagementCreation {
   gridDraftButton() {
     cy.imsId(GRID.BUTTONS.DRAFT_ON)
       .check({ force: true });
-      cy.log(messages.ui.draftOnMessage);
-    }
+    cy.log(messages.ui.draftOnMessage);
+  }
 
   gridDraftButtonOff() {
     cy.imsId(GRID.BUTTONS.DRAFT_OFF)
       .uncheck({ force: true });
-      cy.log(messages.ui.draftOffMessage);
+    cy.log(messages.ui.draftOffMessage);
   }
 
   gridCheckboxCheck() {

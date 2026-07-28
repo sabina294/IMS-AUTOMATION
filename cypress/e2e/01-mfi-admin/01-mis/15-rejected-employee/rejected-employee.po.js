@@ -16,14 +16,19 @@ class RejectedEmployee {
       cy.formController("emp_name_en").type(emData.empNameEn);
       cy.formController("emp_name_bn").type(emData.empNameBn);
       cy.formController("date_of_birth").click();
-      cy.wait(2000);
-      cy.contains("15").click({ force: true });
+        cy.get('.ant-picker-dropdown')
+        .should('be.visible');
+      cy.get('.ant-picker-cell-in-view')
+        .not('.ant-picker-cell-disabled')
+        .first()
+        .click({ force: true });
       cy.wait(1000);
       cy.formController("gender").click();
       cy.get(
         ".ant-form-item-control-input-content > .ant-radio-group > :nth-child(1) > .ant-radio > .ant-radio-input"
       ).click();
       cy.formController("contactNo").type(emData.empMobileNo);
+      cy.formController("emailAddress").first().clear().type(emData.email);
       cy.get('#nz-tabs-1-tab-1').click();
       cy.formController("nid_number").type(emData.nidNumber);
       cy.get('#nz-tabs-1-tab-2').click();

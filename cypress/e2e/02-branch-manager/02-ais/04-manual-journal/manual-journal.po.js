@@ -1,3 +1,5 @@
+import messages from "../../../../support/constants/messages";
+import { GRID } from "../../../../support/constants/selectors";
 class ManualJournalCreation {
     test_data = Cypress.env("TEST_DATA");
 
@@ -14,7 +16,7 @@ class ManualJournalCreation {
             cy.imsId("btn-add-new").click();
             cy.imsId("btn-delete").first().click();
 
-            cy.formController("reference").type(mjData.reference);
+            cy.formController("reference_no").type(mjData.reference);
             // First description field
             cy.formController("description").eq(0).type(mjData.description);
 
@@ -61,7 +63,7 @@ class ManualJournalCreation {
     createWithoutDescription() {
         cy.fixture(this.test_data).then((data) => {
             var mjData = data.branchManager.manualJournal;
-            cy.formController("reference").type(mjData.reference);
+            cy.formController("reference_no").type(mjData.reference);
             // First description field
             cy.formController("ledger_id").type(mjData.ledger).type("{enter}");
 
@@ -82,7 +84,7 @@ class ManualJournalCreation {
     createWithoutJournalDetailsLedger() {
         cy.fixture(this.test_data).then((data) => {
             var mjData = data.branchManager.manualJournal;
-            cy.formController("reference").type(mjData.reference);
+            cy.formController("reference_no").type(mjData.reference);
             // First description field
             cy.formController("description").eq(0).type(mjData.description);
 
@@ -104,7 +106,7 @@ class ManualJournalCreation {
         cy.fixture(this.test_data).then((data) => {
             var mjData = data.branchManager.manualJournal;
 
-            cy.formController("reference").type(mjData.reference);
+            cy.formController("reference_no").type(mjData.reference);
             // First description field
             cy.formController("description").eq(0).type(mjData.description);
             cy.formController("debited_amount").clear().type(mjData.debitedAmount);
@@ -121,7 +123,7 @@ class ManualJournalCreation {
         cy.fixture(this.test_data).then((data) => {
             var mjData = data.branchManager.manualJournal;
 
-            cy.formController("reference").type(mjData.reference);
+            cy.formController("reference_no").type(mjData.reference);
             // First description field
             cy.formController("description").eq(0).type(mjData.description);
 
@@ -143,7 +145,7 @@ class ManualJournalCreation {
         cy.fixture(this.test_data).then((data) => {
             var mjData = data.branchManager.manualJournal;
 
-            cy.formController("reference").type(mjData.reference);
+            cy.formController("reference_no").type(mjData.reference);
             // First description field
             cy.formController("description").eq(0).type(mjData.description);
 
@@ -219,6 +221,19 @@ class ManualJournalCreation {
             "successfully refresh page  displayed the grid list of the manual journal "
         );
     }
+
+    gridDraftButton() {
+        cy.imsId(GRID.BUTTONS.DRAFT_ON)
+            .check({ force: true });
+        cy.log(messages.ui.draftOnMessage);
+    }
+
+    gridDraftButtonOff() {
+        cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+            .uncheck({ force: true });
+        cy.log(messages.ui.draftOffMessage);
+    }
+
 
     gridSearchButtonCheck() {
         cy.fixture(this.test_data).then((data) => {

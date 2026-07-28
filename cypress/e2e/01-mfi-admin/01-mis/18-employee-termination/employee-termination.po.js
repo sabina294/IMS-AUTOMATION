@@ -40,10 +40,39 @@ class EmployeeTermination {
         cy.log("Successful termination go back button check.");
     }
 
+    myTaskMenuEmployeeTermination() {
+        cy.fixture(this.test_data).then((data) => {
+            var etData = data.mfiAdmin.gridEmpTerminationFrom;
+            cy.imsId("menu-my-task").click();
+            cy.imsId("submenu-awaiting-employee-termination").click();
+            cy.log("Successfully navigate to my task menu employee termination");
+        });
+    }
+
+    myTaskResetButtonCheck() {
+        cy.imsId("btn-reset").click();
+        cy.log("Successful clean my task displaying.");
+    }
+
+    myTaskRefreshButtonCheck() {
+        cy.imsId("btn-refresh").click();
+        cy.log(
+            "successfully refresh page  displayed the my task list of the Employee termination form "
+        );
+    }
+
+    myTaskOfficeDropdownCheck() {
+        cy.fixture(this.test_data).then((data) => {
+            var etData = data.mfiAdmin.approveEmployeeTerminationFrom;
+            cy.formController("office_id").type(etData.OfficeDropdown).type("{enter}");
+            cy.imsId("btn-reset").click();
+            cy.log(
+                "Employee Termination form office dropdown check successfully"
+            );
+        });
+    }
 
     approveNewEmployeeTermination() {
-        cy.imsId("menu-my-task").click();
-        cy.imsId("submenu-awaiting-employee-termination").click();
         cy.imsId("toggle-action").first().click();
         cy.imsId("btn-table-action-view").first().click();
         cy.imsId("btn-approve").click();
@@ -51,7 +80,6 @@ class EmployeeTermination {
         cy.imsId("btn-ok").click();
         cy.log("Successfully approved employee termination");
     }
-
 
     statusInactiveDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
