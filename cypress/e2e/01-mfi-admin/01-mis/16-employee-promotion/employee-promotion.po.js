@@ -138,30 +138,20 @@ class EmployeePromotion {
     approveNewEmployeePromotion() {
         cy.imsId("toggle-action").first().click();
         cy.imsId("btn-table-action-view").first().click();
+        cy.imsId("btn-lock").click();
         cy.imsId("btn-approve").click();
         cy.imsId("btn-submit").click();
         cy.imsId("btn-ok").click();
         cy.log("Successfully approved employee promotion");
     }
 
-    statusInactiveDropdownCheck() {
+    gridOfficeDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
             var empData = data.mfiAdmin.gridEmpPromotionFrom;
-            cy.selectMenu("menu-employee", "submenu-employee-promotion");
-            cy.formController("status").type(empData.selectStatus).type("{enter}");
-            cy.log(
-                "Employee Promotion form status inactive dropdown check successfully"
-            );
-        });
-    }
-
-    statusActiveDropdownCheck() {
-        cy.fixture(this.test_data).then((data) => {
-            var empData = data.mfiAdmin.gridEmpPromotionFrom;
+            cy.formController("office_id").type(empData.officeDropdown).type("{enter}");
             cy.imsId("btn-reset").click();
-            cy.formController("status").type(empData.statusSelect).type("{enter}");
             cy.log(
-                "Employee Promotion form status active dropdown check successfully"
+                "Employee Promotion form office dropdown check successfully"
             );
         });
     }
@@ -169,6 +159,7 @@ class EmployeePromotion {
     searchInEmployeeName() {
         cy.fixture(this.test_data).then((data) => {
             var empData = data.mfiAdmin.gridEmpPromotionFrom;
+            cy.selectMenu("menu-employee", "submenu-employee-promotion");
             cy.imsId("btn-reset").click();
             cy.formController("search_text").type(empData.search);
             cy.log("Successfully search in the Employee Promotion form");

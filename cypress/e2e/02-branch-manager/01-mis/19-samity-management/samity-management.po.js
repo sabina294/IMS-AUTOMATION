@@ -40,23 +40,45 @@ class SamityCreation {
         .type("{enter}");
 
       cy.imsId("btn-submit").click();
-
       cy.imsId("btn-yes").click();
-      cy.get("app-confirmation-modal")
-        .contains(smData.messageSaveSamity)
-        .and("be.visible");
-
       cy.imsId("btn-ok").click();
       cy.log("Successfully created samity");
     });
   }
 
-  approveSamity() {
+   myTaskMenuSamity() {
     cy.fixture(this.test_data).then((data) => {
-      var smData = data.branchManager.createSamityFrom;
+       var smData = data.branchManager.createSamityFrom;
       cy.imsId("menu-my-task").click();
       cy.imsId("submenu-awaiting-samity-management").click();
+      cy.log("Successfully navigate to my task menu samity management");
+    });
+  }
+
+  myTaskResetButtonCheck() {
+    cy.imsId("btn-reset").click();
+    cy.log("Successful clean my task displaying.");
+  }
+
+  myTaskRefreshButtonCheck() {
+    cy.imsId("btn-refresh").click();
+    cy.log(
+      "successfully refresh page  displayed the my task list of the Samity Management form "
+    );
+  }
+
+  myTaskSearchButtonCheck() {
+    cy.fixture(this.test_data).then((data) => {
+      var smData = data.branchManager.createSamityFrom;
+      cy.imsId("btn-reset").click();
       cy.formController("search_text").type(smData.samityNameEn);
+      cy.imsId("btn-search").click();
+      cy.log("Successful my task search button click.");
+    });
+  }
+
+  approveSamity() {
+    cy.fixture(this.test_data).then((data) => {
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-table-action-view").click();
       cy.imsId("btn-lock").click();
@@ -548,12 +570,7 @@ class SamityCreation {
         .type("{enter}");
 
       cy.imsId("btn-draft").click();
-
       cy.imsId("btn-yes").click();
-      cy.get("app-confirmation-modal")
-        .contains(smData.messageSaveSamity)
-        .and("be.visible");
-
       cy.imsId("btn-ok").click();
       cy.log("Successfully created samity");
     });

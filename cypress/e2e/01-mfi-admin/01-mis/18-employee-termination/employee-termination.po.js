@@ -75,37 +75,28 @@ class EmployeeTermination {
     approveNewEmployeeTermination() {
         cy.imsId("toggle-action").first().click();
         cy.imsId("btn-table-action-view").first().click();
+        cy.imsId("btn-lock").click();
         cy.imsId("btn-approve").click();
         cy.imsId("btn-submit").click();
         cy.imsId("btn-ok").click();
         cy.log("Successfully approved employee termination");
     }
 
-    statusInactiveDropdownCheck() {
+     gridOfficeDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
             var etData = data.mfiAdmin.gridEmpTerminationFrom;
-            cy.selectMenu("menu-employee", "submenu-employee-termination");
-            cy.formController("status").type(etData.selectStatus).type("{enter}");
-            cy.log(
-                "Employee Termination form status inactive dropdown check successfully"
-            );
-        });
-    }
-
-    statusActiveDropdownCheck() {
-        cy.fixture(this.test_data).then((data) => {
-            var etData = data.mfiAdmin.gridEmpTerminationFrom;
+            cy.formController("office_id").type(etData.officeDropdown).type("{enter}");
             cy.imsId("btn-reset").click();
-            cy.formController("status").type(etData.statusSelect).type("{enter}");
             cy.log(
-                "Employee Termination form status active dropdown check successfully"
+                "Employee termination form office dropdown check successfully"
             );
         });
     }
-
+    
     searchInEmployeeName() {
         cy.fixture(this.test_data).then((data) => {
             var etData = data.mfiAdmin.gridEmpTerminationFrom;
+            cy.selectMenu("menu-employee", "submenu-employee-termination");
             cy.imsId("btn-reset").click();
             cy.formController("search_text").type(etData.search);
             cy.log("Successfully search in the Employee Termination form");

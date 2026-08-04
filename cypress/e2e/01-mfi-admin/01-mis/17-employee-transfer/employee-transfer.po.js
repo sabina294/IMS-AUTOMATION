@@ -146,30 +146,20 @@ class EmployeeTransfer {
     approveNewEmployeeTransfer() {
         cy.imsId("toggle-action").first().click();
         cy.imsId("btn-table-action-view").first().click();
+        cy.imsId("btn-lock").click();
         cy.imsId("btn-approve").click();
         cy.imsId("btn-submit").click();
         cy.imsId("btn-ok").click();
         cy.log("Successfully approved employee transfer");
     }
 
-    statusInactiveDropdownCheck() {
+    gridOfficeDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
             var emtData = data.mfiAdmin.gridEmpTransferFrom;
-            cy.selectMenu("menu-employee", "submenu-employee-transfer");
-            cy.formController("status").type(emtData.selectStatus).type("{enter}");
-            cy.log(
-                "Employee Transfer form status inactive dropdown check successfully"
-            );
-        });
-    }
-
-    statusActiveDropdownCheck() {
-        cy.fixture(this.test_data).then((data) => {
-            var emtData = data.mfiAdmin.gridEmpTransferFrom;
+            cy.formController("office_id").type(emtData.officeDropdown).type("{enter}");
             cy.imsId("btn-reset").click();
-            cy.formController("status").type(emtData.statusSelect).type("{enter}");
             cy.log(
-                "Employee Transfer form status active dropdown check successfully"
+                "Employee Transfer form office dropdown check successfully"
             );
         });
     }
@@ -177,6 +167,7 @@ class EmployeeTransfer {
     searchInEmployeeName() {
         cy.fixture(this.test_data).then((data) => {
             var emtData = data.mfiAdmin.gridEmpTransferFrom;
+            cy.selectMenu("menu-employee", "submenu-employee-transfer");
             cy.imsId("btn-reset").click();
             cy.formController("search_text").type(emtData.search);
             cy.log("Successfully search in the Employee Transfer form");

@@ -10,7 +10,7 @@ class DayEndProcessMis {
 
   startDayEndProcess() {
     cy.fixture(this.test_data).then((data) => {
-      cy.imsId("start-process-button").click();
+      cy.imsId("btn-start_process").click();
       cy.imsId("btn-yes").click();
       cy.imsId("btn-ok").click();
       cy.log("Successfully Day end process started.");
@@ -19,8 +19,11 @@ class DayEndProcessMis {
 
   refreshDayEndProcess() {
     cy.fixture(this.test_data).then((data) => {
-      cy.imsId("btn-refresh").click();
-      cy.wait(2000);
+       const clickCount = 3; // change this number as needed
+      for (let i = 0; i < clickCount; i++) {
+        cy.imsId("btn-refresh").click();
+        cy.wait(2000); // optional wait between clicks
+      }
       cy.log("Successfully Day end process refreshed.");
     });
   }
@@ -30,7 +33,7 @@ class DayEndProcessMis {
       cy.imsId("btn-delete").click();
       cy.imsId("btn-yes").click();
       cy.imsId("btn-ok").click();
-      cy.imsId("start-process-button").click();
+      cy.imsId("btn-start_process").click();
       cy.imsId("btn-yes").click();
       cy.imsId("btn-ok").click();
       cy.imsId("btn-refresh").click();
