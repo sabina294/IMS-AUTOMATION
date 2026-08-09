@@ -1,5 +1,5 @@
 import messages from "../../../../support/constants/messages";
-import { GRID } from "../../../../support/constants/selectors";
+import { COMMON } from "../../../../support/constants/selectors";
 class MemberManagementCreation {
   test_data = Cypress.env("TEST_DATA");
 
@@ -96,7 +96,7 @@ class MemberManagementCreation {
   editResetButton() {
     cy.fixture(this.test_data).then((data) => {
       var memData = data.fieldOfficer.createMemberFrom;
-      cy.formController("search_text").type(memData.search);
+      cy.formController("search_text").type(memData.memberNameEn);
       cy.imsId("btn-search").click();
       cy.imsId("toggle-action").first().click();
       cy.imsId("btn-mis-table-action-edit").click();
@@ -229,7 +229,7 @@ class MemberManagementCreation {
   }
 
   gridCheckboxCheck() {
-    cy.imsId("row-checkbox-9").click();
+    cy.imsId("row-checkbox-7").click();
     // cy.imsId("btn-reset").click();
     cy.log("Checkbox should be clickable and functional.");
   }
@@ -240,19 +240,19 @@ class MemberManagementCreation {
   }
 
   gridCheckboxUnlockButtonCheck() {
-    cy.imsId("row-checkbox-9").click();
+    cy.imsId("row-checkbox-7").click();
     cy.imsId("btn-unlock").click();
     cy.log("Checkbox unlock button should be clickable and functional.");
   }
 
   gridDraftButton() {
-    cy.imsId(GRID.BUTTONS.DRAFT_ON)
+    cy.imsId(COMMON.GRID.DRAFT_TOGGLE)
       .check({ force: true });
     cy.log(messages.ui.draftOnMessage);
   }
 
   gridDraftButtonOff() {
-    cy.imsId(GRID.BUTTONS.DRAFT_OFF)
+    cy.imsId(COMMON.GRID.DRAFT_TOGGLE)
       .uncheck({ force: true });
     cy.log(messages.ui.draftOffMessage);
   }

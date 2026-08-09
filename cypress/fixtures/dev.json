@@ -217,7 +217,7 @@
       "selectStatus": "Inactive",
       "statusSelect": "Active",
       "officeDropdown": "1002 (Dhaka Regional Office)",
-      "newOffice": "1002 (Dhaka Regional Office)"
+      "newOffice": "1004 (Dhaka Zonal Office)"
     },
     "approveEmployeeTransferFrom": {
       "OfficeDropdown": "1020 (Ashulia)"
@@ -308,11 +308,11 @@
       "OfficeDropdown": "1020 (Ashulia)"
     },
     "samityCloseFrom": {
-      "samityNameEn": "Test Samity",
+      "samityNameEn": "Nowakandi Mohila Samity",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
       "SelectOffice": "1019 (Amin Bazar)",
-      "search": "Rustampur Mohila Samity",
+      "search": "Abdullapur Mohila Samity",
       "messageSamityClose": "Samity has been closed successfully."
     },
     "approveSamityCloseFrom": {
@@ -1142,10 +1142,13 @@
       "selectStatus": "Inactive",
       "statusSelect": "Approved"
     },
-    "createSavingsAccountClosureManagement": {
-      "search": "Samia",
+     "createSavingsAccountClosureManagement": {
+      "search": "Fariya",
       "selectStatus": "Inactive",
-      "statusSelect": "Active"
+      "statusSelect": "Active",
+      "samityId": "1020-101 (Ashulia Mohila Samity)",
+      "memberId": "1-1001 (Fariya)",
+      "savingsAccountId": "GS-1020-101-1001-1"
     },
     "gridCalendarYear": {
       "holidayTitleBn": "পরীক্ষার ছুটি",
@@ -1668,7 +1671,7 @@
       "adressEn": "Dhaka",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Sohana Aktar Hashmi",
+      "search": "Minara Akter",
       "messageSaveMember": "Member has been saved",
       "messageApproveMember": "Member has been approved successfully",
       "messageUpdateMember": "Member has been updated"
@@ -1782,6 +1785,14 @@
       "search": "Samia",
       "selectStatus": "Inactive",
       "statusSelect": "Active"
+    },
+     "createSavingsAccountClosureManagement": {
+      "search": "Fariya",
+      "selectStatus": "Inactive",
+      "statusSelect": "Active",
+      "samityId": "1020-101 (Ashulia Mohila Samity)",
+      "memberId": "1-1001 (Fariya)",
+      "savingsAccountId": "GS-1020-101-1001-1"
     },
     "gridCalendarYear": {
       "holidayTitleBn": "পরীক্ষার ছুটি",
