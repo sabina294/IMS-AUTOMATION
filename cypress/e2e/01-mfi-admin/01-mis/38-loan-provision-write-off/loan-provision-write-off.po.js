@@ -14,9 +14,7 @@ class LoanProvisionWriteOff {
         cy.fixture(this.test_data).then((data) => {
             const lpData = data.mfiAdmin.loanProvisionFrom;
             cy.formController("office_id").type(lpData.selectOffice).type("{enter}");
-            cy.log(
-                "loan provision write-off office dropdown check successfully"
-            );
+            cy.log(messages.ui.officeDropdownMessage);
         });
     }
 
@@ -24,19 +22,15 @@ class LoanProvisionWriteOff {
         cy.fixture(this.test_data).then((data) => {
             const lpData = data.mfiAdmin.loanProvisionFrom;
             cy.imsId(COMMON.BUTTONS.RESET).click();
-            cy.formController("status").type(lpData.selectStatus).type("{enter}");
-            cy.log(
-                "loan provision write-off status submitted dropdown check successfully"
-            );
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lpData.selectStatus).type("{enter}");
+            cy.log(messages.ui.actionMessage);
         });
     }
     statusApprovedDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
             const lpData = data.mfiAdmin.loanProvisionFrom;
-            cy.formController("status").type(lpData.statusSelect).type("{enter}");
-            cy.log(
-                "loan provision write-off status approved dropdown check successfully"
-            );
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lpData.statusSelect).type("{enter}");
+            cy.log(messages.ui.approveSuccess);
         });
     }
 

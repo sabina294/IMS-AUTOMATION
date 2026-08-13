@@ -597,7 +597,7 @@ class LoanProductManagementCreation {
     cy.fixture(this.test_data).then((data) => {
       const lpData = data.mfiAdmin.loanProductFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(lpData.selectStatus).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lpData.selectStatus).type("{enter}");
       cy.log(
         messages.ui.dropdownInactiveMessage
       );
@@ -606,7 +606,7 @@ class LoanProductManagementCreation {
   statusActiveDropdownCheck() {
     cy.fixture(this.test_data).then((data) => {
       const lpData = data.mfiAdmin.loanProductFrom;
-      cy.formController("status").type(lpData.statusSelect).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lpData.statusSelect).type("{enter}");
       cy.log(
         messages.ui.dropdownActiveMessage
       );
@@ -624,9 +624,7 @@ class LoanProductManagementCreation {
     cy.fixture(this.test_data).then((data) => {
       const lpData = data.mfiAdmin.loanProductFrom;
       cy.formController("office_id").type(lpData.SelectOffice).type("{enter}");
-      cy.log(
-        "Loan Product Management status office dropdown check successfully"
-      );
+      cy.log(messages.ui.officeDropdownMessage);
     });
   }
   gridResetButtonCheck() {
@@ -654,7 +652,7 @@ class LoanProductManagementCreation {
     cy.fixture(this.test_data).then((data) => {
       const lpData = data.mfiAdmin.loanProductFrom;
       cy.formController("office_id").type(lpData.office);
-      cy.log("Successfully select office in the loan product management");
+      cy.log(messages.ui.actionMessage);
     });
   }
 

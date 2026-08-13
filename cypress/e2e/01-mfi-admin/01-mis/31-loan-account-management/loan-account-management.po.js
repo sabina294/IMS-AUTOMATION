@@ -37,7 +37,7 @@ class LoanAccountManagement {
     cy.fixture(this.test_data).then((data) => {
       const laData = data.mfiAdmin.loanAccountManagementFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(laData.selectStatus).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(laData.selectStatus).type("{enter}");
       cy.log(
         messages.ui.dropdownInactiveMessage
       );
@@ -46,7 +46,7 @@ class LoanAccountManagement {
   statusActiveDropdownCheck() {
     cy.fixture(this.test_data).then((data) => {
       const laData = data.mfiAdmin.loanAccountManagementFrom;
-      cy.formController("status").type(laData.statusSelect).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(laData.statusSelect).type("{enter}");
       cy.log(
         messages.ui.dropdownActiveMessage
       );
@@ -64,9 +64,7 @@ class LoanAccountManagement {
     cy.fixture(this.test_data).then((data) => {
       const laData = data.mfiAdmin.loanAccountManagementFrom;
       cy.formController("samity_id").type(laData.search).type("{enter}");
-      cy.log(
-        "Loan account proposal Management status samity dropdown check successfully"
-      );
+      cy.log(messages.ui.samityDropdownMessage);
     });
   }
   gridResetButtonCheck() {

@@ -10,8 +10,8 @@ class RejectedEmployee {
       // cy.imsId(COMMON.BUTTONS.SUBMIT).and("be.visible");
 
       const emData = data.mraAdmin.rejectedEmployeeFrom;
-      cy.formController("name_en").type(emData.employeeNameEn);
-      cy.formController("name_bn").type(emData.employeeNameBn);
+      cy.formController(COMMON.INPUTS.NAME_EN).type(emData.employeeNameEn);
+      cy.formController(COMMON.INPUTS.NAME_BN).type(emData.employeeNameBn);
       cy.formController("date_of_birth").click();
       cy.contains("24").click({ force: true });
       cy.formController("gender").click();
@@ -91,7 +91,7 @@ class RejectedEmployee {
       // ✅ Wait until modal is closed before moving on
       cy.get("nz-modal-container").should("not.exist");
 
-      cy.log("✅ Successfully rejected employee");
+      cy.log(messages.ui.rejectSuccess);
     });
   }
 
@@ -199,7 +199,7 @@ class RejectedEmployee {
     cy.fixture(this.test_data).then((data) => {
       const emData = data.mraAdmin.rejectedEmployeeFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(emData.selectStatus).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(emData.selectStatus).type("{enter}");
       cy.log(
         messages.ui.dropdownInactiveMessage
       );
@@ -210,7 +210,7 @@ class RejectedEmployee {
     cy.fixture(this.test_data).then((data) => {
       const emData = data.mraAdmin.rejectedEmployeeFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(emData.statusSelect).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(emData.statusSelect).type("{enter}");
       cy.log(
         messages.ui.dropdownActiveMessage
       );

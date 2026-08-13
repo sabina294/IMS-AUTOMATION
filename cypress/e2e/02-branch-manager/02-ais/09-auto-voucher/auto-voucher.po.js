@@ -15,7 +15,7 @@ class AutoVoucher {
         cy.fixture(this.test_data).then((data) => {
             const avData = data.branchManager.autoVoucherFrom;
             cy.imsId(COMMON.BUTTONS.RESET).click();
-            cy.formController("status").type(avData.selectStatus).type("{enter}");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(avData.selectStatus).type("{enter}");
             cy.log(messages.ui.dropdownInactiveMessage);
         });
     }
@@ -23,7 +23,7 @@ class AutoVoucher {
     statusActiveDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
             const avData = data.branchManager.autoVoucherFrom;
-            cy.formController("status").type(avData.statusSelect).type("{enter}");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(avData.statusSelect).type("{enter}");
             cy.log(messages.ui.dropdownActiveMessage);
         });
     }
@@ -33,7 +33,7 @@ class AutoVoucher {
             const avData = data.branchManager.autoVoucherFrom;
             cy.imsId(COMMON.BUTTONS.RESET).click();
             cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(avData.preparedBy);
-            cy.log("Successfully search in the auto voucher");
+            cy.log(messages.ui.searchSuccess);
         });
     }
 

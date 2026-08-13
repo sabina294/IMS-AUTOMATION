@@ -182,23 +182,23 @@ class ManualJournalCreation {
 
     goBackManualJournal() {
         cy.imsId(COMMON.BUTTONS.GO_BACK).click();
-        cy.log("Successfully go back the manual journal page");
+        cy.log(messages.ui.goBackSuccess);
     }
 
     statusApproveDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
             const mjData = data.branchManager.manualJournal;
             cy.imsId(COMMON.BUTTONS.RESET).click();
-            cy.formController("status").type(mjData.selectStatus).type("{enter}");
-            cy.log("ledger sub group status inactive dropdown check successfully");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(mjData.selectStatus).type("{enter}");
+            cy.log(messages.ui.actionMessage);
         });
     }
 
     statusRejectedDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
             const mjData = data.branchManager.manualJournal;
-            cy.formController("status").type(mjData.statusSelect).type("{enter}");
-            cy.log("ledger sub group status active dropdown check successfully");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(mjData.statusSelect).type("{enter}");
+            cy.log(messages.ui.actionMessage);
         });
     }
 
@@ -207,7 +207,7 @@ class ManualJournalCreation {
             const mjData = data.branchManager.manualJournal;
             cy.imsId(COMMON.BUTTONS.RESET).click();
             cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(mjData.nameEn);
-            cy.log("Successfully search in the manual journal");
+            cy.log(messages.ui.searchSuccess);
         });
     }
 

@@ -17,7 +17,7 @@ class SavingsAccountClosure {
             const sacmData = data.branchManager.createSavingsAccountClosureManagement;
 
             cy.imsId(COMMON.BUTTONS.RESET).click();
-            cy.formController("status")
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN)
                 .type(sacmData.selectStatus)
                 .type("{enter}");
 
@@ -30,7 +30,7 @@ class SavingsAccountClosure {
             const sacmData = data.branchManager.createSavingsAccountClosureManagement;
 
             cy.imsId(COMMON.BUTTONS.RESET).click();
-            cy.formController("status")
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN)
                 .type(sacmData.statusSelect)
                 .type("{enter}");
 
@@ -45,7 +45,7 @@ class SavingsAccountClosure {
             cy.imsId(COMMON.BUTTONS.RESET).click();
             cy.formController(COMMON.INPUTS.SEARCH_TEXT).clear().type(sacmData.search);
 
-            cy.log("Savings Account Closure search completed successfully.");
+            cy.log(messages.ui.searchSuccess);
         });
     }
 

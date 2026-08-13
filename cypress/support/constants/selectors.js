@@ -31,8 +31,10 @@ export const COMMON = {
     CONFIRM: "btn-confirm",
     FORWARD_DELETE: "delete-button",
     CANCEL_MULTIPLE: "btn-cancel-multiple",
+    RESTORE_MULTIPLE: "btn-restore-multiple",
     RESTORE: "btn-restore-2",
-    CANCEL: "btn-cancel-2",
+    CANCEL_SAMITY: "btn-cancel-2",
+    SELECT_ALLCHECKBOX: "check-select-all",
     CHECK_SAMITY: "check-samity-2",
     TURN_EDIT_MODE: "switch-button",
     PROFILE: "profile-menu",
@@ -62,6 +64,13 @@ export const COMMON = {
 
   INPUTS: {
     SEARCH_TEXT: "search_text",
+    STATUS_DROPDOWN: "status",
+    NAME_EN: "name_en",
+    NAME_BN: "name_bn",
+    SHORT_NAME: "short_name",
+    DESCRIPTION_EN: "descriptionEn",
+    DESCRIPTION_BN: "descriptionBn",
+
   },
 
   TOGGLES: {

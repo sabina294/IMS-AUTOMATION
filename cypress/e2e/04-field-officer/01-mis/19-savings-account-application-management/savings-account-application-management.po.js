@@ -164,7 +164,7 @@ class SavingsAccApplicationManagementCreation {
       cy.imsId(COMMON.CONFIRMATION.YES).click();
       cy.imsId(COMMON.CONFIRMATION.OK).click();
 
-      cy.log("Successfully approve savings account application management");
+      cy.log(messages.ui.approveSuccess);
     });
   }
 
@@ -198,7 +198,7 @@ class SavingsAccApplicationManagementCreation {
     cy.fixture(this.test_data).then((data) => {
       const saamData = data.fieldOfficer.createSavingsAccApplicationMang;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(saamData.selectStatus).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(saamData.selectStatus).type("{enter}");
       cy.log(
         messages.ui.dropdownInactiveMessage
       );
@@ -209,7 +209,7 @@ class SavingsAccApplicationManagementCreation {
     cy.fixture(this.test_data).then((data) => {
       const saamData = data.fieldOfficer.createSavingsAccApplicationMang;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(saamData.statusSelect).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(saamData.statusSelect).type("{enter}");
       cy.log(
         messages.ui.dropdownActiveMessage
       );
@@ -221,9 +221,7 @@ class SavingsAccApplicationManagementCreation {
       const saamData = data.fieldOfficer.createSavingsAccApplicationMang;
       cy.imsId(COMMON.BUTTONS.RESET).click();
       cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(saamData.search);
-      cy.log(
-        "Successfully search in the savings account application management form"
-      );
+      cy.log(messages.ui.searchSuccess);
     });
   }
 

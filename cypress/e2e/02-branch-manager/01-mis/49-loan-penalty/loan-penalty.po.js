@@ -113,7 +113,7 @@ class LoanPenalty {
       const lpData = data.branchManager.createLoanPenaltyFrom;
       cy.imsId(COMMON.TOGGLES.ACTION).first().click();
       cy.imsId("btn-table-action-unsubmit").click();
-      cy.log("Successfully grid unsubmitted the Loan penalty list page");
+      cy.log(messages.form.submitSuccess);
     });
   }
 
@@ -121,7 +121,7 @@ class LoanPenalty {
     cy.fixture(this.test_data).then((data) => {
       const lpData = data.branchManager.createLoanPenaltyFrom;
       cy.imsId(COMMON.BUTTONS.GO_BACK).click();
-      cy.log("Successfully viewed go back the Loan penalty list page");
+      cy.log(messages.ui.goBackSuccess);
     });
   }
 
@@ -133,7 +133,7 @@ class LoanPenalty {
       cy.imsId("btn-unsubmit").click();
       cy.imsId(COMMON.CONFIRMATION.YES).click();
       cy.imsId(COMMON.CONFIRMATION.OK).click();
-      cy.log("Successfully unsubmitted the Loan penalty list page");
+      cy.log(messages.form.submitSuccess);
     });
   }
 
@@ -181,7 +181,7 @@ class LoanPenalty {
       cy.imsId(COMMON.CONFIRMATION.OK).click();
       cy.imsId(COMMON.TOGGLES.ACTION).first().click();
       cy.imsId("btn-table-action-submit").click();
-      cy.log("Successfully submitted the Loan penalty list page");
+      cy.log(messages.form.submitSuccess);
     });
   }
 
@@ -191,7 +191,7 @@ class LoanPenalty {
       cy.imsId("btn-save").click();
       cy.imsId(COMMON.CONFIRMATION.YES).click();
       cy.imsId(COMMON.CONFIRMATION.OK).click();
-      cy.log("Successfully submitted the Loan penalty list page");
+      cy.log(messages.form.submitSuccess);
     });
   }
 
@@ -200,8 +200,8 @@ class LoanPenalty {
     cy.fixture(this.test_data).then((data) => {
       const lpData = data.branchManager.createLoanPenaltyFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(lpData.selectStatus).type("{enter}");
-      cy.log("Loan penalty status submitted dropdown check successfully");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lpData.selectStatus).type("{enter}");
+      cy.log(messages.ui.actionMessage);
     });
   }
 
@@ -209,8 +209,8 @@ class LoanPenalty {
     cy.fixture(this.test_data).then((data) => {
       const lpData = data.branchManager.createLoanPenaltyFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(lpData.statusSelect).type("{enter}");
-      cy.log("Loan penalty status approved dropdown check successfully");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lpData.statusSelect).type("{enter}");
+      cy.log(messages.ui.approveSuccess);
     });
   }
 

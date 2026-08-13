@@ -124,7 +124,7 @@ class LoanRebate {
   goBackLoanRebate() {
     cy.fixture(this.test_data).then((data) => {
       cy.imsId(COMMON.BUTTONS.GO_BACK).click();
-      cy.log("Successfully viewed go back the Loan rebate list page");
+      cy.log(messages.ui.goBackSuccess);
     });
   }
 
@@ -132,16 +132,16 @@ class LoanRebate {
     cy.fixture(this.test_data).then((data) => {
       const lrData = data.fieldOfficer.createLoanRebateFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(lrData.selectStatus).type("{enter}");
-      cy.log("Loan rebate status submitted dropdown check successfully");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lrData.selectStatus).type("{enter}");
+      cy.log(messages.ui.actionMessage);
     });
   }
 
   statusApprovedDropdownCheck() {
     cy.fixture(this.test_data).then((data) => {
       const lrData = data.fieldOfficer.createLoanRebateFrom;
-      cy.formController("status").type(lrData.statusSelect).type("{enter}");
-      cy.log("Loan rebate  status approved dropdown check successfully");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lrData.statusSelect).type("{enter}");
+      cy.log(messages.ui.approveSuccess);
     });
   }
 

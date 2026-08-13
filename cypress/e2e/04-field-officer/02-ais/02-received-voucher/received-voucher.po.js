@@ -472,7 +472,7 @@ class ReceivedVoucherCreation {
             cy.imsId(COMMON.BUTTONS.SUBMIT).click();
             cy.imsId(COMMON.CONFIRMATION.OK).click();
 
-            cy.log("Successfully approved received voucher");
+            cy.log(messages.ui.approveSuccess);
         });
     }
 
@@ -484,7 +484,7 @@ class ReceivedVoucherCreation {
 
     detailsViewCheck() {
         cy.imsId(COMMON.GRID.ACTION_VIEW).click();
-        cy.log("Details view button clicked successfully on the received voucher list page.");
+        cy.log(messages.ui.viewMessage);
     }
 
     viewGoBackReceivedVoucher() {
@@ -496,7 +496,7 @@ class ReceivedVoucherCreation {
         cy.fixture(this.test_data).then((data) => {
             const rvData = data.fieldOfficer.receivedVoucher;
             cy.imsId(COMMON.BUTTONS.RESET).click();
-            cy.formController("status").type(rvData.selectStatus).type("{enter}");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(rvData.selectStatus).type("{enter}");
             cy.log(messages.ui.dropdownInactiveMessage);
         });
     }
@@ -504,7 +504,7 @@ class ReceivedVoucherCreation {
     statusActiveDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
             const rvData = data.fieldOfficer.receivedVoucher;
-            cy.formController("status").type(rvData.statusSelect).type("{enter}");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(rvData.statusSelect).type("{enter}");
             cy.log(messages.ui.dropdownActiveMessage);
         });
     }
@@ -514,7 +514,7 @@ class ReceivedVoucherCreation {
             const rvData = data.fieldOfficer.receivedVoucher;
             cy.imsId(COMMON.BUTTONS.RESET).click();
             cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(rvData.voucherNameBn);
-            cy.log("Successfully searched received voucher");
+            cy.log(messages.ui.searchSuccess);
         });
     }
 

@@ -25,7 +25,7 @@ class fundTransferCreation {
             cy.imsId(COMMON.CONFIRMATION.YES).click();
             cy.imsId(COMMON.CONFIRMATION.OK).click();
 
-            cy.log("Successfully created fund transfer");
+            cy.log(messages.ui.actionMessage);
         });
     }
 
@@ -39,7 +39,7 @@ class fundTransferCreation {
         cy.fixture(this.test_data).then((data) => {
             const ftData = data.mfiAdmin.fund;
             cy.imsId(COMMON.BUTTONS.RESET).click();
-            cy.formController("status").type(ftData.selectStatus).type("{enter}");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(ftData.selectStatus).type("{enter}");
             cy.log(messages.ui.dropdownInactiveMessage);
         });
     }
@@ -47,7 +47,7 @@ class fundTransferCreation {
     statusActiveDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
             const ftData = data.mfiAdmin.fund;
-            cy.formController("status").type(ftData.statusSelect).type("{enter}");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(ftData.statusSelect).type("{enter}");
             cy.log(messages.ui.dropdownActiveMessage);
         });
     }
@@ -57,7 +57,7 @@ class fundTransferCreation {
             const ftData = data.mfiAdmin.fund;
             cy.imsId(COMMON.BUTTONS.RESET).click();
             cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(ftData.senderPayment);
-            cy.log("Successfully search in the fund transfer");
+            cy.log(messages.ui.searchSuccess);
         });
     }
 

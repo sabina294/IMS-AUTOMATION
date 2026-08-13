@@ -53,7 +53,7 @@ class LoanPenalty {
         .contains(lpData.approveMessage)
         .and("be.visible");
       cy.imsId(COMMON.CONFIRMATION.OK).click();
-      cy.log("Successfully approved the loan penalty");
+      cy.log(messages.ui.approveSuccess);
     });
   }
 
@@ -99,9 +99,7 @@ class LoanPenalty {
     cy.fixture(this.test_data).then((data) => {
       const lpData = data.mfiAdmin.createLoanPenaltyFrom;
       cy.formController("office_id").type(lpData.selectOffice).type("{enter}");
-      cy.log(
-        "loan penalty office dropdown check successfully"
-      );
+      cy.log(messages.ui.officeDropdownMessage);
     });
   }
 
@@ -109,19 +107,15 @@ class LoanPenalty {
     cy.fixture(this.test_data).then((data) => {
       const lpData = data.mfiAdmin.createLoanPenaltyFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(lpData.selectStatus).type("{enter}");
-      cy.log(
-        "loan penalty status submitted dropdown check successfully"
-      );
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lpData.selectStatus).type("{enter}");
+      cy.log(messages.ui.actionMessage);
     });
   }
   statusApprovedDropdownCheck() {
     cy.fixture(this.test_data).then((data) => {
       const lpData = data.mfiAdmin.createLoanPenaltyFrom;
-      cy.formController("status").type(lpData.statusSelect).type("{enter}");
-      cy.log(
-        "loan penalty status approved dropdown check successfully"
-      );
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lpData.statusSelect).type("{enter}");
+      cy.log(messages.ui.approveSuccess);
     });
   }
 

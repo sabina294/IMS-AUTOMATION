@@ -734,7 +734,7 @@ class OfficeCreation {
     cy.fixture(this.test_data).then((data) => {
       const omData = data.mfiAdmin.createOfficeFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(omData.selectStatus).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(omData.selectStatus).type("{enter}");
       cy.log(messages.ui.dropdownInactiveMessage);
     });
   }
@@ -742,7 +742,7 @@ class OfficeCreation {
   statusActiveDropdownCheck() {
     cy.fixture(this.test_data).then((data) => {
       const omData = data.mfiAdmin.createOfficeFrom;
-      cy.formController("status").type(omData.statusSelect).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(omData.statusSelect).type("{enter}");
       cy.log(messages.ui.dropdownActiveMessage);
     });
   }
@@ -783,18 +783,18 @@ class OfficeCreation {
   gridCheckboxCheck() {
     cy.imsId("row-checkbox-2").click();
     cy.imsId(COMMON.BUTTONS.RESET).click();
-    cy.log("Checkbox should be clickable and functional.");
+    cy.log(messages.ui.checkboxMessage);
   }
 
   gridCheckboxLockButtonCheck() {
     // cy.imsId("btn-lock").click();
-    // cy.log("Checkbox lock button should be clickable and functional.");
+    // cy.log(messages.ui.lockSuccess);
   }
 
   gridCheckboxUnlockButtonCheck() {
     // cy.imsId("row-checkbox-2").click();
     // cy.imsId("btn-unlock").click();
-    // cy.log("Checkbox unlock button should be clickable and functional.");
+    // cy.log(messages.ui.unlockSuccess);
   }
 
   createResetButtonCheck() {
@@ -899,7 +899,7 @@ class OfficeCreation {
     cy.imsId("btn-Approve").click();
     cy.imsId(COMMON.CONFIRMATION.YES).click();
     cy.imsId(COMMON.CONFIRMATION.OK).click();
-    cy.log("Successfully approve office management");
+    cy.log(messages.ui.approveSuccess);
   }
 
   gridLanguageSwitchCheck() {

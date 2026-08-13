@@ -84,7 +84,7 @@ class MemberManagementCreation {
       const memData = data.mfiAdmin.createMemberFrom;
          cy.imsId("menu-my-task").click();
       cy.imsId("submenu-awaiting-member-management").click();
-      cy.log("Successfully navigate to my task menu member management");
+      cy.log(messages.ui.actionMessage);
     });
   }
 
@@ -92,20 +92,18 @@ class MemberManagementCreation {
     cy.fixture(this.test_data).then((data) => {
       const memData = data.mfiAdmin.createMemberFrom;
       cy.formController("office_id").type(memData.office).type("{enter}");
-      cy.log("Successfully navigate to my task menu member management office dropdown");
+      cy.log(messages.ui.officeDropdownMessage);
     });
   }
 
   myTaskResetButtonCheck() {
     cy.imsId(COMMON.BUTTONS.RESET).click();
-    cy.log("Successful clean my task displaying.");
+    cy.log(messages.ui.resetSuccess);
   }
 
   myTaskRefreshButtonCheck() {
     cy.imsId(COMMON.BUTTONS.REFRESH).click();
-    cy.log(
-      "successfully refresh page  displayed the my task list of the Member Management form "
-    );
+    cy.log(messages.ui.refreshSuccess);
   }
 
   myTaskSearchButtonCheck() {
@@ -114,7 +112,7 @@ class MemberManagementCreation {
       cy.imsId(COMMON.BUTTONS.RESET).click();
       cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(memData.memberNameEn);
       cy.imsId(COMMON.BUTTONS.SEARCH).click();
-      cy.log("Successful my task search button click.");
+      cy.log(messages.ui.searchSuccess);
     });
   }
 
@@ -127,7 +125,7 @@ class MemberManagementCreation {
       cy.imsId(COMMON.BUTTONS.APPROVE).click();
       cy.imsId(COMMON.BUTTONS.SUBMIT).click();
       cy.imsId(COMMON.CONFIRMATION.OK).click();
-      cy.log("Successfully approved the member management ");
+      cy.log(messages.ui.approveSuccess);
     });
   }
 
@@ -203,7 +201,7 @@ class MemberManagementCreation {
     cy.fixture(this.test_data).then((data) => {
       const memData = data.mfiAdmin.createMemberFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(memData.selectStatus).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(memData.selectStatus).type("{enter}");
       cy.log(messages.ui.dropdownInactiveMessage);
     });
   }
@@ -211,7 +209,7 @@ class MemberManagementCreation {
   statusActiveDropdownCheck() {
     cy.fixture(this.test_data).then((data) => {
       const memData = data.mfiAdmin.createMemberFrom;
-      cy.formController("status").type(memData.statusSelect).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(memData.statusSelect).type("{enter}");
       cy.log(messages.ui.dropdownActiveMessage);
     });
   }
@@ -240,18 +238,18 @@ class MemberManagementCreation {
   gridCheckboxCheck() {
     cy.imsId("row-checkbox-8").click();
     cy.imsId(COMMON.BUTTONS.RESET).click();
-    cy.log("Checkbox should be clickable and functional.");
+    cy.log(messages.ui.checkboxMessage);
   }
 
   gridCheckboxLockButtonCheck() {
     cy.imsId("btn-lock").click();
-    cy.log("Checkbox lock button should be clickable and functional.");
+    cy.log(messages.ui.lockSuccess);
   }
 
   gridCheckboxUnlockButtonCheck() {
     cy.imsId("row-checkbox-8").click();
     cy.imsId("btn-unlock").click();
-    cy.log("Checkbox unlock button should be clickable and functional.");
+    cy.log(messages.ui.unlockSuccess);
   }
 
 
@@ -271,7 +269,7 @@ class MemberManagementCreation {
     cy.fixture(this.test_data).then((data) => {
       const memData = data.mfiAdmin.createMemberFrom;
       cy.formController("office_id").type(memData.office);
-      cy.log("Successfully select office in the member management");
+      cy.log(messages.ui.actionMessage);
     });
   }
 

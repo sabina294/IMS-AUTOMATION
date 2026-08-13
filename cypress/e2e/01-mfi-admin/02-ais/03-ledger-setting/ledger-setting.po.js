@@ -44,7 +44,7 @@ class LedgerSetting {
         cy.fixture(this.test_data).then((data) => {
             const lsData = data.mfiAdmin.ledgerSetting;
             cy.imsId(COMMON.BUTTONS.RESET).click();
-            cy.formController("status").type(lsData.selectStatus).type("{enter}");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lsData.selectStatus).type("{enter}");
             cy.log(messages.ui.dropdownInactiveMessage);
         });
     }
@@ -52,7 +52,7 @@ class LedgerSetting {
     statusActiveDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
             const lsData = data.mfiAdmin.ledgerSetting;
-            cy.formController("status").type(lsData.statusSelect).type("{enter}");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(lsData.statusSelect).type("{enter}");
             cy.log(messages.ui.dropdownActiveMessage);
         });
     }
@@ -62,7 +62,7 @@ class LedgerSetting {
             const lsData = data.mfiAdmin.ledgerSetting;
             cy.imsId(COMMON.BUTTONS.RESET).click();
             cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(lsData.nameEn);
-            cy.log("Successfully search in the ledger sub group");
+            cy.log(messages.ui.searchSuccess);
         });
     }
 

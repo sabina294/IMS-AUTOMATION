@@ -6,7 +6,7 @@ class OfficeGrid {
   gridOfficePage() {
     cy.fixture(this.test_data).then((data) => {
       cy.selectMenu1("menu-office");
-      cy.log("Successfully office list page.");
+      cy.log(messages.ui.gridListMessage);
     });
   }
 
@@ -44,7 +44,7 @@ class OfficeGrid {
     cy.fixture(this.test_data).then((data) => {
       const omData = data.branchManager.gridOfficeFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(omData.selectStatus).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(omData.selectStatus).type("{enter}");
       cy.log(messages.ui.dropdownInactiveMessage);
     });
   }
@@ -52,7 +52,7 @@ class OfficeGrid {
   statusActiveDropdownCheck() {
     cy.fixture(this.test_data).then((data) => {
       const omData = data.branchManager.gridOfficeFrom;
-      cy.formController("status").type(omData.statusSelect).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(omData.statusSelect).type("{enter}");
       cy.log(messages.ui.dropdownActiveMessage);
     });
   }
@@ -107,18 +107,18 @@ class OfficeGrid {
 
   gridCheckboxCheck() {
     cy.imsId("row-checkbox-4").click();
-    cy.log("Checkbox lock button should be clickable and functional.");
+    cy.log(messages.ui.lockSuccess);
   }
 
   gridCheckboxLockButtonCheck() {
     cy.imsId("btn-lock").click();
-    cy.log("Checkbox lock button should be clickable and functional.");
+    cy.log(messages.ui.lockSuccess);
   }
 
   gridCheckboxUnlockButtonCheck() {
     cy.imsId("row-checkbox-4").click();
     cy.imsId("btn-unlock").click();
-    cy.log("Checkbox unlock button should be clickable and functional.");
+    cy.log(messages.ui.unlockSuccess);
   }
 
 

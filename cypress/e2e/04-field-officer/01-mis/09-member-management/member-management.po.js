@@ -136,8 +136,8 @@ class MemberManagementCreation {
     cy.fixture(this.test_data).then((data) => {
       const memData = data.fieldOfficer.createMemberFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(memData.search);
-      cy.imsId(COMMON.BUTTONS.SEARCH).click();
+      // cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(memData.search);
+      // cy.imsId(COMMON.BUTTONS.SEARCH).click();
       cy.imsId(COMMON.TOGGLES.ACTION).first().click();
       cy.imsId("btn-mis-table-action-edit").click();
       cy.imsId(COMMON.BUTTONS.SUBMIT).click();
@@ -154,13 +154,13 @@ class MemberManagementCreation {
       cy.imsId(COMMON.BUTTONS.RESET).click();
       cy.imsId(COMMON.TOGGLES.ACTION).first().click();
       cy.imsId("btn-mis-table-action-profile").click();
-      cy.log("Successfully profile viewed the member management list page");
+      cy.log(messages.ui.viewMessage);
     });
   }
 
   profileViewGoBackButton() {
     cy.imsId(COMMON.BUTTONS.GO_BACK).click();
-    cy.log("Successfully profile view go back the  member management list page");
+    cy.log(messages.ui.goBackSuccess);
   }
 
 
@@ -168,7 +168,7 @@ class MemberManagementCreation {
     cy.fixture(this.test_data).then((data) => {
       const memData = data.fieldOfficer.createMemberFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(memData.selectStatus).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(memData.selectStatus).type("{enter}");
       cy.log(messages.ui.dropdownInactiveMessage);
     });
   }
@@ -177,7 +177,7 @@ class MemberManagementCreation {
     cy.fixture(this.test_data).then((data) => {
       const memData = data.fieldOfficer.createMemberFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(memData.statusSelect).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(memData.statusSelect).type("{enter}");
       cy.log(messages.ui.dropdownActiveMessage);
     });
   }
@@ -231,19 +231,22 @@ class MemberManagementCreation {
   gridCheckboxCheck() {
     cy.imsId("row-checkbox-7").click();
     // cy.imsId(COMMON.BUTTONS.RESET).click();
-    cy.log("Checkbox should be clickable and functional.");
+    cy.log(messages.ui.checkboxMessage);
   }
 
   gridCheckboxLockButtonCheck() {
-    cy.imsId("btn-lock").click();
-    cy.log("Checkbox lock button should be clickable and functional.");
+    cy.imsId(COMMON.BUTTONS.LOCK).click();
+    cy.log(messages.ui.lockSuccess);
   }
 
-  gridCheckboxUnlockButtonCheck() {
+ gridCheckboxUnlockButtonCheck() {
     cy.imsId("row-checkbox-7").click();
-    cy.imsId("btn-unlock").click();
-    cy.log("Checkbox unlock button should be clickable and functional.");
-  }
+    cy.imsId(COMMON.BUTTONS.UNLOCK)
+        .should("be.visible")
+        .and("not.be.disabled")
+        .click();
+    cy.log(messages.ui.unlockSuccess);
+}
 
   gridDraftButton() {
     cy.imsId(COMMON.GRID.DRAFT_TOGGLE)

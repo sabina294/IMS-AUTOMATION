@@ -95,14 +95,14 @@ verifyFundTransfer() {
         cy.fixture(this.test_data).then((data) => {
             cy.imsId(COMMON.TOGGLES.ACTION).first().click();
             cy.imsId("btn-table-action-verify").click();
-            cy.log("Successfully viewed the fund  transfer page");
+            cy.log(messages.ui.viewMessage);
         });
     }
 
     verifyFundTransferGoBack() {
         cy.fixture(this.test_data).then((data) => {
             cy.imsId(COMMON.BUTTONS.GO_BACK).click();
-            cy.log("Successfully viewed the fund verify go back page");
+            cy.log(messages.ui.goBackSuccess);
         });
     }
 
@@ -110,7 +110,7 @@ verifyFundTransfer() {
         cy.fixture(this.test_data).then((data) => {
             const ftData = data.branchManager.fund;
             cy.imsId(COMMON.BUTTONS.RESET).click();
-            cy.formController("status").type(ftData.selectStatus).type("{enter}");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(ftData.selectStatus).type("{enter}");
             cy.log(messages.ui.dropdownInactiveMessage);
         });
     }
@@ -118,7 +118,7 @@ verifyFundTransfer() {
     statusActiveDropdownCheck() {
         cy.fixture(this.test_data).then((data) => {
             const ftData = data.branchManager.fund;
-            cy.formController("status").type(ftData.statusSelect).type("{enter}");
+            cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(ftData.statusSelect).type("{enter}");
             cy.log(messages.ui.dropdownActiveMessage);
         });
     }
@@ -128,7 +128,7 @@ verifyFundTransfer() {
             const ftData = data.branchManager.fund;
             cy.imsId(COMMON.BUTTONS.RESET).click();
             cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(ftData.search);
-            cy.log("Successfully search in the fund transfer");
+            cy.log(messages.ui.searchSuccess);
         });
     }
 

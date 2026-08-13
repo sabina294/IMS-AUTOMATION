@@ -88,7 +88,7 @@ class EmployeeManagement {
     cy.fixture(this.test_data).then((data) => {
       const emData = data.fieldOfficer.gridEmpMangFrom;
       cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController("status").type(emData.selectStatus).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(emData.selectStatus).type("{enter}");
       cy.log(
         messages.ui.dropdownInactiveMessage
       );
@@ -98,7 +98,7 @@ class EmployeeManagement {
   statusActiveDropdownCheck() {
     cy.fixture(this.test_data).then((data) => {
       const emData = data.fieldOfficer.gridEmpMangFrom;
-      cy.formController("status").type(emData.statusSelect).type("{enter}");
+      cy.formController(COMMON.INPUTS.STATUS_DROPDOWN).type(emData.statusSelect).type("{enter}");
       cy.log(
         messages.ui.dropdownActiveMessage
       );
@@ -129,18 +129,18 @@ class EmployeeManagement {
   gridCheckboxCheck() {
     cy.imsId("row-checkbox-3").click();
     cy.imsId(COMMON.BUTTONS.RESET).click();
-    cy.log("Checkbox should be clickable and functional.");
+    cy.log(messages.ui.checkboxMessage);
   }
 
   gridCheckboxLockButtonCheck() {
     cy.imsId("btn-lock").click();
-    cy.log("Checkbox lock button should be clickable and functional.");
+    cy.log(messages.ui.lockSuccess);
   }
 
   gridCheckboxUnlockButtonCheck() {
     cy.imsId("row-checkbox-3").click();
     cy.imsId("btn-unlock").click();
-    cy.log("Checkbox unlock button should be clickable and functional.");
+    cy.log(messages.ui.unlockSuccess);
   }
 
   gridDraftButton() {
