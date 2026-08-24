@@ -120,7 +120,111 @@ describe("06. Area Module Test Cases", function () {
     create_area.gridSearchButtonCheck();
   });
 
-  it("06.25. Verify that the grid list content updates correctly when switching the language from English to Bangla.", function () {
+  it("06.25. Verify that the Area List page displays all required table columns correctly.", function () {
+    create_area.gridColumnsCheck();
+  });
+
+  it("06.26. Verify that the Area Name column can be sorted in ascending order.", function () {
+    create_area.areaNameAscendingSort();
+  });
+
+  it("06.27. Verify that the Area Name column can be sorted in descending order.", function () {
+    create_area.areaNameDescendingSort();
+  });
+
+  it("06.28. Verify that searching with a non-existing area name displays no matching records.", function () {
+    create_area.searchNoResult();
+  });
+
+  it("06.29. Verify that partial area name search returns matching records.", function () {
+    create_area.partialSearch();
+  });
+
+  it("06.30. Verify that clearing the search text restores the complete area list.", function () {
+    create_area.clearSearch();
+  });
+
+  it("06.31. Verify that the pagination control works correctly for the Area grid.", function () {
+    create_area.paginationCheck();
+  });
+
+  it("06.32. Verify that the selected page size is applied correctly to the Area grid.", function () {
+    create_area.pageSizeCheck();
+  });
+
+  it("06.33. Verify that the Add Area button redirects the user to the Area Creation page.", function () {
+    create_area.addAreaNavigation();
+  });
+
+  it("06.34. Verify that the Area Creation page displays all required fields correctly.", function () {
+    create_area.createPageFieldCheck();
+  });
+
+  it("06.35. Verify that the Area Name field handles whitespace-only input correctly.", function () {
+    create_area.areaNameSpaceValidation();
+  });
+
+  it("06.36. Verify that the Area Name (Bangla) field handles whitespace-only input correctly.", function () {
+    create_area.areaNameBnSpaceValidation();
+  });
+
+  it("06.37. Verify that the default status is displayed correctly on the Area Creation page.", function () {
+    create_area.defaultStatusCheck();
+  });
+
+  it("06.38. Verify that all available status options are displayed in the status dropdown.", function () {
+    create_area.statusOptionsCheck();
+  });
+
+  it("06.39. Verify that duplicate area names cannot be created.", function () {
+    create_area.duplicateAreaCheck();
+  });
+
+  it("06.40. Verify that the Area Code field accepts valid alphanumeric values.", function () {
+    create_area.areaCodeValidInputCheck();
+  });
+
+  it("06.41. Verify that the Area Code field does not accept duplicate area codes.", function () {
+    create_area.duplicateAreaCodeCheck();
+  });
+
+  it("06.42. Verify that the Area Code field handles whitespace-only input correctly.", function () {
+    create_area.areaCodeSpaceValidation();
+  });
+
+  it("06.43. Verify that the Area Code field rejects invalid special character input.", function () {
+    create_area.areaCodeSpecialCharacterValidation();
+  });
+
+  it("06.44. Verify that the Area Name (English) field rejects input exceeding the maximum allowed character length.", function () {
+    create_area.areaNameEnMaxLengthCheck();
+  });
+
+  it("06.45. Verify that the Area Name (Bangla) field rejects input exceeding the maximum allowed character length.", function () {
+    create_area.areaNameBnMaxLengthCheck();
+  });
+
+  it("06.46. Verify that the Area Code field rejects input exceeding the maximum allowed character length.", function () {
+    create_area.areaCodeMaxLengthCheck();
+  });
+
+  it("06.47. Verify that leading and trailing spaces are handled correctly in Area Name fields.", function () {
+    create_area.areaNameTrimValidation();
+  });
+
+  it("06.48. Verify that the Area Creation form prevents submission when invalid data is entered in multiple required fields.", function () {
+    create_area.multipleInvalidFieldValidation();
+  });
+
+  it("06.49. Verify that changing the selected status on the Area Creation page updates the status value correctly.", function () {
+    create_area.changeStatusCheck();
+  });
+
+  it("06.50. Verify that selecting a zone on the Area Creation page updates the Zone field correctly.", function () {
+    create_area.zoneSelectionCheck();
+  });
+
+  it("06.51. Verify that the grid list content updates correctly when switching the language from English to Bangla.", function () {
     create_area.gridLanguageSwitchCheck();
   });
 });

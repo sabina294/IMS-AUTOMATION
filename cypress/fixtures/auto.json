@@ -19,12 +19,39 @@
       "selectStatus": "Inactive",
       "statusSelect": "Active",
       "search": "Test Department",
-      "duplicateNameEn": "Board of Directors",
-      "duplicateNameBn": "পরিচালনা বোর্ড",
       "partialSearch": "Finance",
       "invalidSearch": "XYZ_NON_EXISTING_DEPARTMENT",
       "spaceOnly": "     ",
-      "pageSize": "20"
+      "pageSize": "20",
+      "breadcrumbHome": "Home",
+      "breadcrumbConfiguration": "Configuration",
+      "breadcrumbDepartment": "Department",
+      "breadcrumbList": "List",
+      "breadcrumbCreate": "Create",
+      "numberColumn": "#",
+      "nameEnColumn": "Department Name",
+      "nameBnColumn": "Department Name (Bangla)",
+      "statusColumn": "Status",
+      "actionsColumn": "Actions",
+      "specialCharacterNameEn": "Department @#$%",
+      "specialCharacterNameBn": "বিভাগ @#$%",
+      "longNameEn": "Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department Department",
+      "longNameBn": "বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ বিভাগ",
+      "unsavedNameEn": "Unsaved Department Name",
+      "selectedStatusNamePrefix": "Selected Status Department",
+      "selectedStatusNameBn": "নির্বাচিত স্ট্যাটাস বিভাগ",
+      "confirmationNamePrefix": "Confirmed Department",
+      "confirmationNameBn": "নিশ্চিত বিভাগ",
+      "updatedNamePrefix": "Updated Department",
+      "activeNamePrefix": "Active Department",
+      "activeNameBn": "সক্রিয় বিভাগ",
+      "inactiveNamePrefix": "Inactive Department",
+      "inactiveNameBn": "নিষ্ক্রিয় বিভাগ",
+      "validStatuses": [
+        "Active",
+        "Inactive"
+      ],
+      "defaultLanguage": "english"
     },
     "createDesignationFrom": {
       "nameEn": "Test Designation",
@@ -40,36 +67,102 @@
       "invalidSearch": "XYZ_NON_EXISTING_DESIGNATION",
       "partialSearch": "Test",
       "spaceOnly": "   ",
-      "pageSize": "20"
+      "pageSize": "20",
+      "designationIdColumn": "Designation Id",
+      "nameBnColumn": "Designation Name (Bangla)",
+      "shortNameColumn": "Designation Short Name",
+      "statusColumn": "Status",
+      "actionsColumn": "Actions",
+      "numberColumn": "#",
+      "nameEnColumn": "Designation Name",
+      "totalRecordNumberPattern": "\\d+",
+      "breadcrumbHome": "Home",
+      "breadcrumbConfiguration": "Configuration",
+      "breadcrumbDesignation": "Designation",
+      "breadcrumbList": "List",
+      "breadcrumbCreate": "Create",
+      "validStatuses": [
+        "Active",
+        "Inactive"
+      ],
+      "specialCharacterNameEn": "Designation @#$%",
+      "specialCharacterNameBn": "পদবী @#$%",
+      "longNameEn": "Designation Designation Designation Designation Designation Designation Designation Designation Designation Designation Designation Designation Designation Designation Designation Designation Designation Designation Designation Designation",
+      "longNameBn": "পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী পদবী",
+      "selectedStatusNamePrefix": "Selected Status Designation",
+      "confirmationNamePrefix": "Confirmed Designation",
+      "updatedNamePrefix": "Updated Designation",
+      "unsavedNameEn": "Unsaved Designation Name",
+      "activeNamePrefix": "Active Designation",
+      "inactiveNamePrefix": "Inactive Designation"
     },
     "createRegionFrom": {
       "nameEn": "Test Region",
       "nameBn": "পরীক্ষা অঞ্চল",
       "regionCode": "65",
+      "code": "TR65",
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test Region"
+      "search": "Test Region",
+      "duplicateNameEn": "Test Region",
+      "duplicateNameBn": "পরীক্ষার অঞ্চল",
+      "duplicateCode": "TR",
+      "invalidSearch": "XYZ_NON_EXISTING_REGION",
+      "partialSearch": "Test",
+      "spaceOnly": "   ",
+      "pageSize": "20",
+      "specialCharacterCode": "REG@#$",
+      "maxLengthNameEn": "Region Region Region Region Region Region Region Region Region Region Region Region Region Region Region Region Region Region Region Region",
+      "maxLengthNameBn": "অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল",
+      "maxLengthCode": "REGION-CODE-OVER-MAXIMUM-LENGTH-1234567890",
+      "nameEnWithSpaces": "  Test Region  "
     },
     "createZoneFrom": {
-      "nameEn": "Test Zone ",
-      "nameBn": "পরীক্ষা জোন ",
+      "nameEn": "Test Zone",
+      "nameBn": "পরীক্ষা অঞ্চল",
       "regionName": "Dhaka",
       "zoneCode": "65",
+      "code": "TZ65",
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test Zone"
+      "search": "Test Zone",
+      "duplicateNameEn": "Test Zone",
+      "duplicateNameBn": "পরীক্ষার অঞ্চল",
+      "duplicateCode": "TZ",
+      "invalidSearch": "XYZ_NON_EXISTING_ZONE",
+      "partialSearch": "Test",
+      "spaceOnly": "   ",
+      "pageSize": "20",
+      "specialCharacterCode": "ZON@#$",
+      "maxLengthNameEn": "Zone Zone Zone Zone Zone Zone Zone Zone Zone Zone Zone Zone Zone Zone Zone Zone Zone Zone Zone Zone",
+      "maxLengthNameBn": "অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল অঞ্চল",
+      "maxLengthCode": "ZONE-CODE-OVER-MAXIMUM-LENGTH-1234567890",
+      "nameEnWithSpaces": "  Test Zone  "
     },
     "createAreaFrom": {
       "nameEn": "Test Area ",
       "nameBn": "পরীক্ষা এলাকা ",
       "zoneName": "Dhaka",
       "areaCode": "65",
+      "code": "TA65",
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test Area"
+      "search": "Test Area",
+      "duplicateNameEn": "Test Area",
+      "duplicateNameBn": "পরীক্ষা এলাকা",
+      "duplicateCode": "65",
+      "invalidSearch": "XYZ_NON_EXISTING_AREA",
+      "partialSearch": "Test",
+      "spaceOnly": "   ",
+      "pageSize": "20",
+      "specialCharacterCode": "ARE@#$",
+      "maxLengthNameEn": "Area Area Area Area Area Area Area Area Area Area Area Area Area Area Area Area Area Area Area Area",
+      "maxLengthNameBn": "এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা এলাকা",
+      "maxLengthCode": "AREA-CODE-OVER-MAXIMUM-LENGTH-1234567890",
+      "nameEnWithSpaces": "  Test Area  "
     },
     "createBankAccountFrom": {
       "bankName": "AGRANI BANK LTD.",
@@ -81,7 +174,35 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Sabina Yeasmin"
+      "search": "Sabina Yeasmin",
+      "duplicateAccountNumber": "0020672606",
+      "invalidAccountNumber": "INVALID_ACCOUNT_NUMBER",
+      "updatedAccNameEn": "Updated Account Name",
+      "invalidSearch": "XYZ_NON_EXISTING_BANK_ACCOUNT",
+      "partialSearch": "Sabina",
+      "spaceOnly": "   ",
+      "pageSize": "20",
+      "addButtonText": "Add Bank Account",
+      "searchPlaceholder": "Search Here",
+      "listPath": "/bank-account/list",
+      "viewPath": "/bank-account/view/",
+      "gridColumns": [
+        "Bank",
+        "Bank Branch",
+        "Account Name",
+        "Account Name (Bangla)",
+        "Account Number",
+        "Status"
+      ],
+      "viewLabels": {
+        "bank": "Bank",
+        "bankBranch": "Bank Branch",
+        "accountNameEn": "Account Name (English)",
+        "accountNameBn": "Account Name (Bangla)",
+        "accountType": "Account Type",
+        "accountNumber": "Account Number",
+        "status": "Status"
+      }
     },
     "createFeeConfigurationFrom": {
       "FeeCollCode": "87",
@@ -91,7 +212,20 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test Fee"
+      "search": "Test Fee",
+      "existingFeeName": "Member Admission Fee",
+      "invalidSearch": "XYZ_NON_EXISTING_FEE_CONFIGURATION",
+      "gridColumns": [
+        "#",
+        "Fee Collection Code",
+        "Fee Type Name (English)",
+        "Ledger ID",
+        "Subledger ID",
+        "Amount",
+        "Remarks",
+        "Status",
+        "Actions"
+      ]
     },
     "createAmountBasedLoanFrom": {
       "officeTypeId": "Branch Office",
@@ -101,7 +235,20 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Branch Manager"
+      "search": "Branch Manager",
+      "existingRole": "Branch Accountant",
+      "invalidSearch": "XYZ_NON_EXISTING_LOAN_APPROVAL_ROLE",
+      "gridColumns": [
+        "#",
+        "Role ID",
+        "Role",
+        "Office Type ID",
+        "Office Type",
+        "Minimum Loan Amount",
+        "Maximum Loan Amount",
+        "Status",
+        "Actions"
+      ]
     },
     "createFundingOrganizationFrom": {
       "FundingNameEn": "Test",
@@ -110,7 +257,10 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Test"
+      "search": "Test",
+      "existingOrganizationName": "BRAC",
+      "invalidSearch": "NO_SUCH_FUNDING_ORG_987654321",
+      "gridColumns": ["#", "ID/Short Code", "Funding Organization Name", "Funding Organization Type", "Status", "Actions"]
     },
     "createLoanFundFrom": {
       "bankAccount": "Dhaka Zonal Office",
@@ -119,7 +269,10 @@
       "status": "Active",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Dhaka Zonal Office"
+      "search": "Dhaka Zonal Office",
+      "existingLoanFundId": "PKSF-1001",
+      "invalidSearch": "NO_SUCH_LOAN_FUND_987654321",
+      "gridColumns": ["#", "Loan Fund Id", "Bank Account", "Funding Organization", "Funding Notes", "Amount", "Loan Availability Date", "Status", "Actions"]
     },
     "createMfiProgramFrom": {
       "programNameEn": "Sahosh",
@@ -131,7 +284,10 @@
       "statusSelect": "Active",
       "search": "Sahosh",
       "messageSaveMfiProgram": "Mfi program has been saved",
-      "messageUpdateMfiProgram": "Mfi program has been updated"
+      "messageUpdateMfiProgram": "Mfi program has been updated",
+      "existingProgramName": "Sahosh",
+      "invalidSearch": "NO_SUCH_MFI_PROGRAM_987654321",
+      "gridColumns": ["#", "MFI Program Id", "Name English", "Name Bangla", "Short Name", "Funding Category", "Status", "Actions"]
     },
     "createOfficeFrom": {
       "officeNameEn": "Test Office",
@@ -153,7 +309,10 @@
       "statusSelect": "Active",
       "search": "Test Office",
       "messageSaveOffice": "Office has been saved",
-      "messageUpdateOffice": "Office has been updated"
+      "messageUpdateOffice": "Office has been updated",
+      "existingOfficeName": "Head Office",
+      "invalidSearch": "OFFICE-NOT-FOUND-987654",
+      "gridColumns": ["#", "Office ID", "Company Office ID", "Name", "Type", "Program", "Locked by", "Status", "Actions"]
     },
     "approveOfficeFrom": {
       "officeNameEn": "Test Office",
@@ -272,10 +431,10 @@
       "search": "Test Samity"
     },
     "rejectedSamityFrom": {
-      "samityNameEn": "Feni Samity",
-      "samityNameBn": "ফেনী সমিতি",
-      "draftName": "Test",
-      "draftNameBn": "পরীক্ষা",
+      "samityNameEn": "Dhaka Samity",
+      "samityNameBn": "ঢাকা সমিতি",
+      "draftName": "Dhaka",
+      "draftNameBn": "ঢাকা",
       "samityType": "Female",
       "office": "1020 (Ashulia)",
       "fieldOfficer": "EMP-0121 - MD.ABDUR RAHAMAN",
@@ -1009,6 +1168,7 @@
     "memberSamityTransferFrom": {
       "memberNameEn": "Misti Akter",
       "newSamityTransfer": "1020-102 (Dholpur Mohila Samity)",
+      "againSamityTransfer": "1020-106 (Belma Mohila Samity)",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
       "SelectOffice": "1020 (Ashulia)",
@@ -1668,7 +1828,7 @@
     },
     "createMemberFrom": {
       "smity": "1020-101 (Ashulia Mohila Samity)",
-      "memberNameEn": "Sabina Yeasmin",
+      "memberNameEn": "Suborna",
       "mfiProgram": "Jagoron",
       "savingsId": "General Savings",
       "occupation": "Business",

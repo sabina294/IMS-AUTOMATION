@@ -5,14 +5,23 @@ class cancelSamity {
     test_data = Cypress.env("TEST_DATA");
 
     gridCancelSamityListPage() {
-        cy.fixture(this.test_data).then((data) => {
-            cy.selectMenu("menu-process", "submenu-cancel-samity");
-            cy.log(messages.ui.gridListMessage);
-        });
+        cy.selectMenu("menu-process", "submenu-cancel-samity");
+        cy.location("pathname", { timeout: 30000 })
+            .should("include", "/process/cancel-samity");
+        cy.get(COMMON.TABLE.BODY, { timeout: 30000 })
+            .should("be.visible");
+        cy.log(messages.ui.gridListMessage);
     }
 
     gridCheckboxCheck() {
-        cy.imsId(COMMON.BUTTONS.CHECK_SAMITY).click();
+        cy.contains(
+            `${COMMON.TABLE.BODY} tr`,
+            "Samity Staging Data Generate",
+            { timeout: 30000 }
+        )
+            .should("be.visible")
+            .find("input[type='checkbox']:not(:disabled)")
+            .check({ force: true });
         cy.log(messages.ui.checkboxMessage);
     }
 
@@ -31,40 +40,43 @@ class cancelSamity {
     }
 
     cancelSamity() {
-    cy.fixture(this.test_data).then((data) => {
-        const csData = data.branchManager.cancelSamity;
-        // Wait for the target Samity row to be available
-        cy.contains("td", "Samity Staging Data Generated", {
-            timeout: 15000,
-        })
-            .should("be.visible")
-            .closest("tr")
-            .within(() => {
-                // Click Cancel only inside the target row
-                cy.get("[data-ims-id^='btn-cancel-']")
-                    .filter(":visible")
-                    .first()
-                    .should("be.visible")
-                    .click();
-            });
-            
-        // Confirmation
-        cy.imsId(COMMON.CONFIRMATION.YES)
-            .should("be.visible")
-            .click();
+        cy.fixture(this.test_data).then((data) => {
+            const csData = data.branchManager.cancelSamity;
+            const cancelButton = `[data-ims-id='${COMMON.BUTTONS.CANCEL_SAMITY}']`;
 
-        // Remarks
-        cy.get('[formcontrolname="remarks"]')
-            .should("be.visible")
-            .and("not.be.disabled")
-            .clear()
-            .type(csData.remarksCancel);
-    });
-}
+            cy.get(COMMON.TABLE.BODY, { timeout: 30000 })
+                .should("be.visible")
+                .find(cancelButton, { timeout: 30000 })
+                .filter(":visible")
+                .first()
+                .scrollIntoView()
+                .should("be.visible")
+                .and("not.be.disabled")
+                .click();
+
+            cy.imsId(COMMON.CONFIRMATION.YES)
+                .should("be.visible")
+                .and("not.be.disabled")
+                .click();
+
+            cy.formController("remarks")
+                .should("be.visible")
+                .and("not.be.disabled")
+                .clear()
+                .type(csData.remarksCancel);
+        });
+    }
 
     submitCancelSamity() {
-        cy.imsId("btn-submit").should("be.visible").click();
-        cy.imsId(COMMON.CONFIRMATION.OK).click();
+        cy.imsId(COMMON.BUTTONS.SUBMIT)
+            .should("be.visible")
+            .and("not.be.disabled")
+            .click();
+        cy.imsId(COMMON.CONFIRMATION.OK)
+            .should("be.visible")
+            .click();
+        cy.get(COMMON.TABLE.BODY, { timeout: 30000 })
+            .should("be.visible");
     }
 
     gridLanguageSwitchCheck() {
@@ -73,6 +85,7 @@ class cancelSamity {
         cy.log(messages.ui.languageSwitchMessage);
     }
 
+    
 }
 
 export const cancel_samity = new cancelSamity();
