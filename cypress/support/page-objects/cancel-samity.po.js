@@ -5,7 +5,7 @@ class cancelSamity {
     test_data = Cypress.env("TEST_DATA");
 
     gridCancelSamityListPage() {
-        cy.selectMenu("menu-process", "submenu-cancel-samity");
+        cy.selectMenu(COMMON.MENUS.PROCESS, COMMON.MENUS.CANCEL_SAMITY);
         cy.location("pathname", { timeout: 30000 })
             .should("include", "/process/cancel-samity");
         cy.get(COMMON.TABLE.BODY, { timeout: 30000 })
@@ -14,21 +14,17 @@ class cancelSamity {
     }
 
     gridCheckboxCheck() {
-        cy.contains(
-            `${COMMON.TABLE.BODY} tr`,
-            "Samity Staging Data Generate",
-            { timeout: 30000 }
-        )
-            .should("be.visible")
-            .find("input[type='checkbox']:not(:disabled)")
-            .check({ force: true });
+        cy.imsId(COMMON.BUTTONS.CHECK_SAMITY).click();
+        // cy.imsId(COMMON.BUTTONS.SAMITY_CHECK).click();
         cy.log(messages.ui.checkboxMessage);
     }
 
     cancelMultipleSamity() {
         cy.imsId(COMMON.BUTTONS.CANCEL_MULTIPLE).click();
         cy.imsId(COMMON.CONFIRMATION.YES).click();
-        cy.imsId(COMMON.CONFIRMATION.OK).click();
+        cy.imsId(COMMON.CONFIRMATION.OK).click(
+            
+        );
         cy.log(messages.ui.cancelMultipleSamityMessage);
     }
 
