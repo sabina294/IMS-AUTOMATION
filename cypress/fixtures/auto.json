@@ -260,7 +260,14 @@
       "search": "Test",
       "existingOrganizationName": "BRAC",
       "invalidSearch": "NO_SUCH_FUNDING_ORG_987654321",
-      "gridColumns": ["#", "ID/Short Code", "Funding Organization Name", "Funding Organization Type", "Status", "Actions"]
+      "gridColumns": [
+        "#",
+        "ID/Short Code",
+        "Funding Organization Name",
+        "Funding Organization Type",
+        "Status",
+        "Actions"
+      ]
     },
     "createLoanFundFrom": {
       "bankAccount": "Dhaka Zonal Office",
@@ -272,7 +279,17 @@
       "search": "Dhaka Zonal Office",
       "existingLoanFundId": "PKSF-1001",
       "invalidSearch": "NO_SUCH_LOAN_FUND_987654321",
-      "gridColumns": ["#", "Loan Fund Id", "Bank Account", "Funding Organization", "Funding Notes", "Amount", "Loan Availability Date", "Status", "Actions"]
+      "gridColumns": [
+        "#",
+        "Loan Fund Id",
+        "Bank Account",
+        "Funding Organization",
+        "Funding Notes",
+        "Amount",
+        "Loan Availability Date",
+        "Status",
+        "Actions"
+      ]
     },
     "createMfiProgramFrom": {
       "programNameEn": "Sahosh",
@@ -287,7 +304,16 @@
       "messageUpdateMfiProgram": "Mfi program has been updated",
       "existingProgramName": "Sahosh",
       "invalidSearch": "NO_SUCH_MFI_PROGRAM_987654321",
-      "gridColumns": ["#", "MFI Program Id", "Name English", "Name Bangla", "Short Name", "Funding Category", "Status", "Actions"]
+      "gridColumns": [
+        "#",
+        "MFI Program Id",
+        "Name English",
+        "Name Bangla",
+        "Short Name",
+        "Funding Category",
+        "Status",
+        "Actions"
+      ]
     },
     "createOfficeFrom": {
       "officeNameEn": "Test Office",
@@ -312,7 +338,17 @@
       "messageUpdateOffice": "Office has been updated",
       "existingOfficeName": "Head Office",
       "invalidSearch": "OFFICE-NOT-FOUND-987654",
-      "gridColumns": ["#", "Office ID", "Company Office ID", "Name", "Type", "Program", "Locked by", "Status", "Actions"]
+      "gridColumns": [
+        "#",
+        "Office ID",
+        "Company Office ID",
+        "Name",
+        "Type",
+        "Program",
+        "Locked by",
+        "Status",
+        "Actions"
+      ]
     },
     "approveOfficeFrom": {
       "officeNameEn": "Test Office",
@@ -401,7 +437,7 @@
     "approveEmployeeTerminationFrom": {
       "OfficeDropdown": "1020 (Ashulia)"
     },
-      "createSamityFrom": {
+    "createSamityFrom": {
       "samityNameEn": "Test Samity",
       "samityNameBn": "পরীক্ষা সমিতি",
       "draftName": "Test",
@@ -465,7 +501,8 @@
       "search": "Dhaka Samity",
       "messageSaveSamity": "Unauth samity has been saved",
       "messageUpdateSamity": "Samity has been updated",
-      "rejectRemarks": "Reject"
+      "rejectRemarks": "Reject",
+      "turnOnEditModeLabel": "Turn On Edit Mode"
     },
     "samityChangeFrom": {
       "samityNameEn": "Test Samity",
@@ -474,7 +511,28 @@
       "fieldOfficer": "EMP-0122 - GAIS UDDIN KHAN,",
       "selectOffice": "1020 (Ashulia)",
       "search": "Bamonkhali Mohila Samity",
-      "messageSamityChange": "Samity has been updated"
+      "messageSamityChange": "Samity has been updated",
+      "gridColumns": [
+        "#",
+        "Samity Id",
+        "Samity Name",
+        "Samity Type",
+        "Field Officer",
+        "Samity Day",
+        "Status",
+        "Actions"
+      ],
+      "sortColumns": {
+        "samityId": "Samity Id",
+        "samityName": "Samity Name",
+        "other": [
+          "Samity Type",
+          "Field Officer",
+          "Samity Day"
+        ]
+      },
+      "pageSize": "20",
+      "invalidSearch": "NO_MATCHING_SAMITY_987654321"
     },
     "approveSamityChangeFrom": {
       "OfficeDropdown": "1020 (Ashulia)"
@@ -486,7 +544,28 @@
       "SelectOffice": "1020 (Ashulia)",
       "newSamityDay": "Monday",
       "search": "Majhail Mohila Samity",
-      "messageSamityDayChange": "Samity day has been updated"
+      "messageSamityDayChange": "Samity day has been updated",
+      "gridColumns": [
+        "#",
+        "Samity Id",
+        "Samity Name",
+        "Samity Type",
+        "Field Officer",
+        "Samity Day",
+        "Status",
+        "Actions"
+      ],
+      "sortColumns": {
+        "samityId": "Samity Id",
+        "samityName": "Samity Name",
+        "other": [
+          "Samity Type",
+          "Field Officer",
+          "Samity Day"
+        ]
+      },
+      "pageSize": "20",
+      "invalidSearch": "NO_MATCHING_SAMITY_DAY_987654321"
     },
     "approveSamityDayChangeFrom": {
       "OfficeDropdown": "1020 (Ashulia)"
@@ -497,7 +576,28 @@
       "statusSelect": "Active",
       "SelectOffice": "1019 (Amin Bazar)",
       "search": "Abdullapur Mohila Samity",
-      "messageSamityClose": "Samity has been closed successfully."
+      "messageSamityClose": "Samity has been closed successfully.",
+      "gridColumns": [
+        "#",
+        "Samity Id",
+        "Samity Name",
+        "Samity Type",
+        "Field Officer",
+        "Samity Day",
+        "Status",
+        "Actions"
+      ],
+      "sortColumns": {
+        "samityId": "Samity Id",
+        "samityName": "Samity Name",
+        "other": [
+          "Samity Type",
+          "Field Officer",
+          "Samity Day"
+        ]
+      },
+      "pageSize": "20",
+      "invalidSearch": "NO_MATCHING_SAMITY_CLOSE_987654321"
     },
     "approveSamityCloseFrom": {
       "OfficeDropdown": "1020 (Ashulia)"
@@ -599,7 +699,30 @@
       "SelectOffice": "1020 (Ashulia)",
       "search": "Cooperative Farming Credit",
       "messageSaveLoanProduct": "Loan product has been saved",
-      "messageUpdateLoanProduct": "Do you want to update this loan product?"
+      "messageUpdateLoanProduct": "Do you want to update this loan product?",
+      "gridColumns": [
+        "#",
+        "Loan Product ID",
+        "Loan Product Name",
+        "Product Display Name",
+        "MFI Program ID",
+        "Product Nature",
+        "Repayment Frequency",
+        "Status",
+        "Actions"
+      ],
+      "sortColumns": {
+        "loanProductId": "Loan Product ID",
+        "loanProductName": "Loan Product Name",
+        "other": [
+          "Product Display Name",
+          "MFI Program ID",
+          "Product Nature",
+          "Repayment Frequency"
+        ]
+      },
+      "pageSize": "20",
+      "invalidSearch": "NO_MATCHING_LOAN_PRODUCT_987654321"
     },
     "createLoanAccountFrom": {
       "office": "1020 (Ashulia)",
@@ -716,6 +839,29 @@
       "selectStatus": "Inactive",
       "statusSelect": "Active",
       "search": "General Savings",
+      "gridColumns": [
+        "#",
+        "Savings Product ID",
+        "Company Product ID",
+        "Savings Product Name",
+        "MFI Program ID",
+        "Interest Rate Terms",
+        "Interest Rate Frequency",
+        "Status",
+        "Actions"
+      ],
+      "sortColumns": {
+        "savingsProductId": "Savings Product ID",
+        "savingsProductName": "Savings Product Name",
+        "other": [
+          "Company Product ID",
+          "MFI Program ID",
+          "Interest Rate Terms",
+          "Interest Rate Frequency"
+        ]
+      },
+      "pageSize": "20",
+      "invalidSearch": "NO_MATCHING_SAVINGS_PRODUCT_987654321",
       "saveSavingsMessage": "Savings product has been saved",
       "updateSavingsMessage": "Savings product has been updated"
     },
@@ -954,16 +1100,42 @@
     "createBankAccountFrom": {
       "bankName": "AGRANI BANK LTD.",
       "branchName": "BHANDARIA",
-      "accNameEn": "Farjana",
-      "accNameBn": "ফারজানা",
+      "accNameEn": "Sabina Yeasmin",
+      "accNameBn": "সাবিনা ইয়াসমিন",
       "accountType": "Savings Account",
       "accNumber": "0020672606",
       "status": "Active",
-      "search": "Arpara Office",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "messageSaveBankAccount": "Mfi bank account has been saved",
-      "messageUpdateBankAccount": "Mfi bank account has been updated"
+      "search": "Sabina Yeasmin",
+      "duplicateAccountNumber": "0020672606",
+      "invalidAccountNumber": "INVALID_ACCOUNT_NUMBER",
+      "updatedAccNameEn": "Updated Account Name",
+      "invalidSearch": "XYZ_NON_EXISTING_BANK_ACCOUNT",
+      "partialSearch": "Sabina",
+      "spaceOnly": "   ",
+      "pageSize": "20",
+      "addButtonText": "Add Bank Account",
+      "searchPlaceholder": "Search Here",
+      "listPath": "/bank-account/list",
+      "viewPath": "/bank-account/view/",
+      "gridColumns": [
+        "Bank",
+        "Bank Branch",
+        "Account Name",
+        "Account Name (Bangla)",
+        "Account Number",
+        "Status"
+      ],
+      "viewLabels": {
+        "bank": "Bank",
+        "bankBranch": "Bank Branch",
+        "accountNameEn": "Account Name (English)",
+        "accountNameBn": "Account Name (Bangla)",
+        "accountType": "Account Type",
+        "accountNumber": "Account Number",
+        "status": "Status"
+      }
     },
     "gridFeeConfigurationFrom": {
       "feeTypeNameEn": "Member Admission Fee",
@@ -1008,7 +1180,8 @@
       "officeType": "Regional Office",
       "selectStatus": "Inactive",
       "statusSelect": "Active",
-      "search": "Dhaka Regional Office"
+      "search": "Dhaka Regional Office",
+      "lockedBy": "Ashulia"
     },
     "createEmpMangFrom": {
       "empNameEn": "Sabina Yeasmin",

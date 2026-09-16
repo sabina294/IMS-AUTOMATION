@@ -9,32 +9,32 @@ class RejectedSamity {
       cy.imsId(COMMON.BUTTONS.ADD_NEW).click();
       // cy.imsId(COMMON.BUTTONS.SUBMIT).and('be.visible')
       const rsData = data.mfiAdmin.rejectedSamityFrom;
-      cy.formController("office_id").type(rsData.office).type("{enter}");
+      // Requery before Enter because typing can replace the dropdown DOM.
+      cy.formController("office_id").type(rsData.office);
+      cy.formController("office_id").type("{enter}");
+      cy.wait(2000);
       cy.formController("samity_name_en").first().type(rsData.samityNameEn);
       cy.formController("samity_name_bn").type(rsData.samityNameBn);
-      cy.formController("samity_type").type(rsData.samityType).type("{enter}");
+      cy.formController("samity_type").type(rsData.samityType);
+      cy.formController("samity_type").type("{enter}");
       cy.wait(2000);
-      cy.formController("field_officer_id")
-        .type(rsData.fieldOfficer)
-        .type("{enter}");
+      cy.formController("field_officer_id").type(rsData.fieldOfficer);
+      cy.formController("field_officer_id").type("{enter}");
       cy.wait(2000);
-      cy.formController("mfi_program_id")
-        .type(rsData.mfiProgram)
-        .type("{enter}");
-      cy.formController("samity_day").type(rsData.samityDay).type("{enter}");
-      cy.formController("samity_meeting_frequency")
-        .type(rsData.samityFrequency)
-        .type("{enter}");
+      cy.formController("mfi_program_id").type(rsData.mfiProgram);
+      cy.formController("mfi_program_id").type("{enter}");
+      cy.formController("samity_day").type(rsData.samityDay);
+      cy.formController("samity_day").type("{enter}");
+      cy.formController("samity_meeting_frequency").type(rsData.samityFrequency);
+      cy.formController("samity_meeting_frequency").type("{enter}");
       cy.formController("maximum_member").type(rsData.maxMember);
       cy.wait(2000);
-      cy.formController("working_area_id")
-        .type(rsData.workingArea)
-        .type("{enter}");
+      cy.formController("working_area_id").type(rsData.workingArea);
+      cy.formController("working_area_id").type("{enter}");
       cy.wait(2000);
       cy.formController("address_line_1").type(rsData.adressEn);
-      cy.formController("geo_area_type")
-        .type(rsData.geoAreaType)
-        .type("{enter}");
+      cy.formController("geo_area_type").type(rsData.geoAreaType);
+      cy.formController("geo_area_type").type("{enter}");
 
       cy.imsId(COMMON.BUTTONS.SUBMIT).click();
       cy.imsId(COMMON.CONFIRMATION.YES).click();
@@ -49,6 +49,7 @@ class RejectedSamity {
       cy.imsId(COMMON.MENUS.MY_TASK).click();
       cy.imsId(COMMON.MENUS.AWAITING_SAMITY_MANAGEMENT).click();
       cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(rsData.samityNameEn);
+      cy.imsId(COMMON.BUTTONS.SEARCH).click();
       cy.imsId(COMMON.TOGGLES.ACTION).first().click();
       cy.imsId(COMMON.GRID.ACTION_VIEW).click();
       cy.imsId(COMMON.BUTTONS.LOCK).click();
@@ -78,8 +79,8 @@ class RejectedSamity {
   viewRejectedSamity() {
     cy.fixture(this.test_data).then((data) => {
       const rsData = data.mfiAdmin.rejectedSamityFrom;
-      cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(rsData.samityNameEn);
-      cy.imsId(COMMON.TOGGLES.ACTION).first().click();
+      // cy.formController(COMMON.INPUTS.SEARCH_TEXT).type(rsData.samityNameEn);
+      // cy.imsId(COMMON.TOGGLES.ACTION).first().click();
       cy.imsId(COMMON.GRID.ACTION_VIEW).click();
       cy.log(messages.ui.viewMessage);
     });
@@ -237,26 +238,26 @@ class RejectedSamity {
 
   sortSamityName(direction) {
     const column = COMMON.REJECTED_SAMITY.COLUMNS.SAMITY_NAME;
+    // The grid uses case-sensitive string ordering, not locale collation.
+    const compareNames = (a, b) => (a === b ? 0 : a < b ? -1 : 1);
     const expectedSort = direction === "ascending"
-      ? (a, b) => a.localeCompare(b)
-      : (a, b) => b.localeCompare(a);
+      ? compareNames
+      : (a, b) => compareNames(b, a);
 
     this.setSamityNameSort(column, direction);
 
     cy.get(COMMON.TABLE.VISIBLE_ROWS)
       .find(COMMON.TABLE.VISIBLE_CELLS)
       .filter(`:nth-child(${column + 1})`)
-      .then(($cells) => {
+      .should(($cells) => {
+        // Retry while the grid is still rendering the newly selected order.
         const values = [...$cells].map((cell) => cell.innerText.trim());
+        expect(values.length, "Samity names available for sorting").to.be.greaterThan(1);
         expect(values).to.deep.equal([...values].sort(expectedSort));
       });
   }
 
   setSamityNameSort(column, direction, attempts = 0) {
-    if (attempts >= 3) {
-      throw new Error(`Unable to set Samity Name sorting to ${direction}.`);
-    }
-
     const activeIcon = direction === COMMON.SORT.ASCENDING
       ? COMMON.SORT.ASCENDING_ICON
       : COMMON.SORT.DESCENDING_ICON;
@@ -267,6 +268,10 @@ class RejectedSamity {
       .then(($header) => {
         if ($header.find(activeIcon).length) {
           return;
+        }
+
+        if (attempts >= 3) {
+          throw new Error(`Unable to set Samity Name sorting to ${direction}.`);
         }
 
         cy.wrap($header).click();
@@ -298,47 +303,6 @@ class RejectedSamity {
       }
     });
     cy.log(messages.ui.nextPageDisabledCheck);
-  }
-
-  openRejectedSamityView() {
-    cy.fixture(this.test_data).then((data) => {
-      const rsData = data.mfiAdmin.rejectedSamityFrom;
-      cy.imsId(COMMON.BUTTONS.RESET).click();
-      cy.formController(COMMON.INPUTS.SEARCH_TEXT).clear().type(rsData.samityNameEn);
-      cy.imsId(COMMON.BUTTONS.SEARCH).click();
-      cy.imsId(COMMON.TOGGLES.ACTION).first().click();
-      cy.imsId(COMMON.GRID.ACTION_VIEW).click();
-    });
-  }
-
-  viewPageNavigationCheck() {
-    this.openRejectedSamityView();
-    cy.location("pathname", { timeout: 30000 })
-      .should("include", COMMON.REJECTED_SAMITY.VIEW_PATH);
-    ["Home", "Samity", "Rejected Samity", "View"].forEach((breadcrumb) => {
-      cy.contains(COMMON.PAGE.VISIBLE_ELEMENT, breadcrumb).should("be.visible");
-    });
-    cy.log(messages.ui.listPageNavigationCheck);
-  }
-
-  viewInformationCheck() {
-    cy.fixture(this.test_data).then((data) => {
-      const rsData = data.mfiAdmin.rejectedSamityFrom;
-      ["Basic Information", "Settings", "Address Information"].forEach((section) => {
-        cy.contains(COMMON.PAGE.VISIBLE_ELEMENT, section).should("be.visible");
-      });
-      [
-        rsData.samityNameEn,
-        rsData.samityType,
-        rsData.samityDay,
-        rsData.samityFrequency,
-        rsData.maxMember,
-        rsData.geoAreaType,
-      ].forEach((value) => {
-        cy.contains(COMMON.PAGE.VISIBLE_ELEMENT, value).should("be.visible");
-      });
-      cy.log(messages.ui.viewField);
-    });
   }
 
   gridLanguageSwitchCheck() {
